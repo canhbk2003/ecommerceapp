@@ -1,0 +1,74 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+    td,
+    th {
+        vertical-align: middle;
+    }
+</style>
+
+<div>
+    <p>Name:
+        <%= userName %>
+    </p>
+    <p>Role:
+        <%= userRole %>
+    </p>
+</div>
+
+<div class="select">
+    <p>Number items:
+        <select>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option> 
+    </select></p>
+</div>
+<br>
+
+<div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                    <th scope="row">
+                        <%= i+1 %>
+                    </th>
+                    <td>
+                        <%= data[i].name %>
+                    </td>
+                    <td>
+                        <%= data[i].addr %>
+                    </td>
+                    <td>
+                        <%= data[i].phone %>
+                    </td>
+                    <td>
+                        <%= data[i].email %>
+                    </td>
+                    <td>
+                        <%= data[i].userId %>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Add</button>
+                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Edit</button>
+                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Delete</button>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</div>
