@@ -21,7 +21,7 @@ exports.connectAndQueryAll = async function query() {
     try {
         UserModel = mongoose.model('UserModel');
     } catch (error) {
-        UserModel = mongoose.model('UserModel', UserSchema, 'administator');
+        UserModel = mongoose.model('UserModel', UserSchema, 'administrator');
     }
     return await UserModel.find().then(data => {
         return data;
@@ -55,7 +55,7 @@ exports.ResetEmail = async function ResetEmail(email) {
         user = mongoose.model('UserModel');
 
     } catch (error) {
-        user = mongoose.model('UserModel', UserSchema, 'administator');
+        user = mongoose.model('UserModel', UserSchema, 'administrator');
     }
 
     return await user.findOne({ 'email': email }).then(data => {
@@ -82,7 +82,7 @@ exports.GetByEmail = async email => {
         user = mongoose.model('UserModel');
 
     } catch (error) {
-        user = mongoose.model('UserModel', UserSchema, 'administator');
+        user = mongoose.model('UserModel', UserSchema, 'administrator');
     }
 
     return await user.findOne({ 'email': email }).then(data => {

@@ -1,73 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ExpressJS</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/offcanvas/offcanvas.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            z-index: 1;
-            top: 130px;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            padding-top: 15px;
-        }
-        
-        .sidenav a {
-            padding: 0px 6px 6px 30px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-        }
-        
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        
         .container {
-            margin-left: 200px;
-            /* Same as the width of the sidenav */
+            align-items: center;
         }
         
         @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-            .sidenav a {
-                font-size: 18px;
-            }
         }
+
+        .new_product{
+            text-align: center;
+        }
+        .populate_product{
+            text-align: center;
+        }
+
+        footer{
+            text-align: center;
+            padding: 3px;
+            background-color: DarkSalmon;
+            color: white;
+            bottom: 0rem;
+            position: relative;
+            width: 100%;
+        }
+
+        .card-img-top{
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+        }
+
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+         } 
+
     </style>
 </head>
 
 <body>
-    <%- include ('header'); -%>
-        <div class="container">
-            <div class="row row-offcanvas row-offcanvas-right">
-                <div class="col-xs-12 col-sm-9">
-                    <div class="jumbotron">
-                        <h1>Hello world!</h1>
-                        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
-                    </div>
-                </div>
+    <div class="container">
+        <%- include ('header'); -%>
+    </div>
 
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                    <%- include ('sidebar'); -%>
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/assets/ao2.png" alt="First slide" width="1080" height="240">
+                </div>
+                <div class="item">
+                    <img src="/assets/ao2.jpeg" alt="Second slide" width="1080" height="240">
+                </div>
+                <div class="item">
+                    <img src="/assets/ao2.png" alt="Third slide" width="1080" height="240">
                 </div>
             </div>
-            <%- include ('footer'); -%>
+            <a class="left carousel-control" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-</body>
+    </div>
+    
+    <h2 class="new_product">SẢN PHẨM MỚI</h2>
 
+    <div class="container">
+        <%for(var i=0; i<12;i++) { %>
+            <div class="col-6 col-sm-4 col-md-3 p-2" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/ao2.jpeg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text"></p>
+                  <a href="#" class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        <% } %>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
+
+    
+    <div class="container">
+        <%for(var i=0; i<12;i++) { %>
+            <div class="col-6 col-sm-4 col-md-3 p-2" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/ao1.jpeg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text"></p>
+                  <a href="#" class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        <% } %>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    <footer>
+        <p> Copy right by CanhVV 2021 </p>  
+    </footer>
+</body>
 </html>

@@ -3,42 +3,48 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
-    td,
-    th {
+    td{
         vertical-align: middle;
+    } 
+    th{
+        vertical-align: middle;
+    }  
+    .thead-dark{
+        background-color: aquamarine;
     }
+
 </style>
+<div class="container">
+    <div class="user">
+        <p>Name:
+            <%= userName %>
+        </p>
+        <p>Role:
+            <%= userRole %>
+        </p>
+    </div>
 
-<div>
-    <p>Name:
-        <%= userName %>
-    </p>
-    <p>Role:
-        <%= userRole %>
-    </p>
+    <div class="select">
+        <p>Number items:
+            <select>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option> 
+        </select></p>
+    </div>
 </div>
 
-<div class="select">
-    <p>Number items:
-        <select>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20">20</option> 
-    </select></p>
-</div>
-<br>
-
-<div>
+<div class="container">
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">User name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
+                <th scope="col">No.</th>
+                <th scope="col">Tài khoản</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Số điện thoại</th>
                 <th scope="col">Email</th>
-                <th scope="col">User ID</th>
-                <th scope="col">Actions</th>
+                <th scope="col">ID người dùng</th>
+                <th scope="col">Chỉnh sửa</th>
             </tr>
         </thead>
         <tbody>
@@ -63,9 +69,8 @@
                         <%= data[i].userId %>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Add</button>
-                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Edit</button>
-                        <button type="button" class="btn btn-teal btn-rounded btn-sm m-0">Delete</button>
+                        <a href="edituser" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
+                        <a href="button" class="btn btn-teal btn-rounded btn-sm m-0">Xoá</a>
                     </td>
                 </tr>
                 <% } %>

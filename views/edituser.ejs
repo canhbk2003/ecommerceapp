@@ -1,0 +1,40 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+    .form-group{
+        align-items: center;
+    }
+</style>
+
+<div class="container">
+    <h3>Cập nhật tài khoản</h3>
+    <form action="/updateuser", method="POST">
+        <div class="form-group">
+            <label for="editUserName">Tên đăng nhập</label>
+            <input type="email" class="form-control" id="editUserName" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="editEmail">Email</label>
+            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" >
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="editAddress">Địa chỉ</label>
+            <input type="email" class="form-control" id="editAddress" aria-describedby="emailHelp" >
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="editPhoneNumber">Số điện thoại</label>
+            <input type="email" class="form-control" id="editPhoneNumber" aria-describedby="emailHelp" >
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </form>
+</div>

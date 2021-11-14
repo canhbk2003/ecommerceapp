@@ -1,3 +1,38 @@
-<div>
-    <p>signup page</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+    .form-group{
+        align-items: center;
+    }
+</style>
+
+<div class="container">
+    <h3>Đăng ký tài khoản</h3>
+    <form action="/signup" method="POST">
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Mật khẩu</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="inputRePassword">Nhập lại mật khẩu</label>
+            <input type="password" class="form-control" id="inputRePassword" placeholder="Re input Password">
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="agreeCheck" name="agreeCheck" value="false">
+            <label class="form-check-label" for="exampleCheck">Tôi đồng ý với mọi điều khoản!</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
 </div>
+
+<script>
+    var ischecked = document.getElementById("agreeCheck");
+    
+</script>

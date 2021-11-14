@@ -278,21 +278,28 @@
     #icon {
         width: 60%;
     }
+    .container{
+        text-align: center;
+        color: rgb(8, 166, 240);
+    }
 </style>
 
 <div class="wrapper fadeInDown">
+    <div class="container">
+        <h3>Chào mừng bạn đến với LEAGUE STORE 77</h3>
+    </div>
     <div id="formContent">
         <!-- Tabs Titles -->
         <!-- Login Form -->
         <form action="/login" method="POST">
-            <input type="text" id="login" class="fadeIn second" name="user" placeholder="User...">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password...">
-            <input type="submit" class="fadeIn fourth" value="Login">
+            <input type="text" id="login" class="fadeIn second" name="user" placeholder="Tên đăng nhập">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Mật khẩu">
+            <input type="submit" class="fadeIn fourth" value="Đăng nhập">
         </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="/reset">Forgot Password?</a>
+            <a class="underlineHover" href="/reset">Quên mật khẩu?</a>
         </div>
 
     </div>

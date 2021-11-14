@@ -3,7 +3,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const db = require('./db.js');
-const util = require('./utils/util.js')
+const util = require('./utils/util.js');
+const { application } = require('express');
 
 const app = express();
 
@@ -11,6 +12,11 @@ const viewPath = path.join(__dirname, 'views');
 app.use(express.static(viewPath));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+const asset = path.join(__dirname, 'public');
+console.log(asset);
+app.use(express.static(asset));
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('views', viewPath);
@@ -28,17 +34,25 @@ app.get('/login', function(req, res) {
     res.render('login');
 });
 
-app.post('/login', function(req, res) {
+app.post('/login', function(req, res, nextxtt) {
     var user = req.body.user;
     var password = req.body.password;
     console.log(user, password);
     if (user && password) {
         db.connectAndQueryAll().then(data => {
             res.render('admin', { userName: user, userRole: "Leader", data: data });
-        });
+        }); 
     } else {
-        res.send('Login failed!');
+        res.redirect(404, 'login');
     }
+});
+
+app.get('/contact', function(req, res){
+    res.render('contact');
+});
+
+app.get('/edituser', function(req, res){
+    res.render('edituser');
 });
 
 app.get('/admin', function(req, res) {
@@ -83,8 +97,21 @@ app.get('/signup', function(req, res) {
     res.render('signup');
 });
 
-app.post('/signup', function(req, res) {
+app.post('/signup', function(req, res, next) {
+    var isChecked = Boolean(req.body.agreeCheck);
+    if(isChecked == false){
+        next();
+    }
 
+    res.send(isChecked);
+
+    next();
+}, function(req, res, next){
+    res.redirect('/');
+});
+
+app.post('/updateuser', function(req, res){
+    res.send('update user called¥n');
 });
 
 app.listen(3000);
