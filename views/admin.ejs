@@ -16,16 +16,16 @@
 </style>
 <div class="container">
     <div class="user">
-        <p>Name:
+        <p>Tên người dùng:
             <%= userName %>
         </p>
-        <p>Role:
+        <p>Chức danh:
             <%= userRole %>
         </p>
     </div>
 
     <div class="select">
-        <p>Number items:
+        <p>Số lượng hiển thị:
             <select>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -48,32 +48,34 @@
             </tr>
         </thead>
         <tbody>
-            <% for(var i=0; i < data.length; i++) { %>
-                <tr>
-                    <th scope="row">
-                        <%= i+1 %>
-                    </th>
-                    <td>
-                        <%= data[i].name %>
-                    </td>
-                    <td>
-                        <%= data[i].addr %>
-                    </td>
-                    <td>
-                        <%= data[i].phone %>
-                    </td>
-                    <td>
-                        <%= data[i].email %>
-                    </td>
-                    <td>
-                        <%= data[i].userId %>
-                    </td>
-                    <td>
-                        <a href="edituser" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
-                        <a href="button" class="btn btn-teal btn-rounded btn-sm m-0">Xoá</a>
-                    </td>
-                </tr>
+            <% if (data.length > 0) { %>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                        <th scope="row">
+                            <%= i+1 %>
+                        </th>
+                        <td>
+                            <%= data[i].name %>
+                        </td>
+                        <td>
+                            <%= data[i].addr %>
+                        </td>
+                        <td>
+                            <%= data[i].phone %>
+                        </td>
+                        <td>
+                            <%= data[i].email %>
+                        </td>
+                        <td>
+                            <%= data[i].userId %>
+                        </td>
+                        <td>
+                            <a href="edituser" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
+                            <a href="button" class="btn btn-teal btn-rounded btn-sm m-0">Xoá</a>
+                        </td>
+                    </tr>
                 <% } %>
+            <% } %>
         </tbody>
     </table>
 </div>

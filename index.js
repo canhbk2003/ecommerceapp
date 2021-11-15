@@ -2,9 +2,15 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const querystring = require('querystring');
+
+const url = require('url');
+const http = require('http');
+
 const db = require('./db.js');
 const util = require('./utils/util.js');
 const { application } = require('express');
+const { type } = require('os');
 
 const app = express();
 
@@ -34,15 +40,14 @@ app.get('/login', function(req, res) {
     res.render('login');
 });
 
-app.post('/login', function(req, res, nextxtt) {
+app.post('/login', function(req, res, next) {
     var user = req.body.user;
     var password = req.body.password;
-    console.log(user, password);
-    if (user && password) {
-        db.connectAndQueryAll().then(data => {
-            res.render('admin', { userName: user, userRole: "Leader", data: data });
-        }); 
-    } else {
+    // find user and password if mapping -> redirect
+    if(user){
+        res.redirect('/admin?userName=' + user);
+    }
+    else{
         res.redirect(404, 'login');
     }
 });
@@ -56,7 +61,10 @@ app.get('/edituser', function(req, res){
 });
 
 app.get('/admin', function(req, res) {
-    res.render('admin');
+    
+    db.connectAndQueryAll().then(data => {
+        res.render('admin', { userName: req.query.userName, userRole: req.query.userRole, data: data});
+    });
 });
 
 app.get('/reset', function(req, res) {
@@ -111,7 +119,7 @@ app.post('/signup', function(req, res, next) {
 });
 
 app.post('/updateuser', function(req, res){
-    res.send('update user called¥n');
+    res.send('update user called!');
 });
 
 app.listen(3000);
