@@ -4,11 +4,16 @@ const bodyParser = require('body-parser');
 
 const querystring = require('querystring');
 
+const methodOverride = require('method-override');
+
 const url = require('url');
 const http = require('http');
 
 const db = require('./db.js');
 const util = require('./utils/util.js');
+
+const Product = require('./models/product');
+
 const { application } = require('express');
 const { type } = require('os');
 
@@ -16,8 +21,10 @@ const app = express();
 
 const viewPath = path.join(__dirname, 'views');
 app.use(express.static(viewPath));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(methodOverride('_method'));
 
 const asset = path.join(__dirname, 'public');
 console.log(asset);
@@ -120,6 +127,58 @@ app.post('/signup', function(req, res, next) {
 
 app.post('/updateuser', function(req, res){
     res.send('update user called!');
+});
+
+app.get('/addproduct', function(req, res){
+    res.render('addproduct');
+});
+
+app.post('/addproduct', async function(req, res, next){
+    console.log(req.body);
+    next();
+}, async function(req, res, next){
+
+    const formData = req.body;
+    let docs = null;
+    try{
+        await db.FindByProductId(req.body.productId).then(data => {
+            docs = data;
+        });
+    }catch(err){
+
+    }
+    console.log(docs);
+    if(docs == null){
+        await db.AddOneProduct(formData);
+    }
+    res.render('addproduct');
+});
+
+app.get('/producttable', function(req, res){
+
+    db.QueryAllProduct().then(data_=>{
+        res.render('producttable', {data: data_});
+    });
+});
+
+app.get('/editproduct/:id', function(req, res, next){
+    Product.findById(req.params.id)
+    .then(data => res.render('editproduct', {
+        product: data
+    }))
+    .catch(next);
+});
+
+app.put('/editproduct/:id', function(req, res , next){
+    Product.updateOne({_id: req.params.id}, req.body)
+    .then(() => res.redirect('/producttable'))
+    .catch(next)
+});
+
+app.delete('/producttable/:id', function(req, res, next){
+    Product.deleteOne({_id: req.params.id})
+    .then(() => res.redirect('back'))
+    .catch(next)
 });
 
 app.listen(3000);

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>League store 77</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+            input[type="text"]{
+                width: 50%;
+            }
+            textarea[type="textarea"]{
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2 style="text-align: center;">Kho hàng</h2>
+        </div>
+
+        <div class="container">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Mã sản phẩm</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Mô tả</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Giá niêm yết</th>
+                        <th scope="col">Giá đã giảm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Created date</th>
+                        <th scope="col">Updated date</th>
+                        <th scope="col">Quản lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data.length > 0) { %>
+                        <% for(var i=0; i < data.length; i++) { %>
+                            <tr>
+                                <th scope="row">
+                                    <%= i+1 %>
+                                </th>
+                                <td>
+                                    <%= data[i].productId %>
+                                </td>
+                                <td>
+                                    <%= data[i].name %>
+                                </td>
+                                <td>
+                                    <%= data[i].description %>
+                                </td>
+                                <td>
+                                    <%= data[i].image %>
+                                </td>
+                                <td>
+                                    <%= data[i].price %>
+                                </td>
+                                <td>
+                                    <%= data[i].bonusPrice %>
+                                </td>
+                                <td>
+                                    <%= data[i].quantity %>
+                                </td>
+                                <td>
+                                    <%= data[i].createdAt %>
+                                </td>
+                                <td>
+                                    <%= data[i].updatedAt %>
+                                </td>
+                                <td>
+                                    <a href="/editproduct/<%=data[i]._id %>" class="btn btn-primary" >Sửa</a>
+                                    <a href="" class="btn btn-primary" data-toggle="modal" data-id="<%=data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal-delete-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Xác nhận xoá dữ liệu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn chắc chắn muốn xoá sản phẩm này?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-delete-model" class="btn btn-danger" data-dismiss="modal">Xoá</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" name="delele-form">
+        </form>
+
+        <script>
+       
+            document.addEventListener('DOMContentLoaded', function(){
+                var productId;
+                var deleteForm = document.forms['delete-form'];
+                
+    
+                $('#modal-delete-model').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    productId = button.data('id'); // Extract info from data-* attributes
+                    console.log(productId);
+                });
+
+                var btnDel = document.getElementById("btn-delele-model");ßß
+                
+                console.log(btnDel);
+    
+                btnDel.onclick = function() {
+                    console.log('button delete onclick');
+                    deleteForm.action = '/producttable/' + productId + '?_method=DELETE';
+                    deleteForm.submit();
+                } 
+            });
+        </script>
+    </body>
+</html>
