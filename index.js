@@ -38,9 +38,16 @@ app.set('views', viewPath);
 // fetch data
 
 
-// index page
+// home page
 app.get('/', function(req, res) {
-    res.render('index');
+    // query all data
+    db.QueryAllProduct().then(data_=>{
+        var numitems = data_.length / 12;
+        if(numitems < 1){
+            numitems = 1;
+        }
+        res.render('index', {numItems: parseInt(numitems), product:data_});
+    });
 });
 
 app.get('/login', function(req, res) {
@@ -179,6 +186,12 @@ app.delete('/producttable/:id', function(req, res, next){
     Product.deleteOne({_id: req.params.id})
     .then(() => res.redirect('back'))
     .catch(next)
+});
+
+app.get('/productdetail/:id', function(req, res, next){
+    Product.findOne({_id: req.params.id}, req.body)
+    .then(data=>res.render('productdetail', {product: data}))
+    .catch(next);
 });
 
 app.listen(3000);
