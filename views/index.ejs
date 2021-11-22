@@ -63,16 +63,18 @@
         <div class="container">
             <div class="card-deck">
                 <%for(var i=0; i<product.length;i++) { %>
-                    <div class="col-6 col-sm-3">
-                        <div class="card product-item">
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="card h-100">
                             <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= product[i].name %>
                                 </h5>
-                                <p class="card-text">
-                                    <%= product[i].description %>
+                                <p class="card-text"> Price:
+                                    <%= product[i].price %>
                                 </p>
+                            </div>
+                            <div class="card-footer">
                                 <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
                                 <a href="#" class="btn btn-warning btn-sm">Cart</a>
                             </div>
