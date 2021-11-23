@@ -13,6 +13,7 @@ const db = require('./db.js');
 const util = require('./utils/util.js');
 
 const Product = require('./models/product');
+const User = require('./models/user');
 
 const { application } = require('express');
 const { type } = require('os');
@@ -41,12 +42,12 @@ app.set('views', viewPath);
 // home page
 app.get('/', function(req, res) {
     // query all data
-    db.QueryAllProduct().then(data_=>{
+    db.QueryAllProduct().then(data_ => {
         var numitems = data_.length / 12;
-        if(numitems < 1){
+        if (numitems < 1) {
             numitems = 1;
         }
-        res.render('index', {numItems: parseInt(numitems), product:data_});
+        res.render('index', { numItems: parseInt(numitems), product: data_ });
     });
 });
 
@@ -58,26 +59,25 @@ app.post('/login', function(req, res, next) {
     var user = req.body.user;
     var password = req.body.password;
     // find user and password if mapping -> redirect
-    if(user){
+    if (user) {
         res.redirect('/admin?userName=' + user);
-    }
-    else{
+    } else {
         res.redirect(404, 'login');
     }
 });
 
-app.get('/contact', function(req, res){
+app.get('/contact', function(req, res) {
     res.render('contact');
 });
 
-app.get('/edituser', function(req, res){
+app.get('/edituser', function(req, res) {
     res.render('edituser');
 });
 
 app.get('/admin', function(req, res) {
-    
+
     db.connectAndQueryAll().then(data => {
-        res.render('admin', { userName: req.query.userName, userRole: req.query.userRole, data: data});
+        res.render('admin', { userName: req.query.userName, userRole: req.query.userRole, data: data });
     });
 });
 
@@ -121,77 +121,97 @@ app.get('/signup', function(req, res) {
 
 app.post('/signup', function(req, res, next) {
     var isChecked = Boolean(req.body.agreeCheck);
-    if(isChecked == false){
+    if (isChecked == false) {
         next();
     }
 
     res.send(isChecked);
 
     next();
-}, function(req, res, next){
+}, function(req, res, next) {
     res.redirect('/');
 });
 
-app.post('/updateuser', function(req, res){
+app.post('/updateuser', function(req, res) {
     res.send('update user called!');
 });
 
-app.get('/addproduct', function(req, res){
+app.get('/addproduct', function(req, res) {
     res.render('addproduct');
 });
 
-app.post('/addproduct', async function(req, res, next){
+app.post('/addproduct', async function(req, res, next) {
     console.log(req.body);
     next();
-}, async function(req, res, next){
+}, async function(req, res, next) {
 
     const formData = req.body;
     let docs = null;
-    try{
+    try {
         await db.FindByProductId(req.body.productId).then(data => {
             docs = data;
         });
-    }catch(err){
+    } catch (err) {
 
     }
     console.log(docs);
-    if(docs == null){
+    if (docs == null) {
         await db.AddOneProduct(formData);
     }
     res.render('addproduct');
 });
 
-app.get('/producttable', function(req, res){
+app.get('/producttable', function(req, res) {
 
-    db.QueryAllProduct().then(data_=>{
-        res.render('producttable', {data: data_});
+    db.QueryAllProduct().then(data_ => {
+        res.render('producttable', { data: data_ });
     });
 });
 
-app.get('/editproduct/:id', function(req, res, next){
+app.get('/editproduct/:id', function(req, res, next) {
     Product.findById(req.params.id)
-    .then(data => res.render('editproduct', {
-        product: data
-    }))
-    .catch(next);
+        .then(data => res.render('editproduct', {
+            product: data
+        }))
+        .catch(next);
 });
 
-app.put('/editproduct/:id', function(req, res , next){
-    Product.updateOne({_id: req.params.id}, req.body)
-    .then(() => res.redirect('/producttable'))
-    .catch(next)
+app.put('/editproduct/:id', function(req, res, next) {
+    Product.updateOne({ _id: req.params.id }, req.body)
+        .then(() => res.redirect('/producttable'))
+        .catch(next)
 });
 
-app.delete('/producttable/:id', function(req, res, next){
-    Product.deleteOne({_id: req.params.id})
-    .then(() => res.redirect('back'))
-    .catch(next)
+app.delete('/producttable/:id', function(req, res, next) {
+    Product.deleteOne({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next)
 });
 
-app.get('/productdetail/:id', function(req, res, next){
-    Product.findOne({_id: req.params.id}, req.body)
-    .then(data=>res.render('productdetail', {product: data}))
-    .catch(next);
+app.get('/productdetail/:id', function(req, res, next) {
+    Product.findOne({ _id: req.params.id }, req.body)
+        .then(data => res.render('productdetail', { product: data }))
+        .catch(next);
+});
+
+app.get('/edituser/:id', function(req, res, next) {
+
+    util.opendb();
+    User.findById(req.params.id)
+        .then(data => res.render('edituser', {
+            user: data
+        }))
+        .catch(next)
+});
+
+app.get('/adduser', function(req, res, nex) {
+    res.render('adduser');
+});
+
+app.post('/adduser', function(req, res, next) {
+    // connect
+    util.opendb();
+
 });
 
 app.listen(3000);

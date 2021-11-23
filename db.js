@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const Product = require('./models/product');
+const User = require('./models/user');
 
 exports.connectAndQueryAll = async function query() {
     console.log('connect to mongoose db');
@@ -12,12 +13,14 @@ exports.connectAndQueryAll = async function query() {
         `${mongoose.connection.readyState}`);
     var schema = mongoose.Schema;
     var UserSchema = new schema({
-        userId: String,
-        name: String,
-        age: String,
-        addr: String,
-        email: String,
-        phone: String
+        userId: { type: String, maxLength: 8 },
+        name: { type: String, maxLength: 256 },
+        age: { type: Number, maxLength: 3 },
+        addr: { type: String, maxLength: 256 },
+        email: { type: String, maxLength: 256 },
+        phone: { type: String, maxLength: 30 },
+        createdAt: { type: Date, default: Date.now },
+        updatedAt: { type: Date, default: Date.now }
     });
     let UserModel;
     try {
@@ -92,15 +95,15 @@ exports.GetByEmail = async email => {
     });
 }
 
-exports.AddOneProduct = async function addOne(_product){
+exports.AddOneProduct = async function addOne(_product) {
     const URI = 'mongodb://127.0.0.1:27017/product_test';
 
-    try{
+    try {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
-        }); 
+        });
         console.log('Connect to database successfully!');
-    }catch(err){
+    } catch (err) {
 
     }
 
@@ -114,22 +117,22 @@ exports.AddOneProduct = async function addOne(_product){
     // }).catch(err => handleError(err)).finally(()=>{
     //     console.log('close db');
     // });
-    return await product.save().then(err=>{
-        if(!err){
+    return await product.save().then(err => {
+        if (!err) {
             console.log('Save model successfully');
         }
     });
 }
 
-exports.FindByProductId = async function findProductById(id){
+exports.FindByProductId = async function findProductById(id) {
     const URI = 'mongodb://127.0.0.1:27017/product_test';
 
-    try{
+    try {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
-        }); 
+        });
         console.log('Connect to database successfully!');
-    }catch(err){
+    } catch (err) {
         console.log('Connect to database failed!');
     }
 
@@ -144,21 +147,42 @@ exports.FindByProductId = async function findProductById(id){
     });
 }
 
-exports.QueryAllProduct = async function queryAllProduct(){
+exports.QueryAllProduct = async function queryAllProduct() {
     const URI = 'mongodb://127.0.0.1:27017/product_test';
 
-    try{
+    try {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
-        }); 
+        });
         console.log('Connect to database successfully!');
-    }catch(err){
+    } catch (err) {
         console.log('Connect to database failed!');
     }
 
     return await Product.find({})
-    .then(docs => {
-        console.log(docs);
-        return docs;
-    });
+        .then(docs => {
+            console.log(docs);
+            return docs;
+        });
 }
+
+// user
+// exports.FindById = async function findById(id) {
+//     const URI = 'mongodb://127.0.0.1:27017/admin';
+//     try {
+//         await mongoose.connect(URI, {
+//             connectTimeoutMS: 1000
+//         });
+//         console.log('Connect to database successfully!');
+//     } catch (err) {
+//         console.log('Connect to database failed!');
+//     }
+
+//     return await User.findOne({ _id: id })
+//         .then(data => {
+//             return data;
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         });
+// }

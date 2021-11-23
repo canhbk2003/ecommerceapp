@@ -3,17 +3,21 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
-    td{
+    td {
         vertical-align: middle;
-    } 
-    th{
+    }
+    
+    th {
         vertical-align: middle;
-    }  
-    .thead-dark{
+    }
+    
+    .thead-dark {
         background-color: aquamarine;
     }
-
 </style>
+<div style="text-align: center;" class="container">
+    <h2>Quản lý người dùng</h2>
+</div>
 <div class="container">
     <div class="user">
         <p>Tên người dùng:
@@ -70,12 +74,35 @@
                             <%= data[i].userId %>
                         </td>
                         <td>
-                            <a href="edituser" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
-                            <a href="button" class="btn btn-teal btn-rounded btn-sm m-0">Xoá</a>
+                            <a href="/edituser/<%= data[i]._id %>" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
+                            <a href="" class="btn btn-teal btn-rounded btn-sm m-0" data-id="<%= data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
                         </td>
                     </tr>
-                <% } %>
-            <% } %>
+                    <% } %>
+                        <% } %>
         </tbody>
     </table>
 </div>
+<!--modal confirming delete user-->
+<div class="modal fade" id="modal-delete-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Xác nhận xoá dữ liệu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn chắc chắn muốn xoá người dùng này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-delete-model" class="btn btn-danger" data-dismiss="modal">Xoá</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--script-->
+<script>
+</script>
