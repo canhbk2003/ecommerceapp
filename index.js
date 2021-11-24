@@ -74,11 +74,11 @@ app.get('/edituser', function(req, res) {
     res.render('edituser');
 });
 
-app.get('/admin', function(req, res) {
+app.get('/admin', function(req, res, next) {
 
-    db.connectAndQueryAll().then(data => {
-        res.render('admin', { userName: req.query.userName, userRole: req.query.userRole, data: data });
-    });
+    db.QueryAllUser().then(data => res.render('admin', {
+        data: data
+    }));
 });
 
 app.get('/reset', function(req, res) {
@@ -195,8 +195,6 @@ app.get('/productdetail/:id', function(req, res, next) {
 });
 
 app.get('/edituser/:id', function(req, res, next) {
-
-    util.opendb();
     User.findById(req.params.id)
         .then(data => res.render('edituser', {
             user: data
@@ -209,10 +207,20 @@ app.get('/adduser', function(req, res, nex) {
 });
 
 app.post('/adduser', function(req, res, next) {
-    // connect
-    util.opendb();
+    try {
+        db.AddOneUser(req.body);
+    } catch (err) {
+        console.log(err);
+    }
 
+    res.render('adduser');
 });
+
+app.put('edituser/:id', function(req, res, next) {
+    User.findOne({ _id: id }, req.body)
+        .then(() => res.render('admin'))
+        .catch(next)
+})
 
 app.listen(3000);
 console.log('Server is listening on port 3000');
