@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>League store 77</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <style>
-            input[type="text"]{
-                width: 50%;
-            }
-            textarea[type="textarea"]{
-                width: 50%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h2 style="text-align: center;"> Cập nhật sản phẩm</h2>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <div style="margin-left: 25%;" class="container">
-            <form method="post" action="/editProduct/<%= product._id %>?_method=PUT">
-                <div class="form-group">
-                    <label for="editProductId">Mã sản phẩm</label>
-                    <input type="text" name="productId" class="form-control" id="editProductId" value="<%= product.productId %>" placeholder="Mã sản phẩm" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductName">Tên sản phẩm</label>
-                    <input type="text" name="name" class="form-control" id="editProductName" value="<%= product.name %>" placeholder="Tên sản phẩm">
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductDescription">Mô tả</label>
-                    <textarea type="textarea" id="editProductDescription" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"><%= product.description %></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductImage">Hình ảnh</label>
-                    <input type="text" name="image" class="form-control" id="editProductImage" value="<%= product.image %>" placeholder="Link hình ảnh sản phẩm">
-                </div>
-                
-                <div class="form-group">
-                    <label for="editProductPrice">Giá</label>
-                    <input type="text" name="price" class="form-control" id="editProductPrice" value="<%= product.price %>" placeholder="Giá thật">
-                </div>
+    <style>
+        input[type="text"] {
+            width: 50%;
+        }
         
-                <div class="form-group">
-                    <label for="editProductBonusPrice">Giá đã khuyến mại</label>
-                    <input type="text" name="bonusPrice" class="form-control" id="editProductBonusPrice" value="<%= product.bonusPrice %>" placeholder="Giá đã khuyến mại">
-                </div>
+        textarea[type="textarea"] {
+            width: 50%;
+        }
+    </style>
+</head>
 
-                <div class="form-group">
-                    <label for="editProductQuantity">Số lượng</label>
-                    <input type="text" name="quantity" class="form-control" id="editProductQuantity" value="<%= product.quantity %>" placeholder="Số lượng">
-                </div>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;"> Cập nhật sản phẩm</h2>
+    </div>
 
-                <button style="margin-left: 20%" type="submit" class="btn btn-primary">Cập nhật</button>
-            </form>
-        </div>
-    </body>
+    <div style="margin-left: 25%;" class="container">
+        <form method="post" action="/editProduct/<%= product._id %>?_method=PUT">
+            <div class="form-group">
+                <label for="editProductId">Mã sản phẩm</label>
+                <input type="text" name="productId" class="form-control" id="editProductId" value="<%= product.productId %>" placeholder="Mã sản phẩm" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="editProductName">Tên sản phẩm</label>
+                <input type="text" name="name" class="form-control" id="editProductName" value="<%= product.name %>" placeholder="Tên sản phẩm">
+            </div>
+
+            <div class="form-group">
+                <label for="editProductDescription">Mô tả</label>
+                <textarea type="textarea" id="editProductDescription" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"><%= product.description %></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="editProductImage">Hình ảnh</label>
+                <input type="text" name="image" class="form-control" id="editProductImage" value="<%= product.image %>" placeholder="Link hình ảnh sản phẩm">
+            </div>
+
+            <div class="form-group">
+                <label for="editProductPrice">Giá</label>
+                <input type="text" name="price" class="form-control" id="editProductPrice" value="<%= product.price %>" placeholder="Giá thật">
+            </div>
+
+            <div class="form-group">
+                <label for="editProductBonusPrice">Giá đã khuyến mại</label>
+                <input type="text" name="bonusPrice" class="form-control" id="editProductBonusPrice" value="<%= product.bonusPrice %>" placeholder="Giá đã khuyến mại">
+            </div>
+
+            <div class="form-group">
+                <label for="editProductQuantity">Số lượng</label>
+                <input type="text" name="quantity" class="form-control" id="editProductQuantity" value="<%= product.quantity %>" placeholder="Số lượng">
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="updatedAt" name="updatedAt">
+            </div>
+
+            <button style="margin-left: 20%" type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+    </div>
+</body>
+
 </html>
-
-

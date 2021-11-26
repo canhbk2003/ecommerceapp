@@ -1,106 +1,155 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    td {
-        vertical-align: middle;
-    }
-    
-    th {
-        vertical-align: middle;
-    }
-    
-    .thead-dark {
-        background-color: aquamarine;
-    }
-</style>
-<div style="text-align: center;" class="container">
-    <h2>Quản lý người dùng</h2>
-</div>
-<div class="container">
-    <div class="user">
-        <p>Tên người dùng:
-        </p>
-        <p>Chức danh:
-        </p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        td {
+            vertical-align: middle;
+        }
+        
+        th {
+            vertical-align: middle;
+        }
+        
+        .thead-dark {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;" class="container">
+        <h2>Quản lý người dùng</h2>
     </div>
+    <div class="container">
+        <div class="user">
+            <p>Tên người dùng:
+            </p>
+            <p>Chức danh:
+            </p>
+        </div>
 
-    <div class="select">
-        <p>Số lượng hiển thị:
-            <select>
+        <div class="select">
+            <p>Số lượng hiển thị:
+                <select>
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="20">20</option> 
         </select></p>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Tài khoản</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Email</th>
-                <th scope="col">ID người dùng</th>
-                <th scope="col">Chỉnh sửa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (data.length > 0) { %>
-                <% for(var i=0; i < data.length; i++) { %>
-                    <tr>
-                        <th scope="row">
-                            <%= i+1 %>
-                        </th>
-                        <td>
-                            <%= data[i].name %>
-                        </td>
-                        <td>
-                            <%= data[i].addr %>
-                        </td>
-                        <td>
-                            <%= data[i].phone %>
-                        </td>
-                        <td>
-                            <%= data[i].email %>
-                        </td>
-                        <td>
-                            <%= data[i].userId %>
-                        </td>
-                        <td>
-                            <a href="/edituser/<%= data[i]._id %>" class="btn btn-teal btn-rounded btn-sm m-0">Sửa</a>
-                            <a href="" class="btn btn-teal btn-rounded btn-sm m-0" data-id="<%= data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
-                        </td>
-                    </tr>
-                    <% } %>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">ID người dùng</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Create date</th>
+                    <th scope="col">Update date</th>
+                    <th scope="col">Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (data.length > 0) { %>
+                    <% for(var i=0; i < data.length; i++) { %>
+                        <tr>
+                            <th scope="row">
+                                <%= i+1 %>
+                            </th>
+                            <td>
+                                <%= data[i].name %>
+                            </td>
+                            <td>
+                                <%= data[i].addr %>
+                            </td>
+                            <td>
+                                <%= data[i].phone %>
+                            </td>
+                            <td>
+                                <%= data[i].email %>
+                            </td>
+                            <td>
+                                <%= data[i].userId %>
+                            </td>
+                            <td>
+                                <%= data[i].password %>
+                            </td>
+                            <td>
+                                <%= data[i].createdAt %>
+                            </td>
+                            <td>
+                                <%= data[i].updatedAt %>
+                            </td>
+                            <td>
+                                <a href="/edituser/<%=data[i]._id %>" class="btn btn-primary">Sửa</a>
+                                <a href="" class="btn btn-danger" data-toggle="modal" data-id="<%=data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
+                            </td>
+                        </tr>
                         <% } %>
-        </tbody>
-    </table>
-</div>
-<!--modal confirming delete user-->
-<div class="modal fade" id="modal-delete-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Xác nhận xoá dữ liệu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!--hidden form serv for deleting user-->
+    <div class="container">
+        <form method="POST" id="hidden-delete-form">
+        </form>
+    </div>
+
+    <!--modal confirming delete user-->
+    <div class="modal fade" id="modal-delete-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Xác nhận xoá dữ liệu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <div class="modal-body">
-                Bạn chắc chắn muốn xoá người dùng này?
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btn-delete-model" class="btn btn-danger" data-dismiss="modal">Xoá</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                </div>
+                <div class="modal-body">
+                    Bạn chắc chắn muốn xoá người dùng này?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-delete-model" class="btn btn-danger" data-dismiss="modal">Xoá</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+</body>
 <!--script-->
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var userId;
+        var deleteForm = document.getElementById('hidden-delete-form');
+
+        $('#modal-delete-model').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            userId = button.data('id');
+
+            var buttonDelete = document.getElementById('btn-delete-model');
+            buttonDelete.onclick = function() {
+                deleteForm.action = '/admin/' + userId + '?_method=DELETE';
+                deleteForm.submit();
+            }
+        });
+    });
 </script>
+
+</html>

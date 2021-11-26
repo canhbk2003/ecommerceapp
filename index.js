@@ -216,11 +216,19 @@ app.post('/adduser', function(req, res, next) {
     res.render('adduser');
 });
 
-app.put('edituser/:id', function(req, res, next) {
-    User.findOne({ _id: id }, req.body)
-        .then(() => res.render('admin'))
+app.put('/edituser/:id', function(req, res, next) {
+    User.updateOne({ _id: req.params.id }, req.body)
+        .then(() => res.redirect('/admin'))
         .catch(next)
-})
+});
 
+app.delete('/admin/:id', function(req, res, next) {
+    User.deleteOne({ _id: req.params.id })
+        .then(() => res.render('back'))
+        .catch(next)
+});
+
+
+// app information
 app.listen(3000);
 console.log('Server is listening on port 3000');
