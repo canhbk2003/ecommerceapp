@@ -49,6 +49,14 @@
             width: 70%;
             margin: auto;
         }
+        
+        .line-through {
+            text-decoration: line-through;
+        }
+        
+        .none {
+            color: coral;
+        }
     </style>
 </head>
 
@@ -72,7 +80,19 @@
                                     <%= product[i].name %>
                                 </h5>
                                 <p class="card-text"> Price:
-                                    <%= product[i].price %>
+                                    <% if(product[i].bonusPrice > 0) { %>
+                                        <p class="line-through">
+                                            <%= product[i].price %>
+                                        </p>
+                                        <p class="none">
+                                            <%= product[i].bonusPrice%>
+                                        </p>
+
+                                        <% } else { %>
+                                            <p class="normal">
+                                                <%= product[i].price %>
+                                            </p>
+                                            <% } %>
                                 </p>
                             </div>
                             <div class="card-footer">
@@ -144,5 +164,13 @@
             <p> Copy right by CanhVV 2021 </p>
         </footer>
 </body>
+
+<script>
+    function formatCash(cash) {
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        });
+    }
+</script>
 
 </html>
