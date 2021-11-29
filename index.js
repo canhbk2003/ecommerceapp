@@ -136,6 +136,7 @@ app.post('/updateuser', function(req, res) {
     res.send('update user called!');
 });
 
+// product information
 app.get('/addproduct', function(req, res) {
     res.render('addproduct');
 });
@@ -194,6 +195,7 @@ app.get('/productdetail/:id', function(req, res, next) {
         .catch(next);
 });
 
+// user information
 app.get('/edituser/:id', function(req, res, next) {
     User.findById(req.params.id)
         .then(data => res.render('edituser', {
@@ -228,6 +230,11 @@ app.delete('/admin/:id', function(req, res, next) {
         .catch(next)
 });
 
+// order information
+app.post('/buynow/:id', function(req, res, next) {
+    console.log(req.body.quantity);
+    res.render('buynow');
+});
 
 // app information
 app.listen(3000);

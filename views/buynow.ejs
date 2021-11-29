@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        input[type="text"] {
+            width: 50%;
+        }
+        
+        textarea[type="textarea"] {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 style="text-align: center;"> Order Detail </h2>
+    </div>
+
+    <div style="margin-left: 25%;" class="container">
+        <form method="POST" action="/order">
+            <h3>Product name:
+                <%= product.name%>
+            </h3>
+            <h3>Product description:
+                <%= product.desctiption%>
+            </h3>
+            <h3>$: </h3>
+            <button type="submit" class="btn btn-primary">Get order</button>
+        </form>
+    </div>
+</body>
+
+</html>

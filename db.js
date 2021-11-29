@@ -70,8 +70,9 @@ exports.AddOneUser = async function addOneUser(_user) {
     } catch (err) {
 
     }
-
     const user = new User(_user);
+    // encrypt user
+    user.password = user.encryptPassword(user.password);
     console.log(user);
     return await user.save().then(err => {
         if (!err) {
