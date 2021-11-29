@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -11,22 +10,22 @@
     <h1 style="text-align: center;">Location</h1>
 
     <div class="container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4675.809302759749!2d105.76700544992087!3d21.033413609895227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b91d1d5e75%3A0x2b706ee46fab3821!2sHD%20Mon%20City!5e0!3m2!1svi!2s!4v1636988215300!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" id="map"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4675.809302759749!2d105.76700544992087!3d21.033413609895227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b91d1d5e75%3A0x2b706ee46fab3821!2sHD%20Mon%20City!5e0!3m2!1svi!2s!4v1636988215300!5m2!1svi!2s"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" id="map"></iframe>
     </div>
     <h1 style="text-align: center;">About us</h1>
     <div class="container">
-        <canvas id="about">
-        </canvas>
-        <script>
-            var map = document.getElementById("map");
+        <!--three js representation-->
 
-            var canvas = document.getElementById("about");
-            canvas.height=150;
-            canvas.width = map.width;
-            var ctx = canvas.getContext("2d");
-            ctx.fillStyle = "cyan";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        </script>
     </div>
-</body>
 
+    <script>
+        var map = document.getElementById("map");
+        var canvas = document.getElementById("about");
+        canvas.height = 150;
+        canvas.width = map.width;
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "cyan";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
+</body>
