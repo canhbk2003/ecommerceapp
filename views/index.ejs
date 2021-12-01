@@ -119,8 +119,6 @@
                                 <%= i %>
                             </a>
                         </li>
-                        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                         <% } %>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
@@ -130,29 +128,59 @@
         <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
 
         <div class="container">
-            <%for(var i=0; i<12;i++) { %>
-                <div class="col-6 col-sm-4 col-md-3 p-2" style="width: 18rem;">
-                    <img class="card-img-top" src="/assets/ao1.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"></p>
-                        <div class="row">
-                            <a href="#" class="btn btn-primary btn-sm">Detail</a>
-                            <a href="#" class="btn btn-warning btn-sm">Cart</a>
+            <div class="card-deck">
+                <%for(var i=0; i<product.length;i++) { %>
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="card h-100">
+                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= product[i].name %>
+                                </h5>
+                                <p class="card-text"> Price:
+                                    <% if(product[i].bonusPrice > 0) { %>
+                                        <p class="line-through">
+                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </p>
+                                        <p class="none">
+                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </p>
+
+                                        <% } else { %>
+                                            <p class="normal">
+                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </p>
+                                            <% } %>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
+                                <a href="#" class="btn btn-success btn-sm">
+                                    <img src="/assets/carts.png" />
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <% } %>
+                    <% } %>
+            </div>
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </div>
+
+        <div class="container">
+            <!-- get all number item from database then page panigate -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <%for(var i=1; i<=numItems;i++) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <%= i %>
+                            </a>
+                        </li>
+                        <% } %>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                </ul>
+            </nav>
         </div>
 
 
@@ -161,7 +189,7 @@
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
         <footer>
-            <p> Copy right by CanhVV 2021 </p>
+            <p> Copy right by League store 77 @ 2021 </p>
         </footer>
 </body>
 

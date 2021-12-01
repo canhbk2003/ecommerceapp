@@ -18,6 +18,8 @@ const User = require('./models/user');
 const { application } = require('express');
 const { type } = require('os');
 
+const PORT = 3000;
+
 const app = express();
 
 const viewPath = path.join(__dirname, 'views');
@@ -28,7 +30,6 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 const asset = path.join(__dirname, 'public');
-console.log(asset);
 app.use(express.static(asset));
 
 // set the view engine to ejs
@@ -237,5 +238,5 @@ app.post('/buynow/:id', function(req, res, next) {
 });
 
 // app information
-app.listen(3000);
-console.log('Server is listening on port 3000');
+app.listen(PORT);
+console.log('Server is listening on port: ' + PORT);
