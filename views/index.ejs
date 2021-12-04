@@ -30,11 +30,12 @@
         footer {
             text-align: center;
             padding: 3px;
-            background-color: DarkSalmon;
+            background-color: #333;
             color: white;
             bottom: 0rem;
             position: relative;
             width: 100%;
+            opacity: calc();
         }
         
         .card-img-top {
@@ -57,140 +58,172 @@
         .none {
             color: coral;
         }
+        
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <%- include ('header'); -%>
-    </div>
+    <%- include ('header'); -%>
 
-    <%- include ('slideshow'); -%>
+        <%- include ('slideshow'); -%>
 
-        <h2 class="new_product">SẢN PHẨM MỚI</h2>
+            <h2 class="new_product">SẢN PHẨM MỚI</h2>
 
-        <div class="container">
-            <div class="card-deck">
-                <%for(var i=0; i<product.length;i++) { %>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= product[i].name %>
-                                </h5>
-                                <p class="card-text"> Price:
-                                    <% if(product[i].bonusPrice > 0) { %>
-                                        <p class="line-through">
-                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                        </p>
-                                        <p class="none">
-                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                        </p>
-
-                                        <% } else { %>
-                                            <p class="normal">
+            <div class="container">
+                <div class="card-deck">
+                    <%for(var i=0; i<product.length;i++) { %>
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= product[i].name %>
+                                    </h5>
+                                    <p class="card-text"> Price:
+                                        <% if(product[i].bonusPrice > 0) { %>
+                                            <p class="line-through">
                                                 <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                             </p>
-                                            <% } %>
-                                </p>
+                                            <p class="none">
+                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </p>
+
+                                            <% } else { %>
+                                                <p class="normal">
+                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                </p>
+                                                <% } %>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
+                                    <a href="#" class="btn btn-success btn-sm">
+                                        <img src="/assets/carts.png" />
+                                    </a>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
-                                <a href="#" class="btn btn-success btn-sm">
-                                    <img src="/assets/carts.png" />
+                        </div>
+                        <% } %>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <!-- get all number item from database then page panigate -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <%for(var i=1; i<=numItems;i++) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <%= i %>
                                 </a>
+                            </li>
+                            <% } %>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
+
+            <div class="container">
+                <div class="card-deck">
+                    <%for(var i=0; i<product.length;i++) { %>
+                        <div class="col-sm-12 col-lg-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= product[i].name %>
+                                    </h5>
+                                    <p class="card-text"> Price:
+                                        <% if(product[i].bonusPrice > 0) { %>
+                                            <p class="line-through">
+                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </p>
+                                            <p class="none">
+                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </p>
+
+                                            <% } else { %>
+                                                <p class="normal">
+                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                </p>
+                                                <% } %>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
+                                    <a href="#" class="btn btn-success btn-sm">
+                                        <img src="/assets/carts.png" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+
+            </div>
+
+            <div class="container">
+                <!-- get all number item from database then page panigate -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <%for(var i=1; i<=numItems;i++) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <%= i %>
+                                </a>
+                            </li>
+                            <% } %>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+            <footer>
+                <div class="container">
+                    <!--three js representation-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <a href="https://www.facebook.com/LeagueStore77">
+                                    <img class="hover-shadow cursor" src="/icon/facebook.png" alt="Card image cap">
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">FACEBOOK</h5>
+                                    <p class="card-text">Contact with us via Facebook</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <a href="https://www.facebook.com/LeagueStore77">
+                                    <img class="hover-shadow cursor" src="/icon/instagram.png" alt="Card image cap">
+                                </a>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">INSTAGRAM</h5>
+                                    <p class="card-text">Contact with us via Instagram</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <% } %>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <!-- get all number item from database then page panigate -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <%for(var i=1; i<=numItems;i++) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <%= i %>
-                            </a>
-                        </li>
-                        <% } %>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
-
-        <div class="container">
-            <div class="card-deck">
-                <%for(var i=0; i<product.length;i++) { %>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= product[i].name %>
-                                </h5>
-                                <p class="card-text"> Price:
-                                    <% if(product[i].bonusPrice > 0) { %>
-                                        <p class="line-through">
-                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                        </p>
-                                        <p class="none">
-                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                        </p>
-
-                                        <% } else { %>
-                                            <p class="normal">
-                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </p>
-                                            <% } %>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Detail</a>
-                                <a href="#" class="btn btn-success btn-sm">
-                                    <img src="/assets/carts.png" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
-            </div>
-
-        </div>
-
-        <div class="container">
-            <!-- get all number item from database then page panigate -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <%for(var i=1; i<=numItems;i++) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <%= i %>
-                            </a>
-                        </li>
-                        <% } %>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-        <footer>
-            <p> Copy right by League store 77 @ 2021 </p>
-        </footer>
+                </div>
+            </footer>
 </body>
 
 <script>
