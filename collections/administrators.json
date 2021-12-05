@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "619e5ec06c20770047a32076"
+  },
+  "userId": "1",
+  "name": "canhvv",
+  "password": "123456",
+  "addr": "hai duong, tm, tt",
+  "email": "canhbk2003@gmail.com",
+  "phone": "0123456789",
+  "createdAt": {
+    "$date": "2021-11-24T15:48:16.893Z"
+  },
+  "updatedAt": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61a0f7650e748a6506a20e02"
+  },
+  "userId": "2",
+  "name": "vu van canh",
+  "password": "123456",
+  "addr": "tan trao, thanh mien, hai duong",
+  "email": "conandoy93@yahoo.com",
+  "phone": "0123456789",
+  "createdAt": {
+    "$date": "2021-11-26T15:04:05.326Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-26T15:04:05.326Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61a4e4d8bc8d8480e64ea60d"
+  },
+  "userId": "3",
+  "name": "canhvv2",
+  "password": "123456",
+  "addr": "tan trao, thanh mien, hai duong",
+  "email": "canhbk2003@gmail.com",
+  "phone": "1234569870",
+  "createdAt": {
+    "$date": "2021-11-29T14:34:00.376Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-29T14:34:00.376Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61a4ed7de92e49a82aea2edd"
+  },
+  "userId": "4",
+  "name": "canhvv3",
+  "password": "123456",
+  "addr": "tan trao, thanh mien, hai duong",
+  "email": "canhbk2003@gmail.com",
+  "phone": "0123456789",
+  "createdAt": {
+    "$date": "2021-11-29T15:10:53.676Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-29T15:10:53.676Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61a4edc9eea11eb4ff16bb7a"
+  },
+  "userId": "5",
+  "name": "canhvv4",
+  "password": "$2a$05$K2DYjDlNF4Fn0MgQ9HFWWuZbRUULgfPiRVq6Ysl8U8qNoLDJmSB5m",
+  "addr": "tan trao, thanh mien, hai duong",
+  "email": "conandoy93@yahoo.com",
+  "phone": "1234569870",
+  "createdAt": {
+    "$date": "2021-11-29T15:12:09.797Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-29T15:12:09.797Z"
+  },
+  "__v": 0
+}]

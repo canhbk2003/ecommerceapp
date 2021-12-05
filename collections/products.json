@@ -1,0 +1,163 @@
+[{
+  "_id": {
+    "$oid": "6197cf9247bd8d6f96da60f1"
+  },
+  "productId": "2",
+  "name": "Áo bóng đá nam đội Bayern munich",
+  "description": "Áo bóng đá thun nam, mát mẻ, thoáng khí",
+  "image": "/products/dortmun.jpeg",
+  "price": 175000,
+  "bonusPrice": 150000,
+  "quantity": 70,
+  "createdAt": {
+    "$date": "2021-11-19T16:23:46.800Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-19T16:23:46.800Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a63e711f812e8259d6276"
+  },
+  "productId": "1",
+  "name": "Áo bóng đá nam đội Bayern munich",
+  "description": "Áo bóng đá nam, thoáng mát, thấm mồ hôi",
+  "image": "/products/bayern.jpeg",
+  "price": 180000,
+  "bonusPrice": 150000,
+  "quantity": 100,
+  "createdAt": {
+    "$date": "2021-11-21T15:21:11.695Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:21:11.695Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a652411f812e8259d627c"
+  },
+  "productId": "3",
+  "name": "Áo bóng đá nam đội Intermilan truyền thống",
+  "description": "Áo bóng đá nam đội tuyển Inter kiểu thiết kế truyền thống",
+  "image": "/products/inter_traditional.jpeg",
+  "price": 180000,
+  "bonusPrice": 165000,
+  "quantity": 45,
+  "createdAt": {
+    "$date": "2021-11-21T15:26:28.831Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:26:28.831Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a65bf11f812e8259d627f"
+  },
+  "productId": "4",
+  "name": "Áo bóng đá nam đội Intermilan",
+  "description": "Áo bóng đá nam đội tuyển inter milan thiết kế hiện đại, thoáng mát, lịch sự",
+  "image": "/products/inter.jpeg",
+  "price": 195000,
+  "bonusPrice": null,
+  "quantity": 65,
+  "createdAt": {
+    "$date": "2021-11-21T15:29:03.857Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-28T00:00:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a665f11f812e8259d6285"
+  },
+  "productId": "5",
+  "name": "Áo bóng đá nam đội Liverpool",
+  "description": "Bộ quần áo bóng đá nam đội tuyển Liverpool màu vàng. Thoáng mát, thấm hút mồ hôi tốt.",
+  "image": "/products/liv_yellow.jpeg",
+  "price": 180000,
+  "bonusPrice": 170000,
+  "quantity": 100,
+  "createdAt": {
+    "$date": "2021-11-21T15:31:43.742Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:31:43.742Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a66a611f812e8259d6288"
+  },
+  "productId": "6",
+  "name": "Áo bóng đá nam đội tuyển PSG pháp",
+  "description": "Bộ quần áo bóng đá nam PSG",
+  "image": "/products/psg_ai.jpeg",
+  "price": 120000,
+  "bonusPrice": 115000,
+  "quantity": 120,
+  "createdAt": {
+    "$date": "2021-11-21T15:32:54.879Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:32:54.879Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a66d211f812e8259d628b"
+  },
+  "productId": "7",
+  "name": "Áo bóng đá nam đội PSG truyền thống",
+  "description": "Bộ quần áo bóng đá nam đội tuyển PSG truyền thống",
+  "image": "/products/psg.jpeg",
+  "price": 175000,
+  "bonusPrice": 150000,
+  "quantity": 85,
+  "createdAt": {
+    "$date": "2021-11-21T15:33:38.324Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:33:38.324Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a675411f812e8259d628f"
+  },
+  "productId": "8",
+  "name": "Áo bóng đá nam đội RMA màu thường",
+  "description": "Áo bóng đá sân nhà đội tuyển RMA",
+  "image": "/products/rma.jpeg",
+  "price": 120000,
+  "bonusPrice": 115000,
+  "quantity": 45,
+  "createdAt": {
+    "$date": "2021-11-21T15:35:48.741Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:35:48.741Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619a677c11f812e8259d6292"
+  },
+  "productId": "9",
+  "name": "Áo bóng đá nam truyền thống",
+  "description": "Bộ quần áo bóng đá nam truyền thống trong các giải đấu",
+  "image": "/products/traditional.jpeg",
+  "price": 120000,
+  "bonusPrice": 90000,
+  "quantity": 150,
+  "createdAt": {
+    "$date": "2021-11-21T15:36:28.695Z"
+  },
+  "updatedAt": {
+    "$date": "2021-11-21T15:36:28.695Z"
+  },
+  "__v": 0
+}]
