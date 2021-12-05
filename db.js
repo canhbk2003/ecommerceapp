@@ -4,7 +4,22 @@ const Product = require('./models/product');
 const User = require('./models/user');
 
 exports.GetById = async function QueryById(id) {
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
 
+    try {
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        console.log('Connect to database successfully!');
+    } catch (err) {
+        console.log('Connect to database failed!');
+        return;
+    }
+
+    return await User.findOne({ 'userId': id })
+        .then(doc => {
+            return doc;
+        })
 }
 
 exports.GetByName = async function QueryByName(name) {
@@ -112,7 +127,6 @@ exports.QueryAllProduct = async function queryAllProduct() {
 
     return await Product.find({})
         .then(docs => {
-            console.log(docs);
             return docs;
         });
 }
@@ -131,7 +145,25 @@ exports.QueryAllUser = async function queryAllUser() {
 
     return await User.find({})
         .then(docs => {
-            console.log(docs);
             return docs;
+        })
+}
+
+exports.QueryOneUser = async function queryOneUser(name) {
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+
+    try {
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        console.log('Connect to database successfully!');
+    } catch (err) {
+        console.log('Connect to database failed!');
+        return;
+    }
+
+    return await User.findOne({ 'name': name })
+        .then(doc => {
+            return doc;
         })
 }

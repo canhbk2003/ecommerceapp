@@ -15,6 +15,10 @@ const util = require('./utils/util.js');
 const Product = require('./models/product');
 const User = require('./models/user');
 
+const cookieParser = require('cookie-parser');
+
+const authMiddleware = require('./middlewares/auth.middleware');
+
 const { application } = require('express');
 const { type } = require('os');
 
@@ -29,6 +33,8 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+app.use(cookieParser());
+
 const asset = path.join(__dirname, 'public');
 app.use(express.static(asset));
 
@@ -42,29 +48,75 @@ app.set('views', viewPath);
 
 // home page
 app.get('/', function(req, res) {
+    // check if have login user -> display user name
+    var userName = "Đăng nhập";
+    if (authMiddleware.requireAuth) {
+        const userId = req.cookies.userId;
+        console.log('home cookie: ' + userId);
+        db.GetById(req.cookies.userId).then(data => {
+            if (data) {
+                const user = new User(data);
+                userName = user.name;
+            }
+        });
+    }
+
     // query all data
     db.QueryAllProduct().then(data_ => {
         var numitems = data_.length / 12;
         if (numitems < 1) {
             numitems = 1;
         }
-        res.render('index', { numItems: parseInt(numitems), product: data_ });
+        res.render('index', { numItems: parseInt(numitems), product: data_, user: userName });
+    });
+});
+
+app.get('/home', authMiddleware.releaseAuth, function(req, res) {
+    var userName = "Đăng nhập";
+
+    // query all data
+    db.QueryAllProduct().then(data_ => {
+        var numitems = data_.length / 12;
+        if (numitems < 1) {
+            numitems = 1;
+        }
+        res.render('home', { numItems: parseInt(numitems), product: data_, user: userName });
     });
 });
 
 app.get('/login', function(req, res) {
-    res.render('login');
+    res.render('login', { loginstate: "" });
 });
 
+
 app.post('/login', function(req, res, next) {
-    var user = req.body.user;
+    var userName = req.body.user;
     var password = req.body.password;
     // find user and password if mapping -> redirect
-    if (user) {
-        res.redirect('/admin?userName=' + user);
-    } else {
-        res.redirect(404, 'login');
+
+    if (userName === "" || password === "") {
+        res.render('login', { loginstate: "Tên người dùng hoặc mật khẩu không đúng!" });
+        return;
     }
+
+
+    db.QueryOneUser(userName).then(data => {
+        if (!data) {
+            res.render('login', { loginstate: "Không tồn tại user này!" });
+            return;
+        }
+        // valid password
+        const user = new User(data);
+        if (!user.validPassword(password)) {
+            res.render('login', { loginstate: "Mật khẩu không đúng!" });
+            return;
+        }
+
+        console.log(user.userId);
+
+        res.cookie('userId', user.userId);
+        res.redirect('/admin?userName=' + user);
+    });
 });
 
 app.get('/contact', function(req, res) {
@@ -75,7 +127,7 @@ app.get('/edituser', function(req, res) {
     res.render('edituser');
 });
 
-app.get('/admin', function(req, res, next) {
+app.get('/admin', authMiddleware.requireAuth, function(req, res, next) {
 
     db.QueryAllUser().then(data => res.render('admin', {
         data: data
@@ -138,12 +190,11 @@ app.post('/updateuser', function(req, res) {
 });
 
 // product information
-app.get('/addproduct', function(req, res) {
+app.get('/addproduct', authMiddleware.requireAuth, function(req, res) {
     res.render('addproduct');
 });
 
 app.post('/addproduct', async function(req, res, next) {
-    console.log(req.body);
     next();
 }, async function(req, res, next) {
 
@@ -156,7 +207,6 @@ app.post('/addproduct', async function(req, res, next) {
     } catch (err) {
 
     }
-    console.log(docs);
     if (docs == null) {
         await db.AddOneProduct(formData);
     }
@@ -240,6 +290,16 @@ app.post('/buynow/:id', function(req, res, next) {
 // sending email from customer
 app.get('/sendemail', function(req, res, next) {
     res.render('sendemail');
+});
+
+// summary
+app.get('/summary', function(req, res, next) {
+    res.render('summary');
+});
+
+// campaign
+app.get('/campaign', function(req, res, next) {
+    res.render('campaign');
 });
 
 // app information
