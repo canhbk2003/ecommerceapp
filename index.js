@@ -237,6 +237,11 @@ app.post('/buynow/:id', function(req, res, next) {
     res.render('buynow');
 });
 
+// sending email from customer
+app.get('/sendemail', function(req, res, next) {
+    res.render('sendemail');
+});
+
 // app information
 app.listen(PORT);
 console.log('Server is listening on port: ' + PORT);
