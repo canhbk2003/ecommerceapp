@@ -122,7 +122,7 @@ function route(app) {
         res.render('addproduct');
     });
 
-    app.post('/addproduct', async function(req, res, next) {
+    app.post('/addproduct', authMiddleware.requireAuth, async function(req, res, next) {
         next();
     }, async function(req, res, next) {
 

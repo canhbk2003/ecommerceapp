@@ -25,9 +25,14 @@
         <h2 style="text-align: center;">Kho hàng</h2>
     </div>
 
-
-
+    <!--buton add new product-->
     <div class="container">
+        <a class="btn btn-primary" href="/addproduct">
+            <img src="/assets/plus.png"> Thêm mới sản phẩm </img>
+        </a>
+    </div>
+
+    <div style="margin-top: 15px;" class="container">
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -80,7 +85,7 @@
                             </td>
                             <td>
                                 <a href="/editproduct/<%=data[i]._id %>" class="btn btn-primary">Sửa</a>
-                                <a href="" class="btn btn-danger" data-toggle="modal" data-id="<%=data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
+                                <a style="margin-top: 5px;" href="" class="btn btn-danger" data-toggle="modal" data-id="<%=data[i]._id %>" data-target="#modal-delete-model">Xoá</a>
                             </td>
                         </tr>
                         <% } %>
