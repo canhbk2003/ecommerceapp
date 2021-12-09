@@ -69,20 +69,20 @@ function route(app) {
         res.render('contact');
     });
 
-    app.get('/edituser', function(req, res) {
-        res.render('edituser');
-    });
+    // app.get('/edituser', function(req, res) {
+    //     res.render('edituser');
+    // });
 
-    app.get('/admin', authMiddleware.requireAuth, function(req, res, next) {
+    // app.get('/admin', authMiddleware.requireAuth, function(req, res, next) {
 
-        db.QueryAllUser().then(data => res.render('admin', {
-            data: data
-        }));
-    });
+    //     db.QueryAllUser().then(data => res.render('admin', {
+    //         data: data
+    //     }));
+    // });
 
-    app.get('/reset', function(req, res) {
-        res.render('reset');
-    });
+    // app.get('/reset', function(req, res) {
+    //     res.render('reset');
+    // });
 
     app.post('/reset', async function(req, res) {
         var email = req.body.editEmail;
@@ -105,18 +105,18 @@ function route(app) {
         }
     });
 
-    app.get('/changepassword', function(req, res) {
-        res.render('changepassword');
-    });
+    // app.get('/changepassword', function(req, res) {
+    //     res.render('changepassword');
+    // });
 
-    app.put('/changepassword', async function(req, res) {
-        // get user with password
+    // app.put('/changepassword', async function(req, res) {
+    //     // get user with password
 
-    });
+    // });
 
-    app.get('/signup', function(req, res) {
-        res.render('signup');
-    });
+    // app.get('/signup', function(req, res) {
+    //     res.render('signup');
+    // });
 
     app.post('/signup', function(req, res, next) {
         var isChecked = Boolean(req.body.agreeCheck);
@@ -193,39 +193,39 @@ function route(app) {
     });
 
     // user information
-    app.get('/edituser/:id', function(req, res, next) {
-        User.findById(req.params.id)
-            .then(data => res.render('edituser', {
-                user: data
-            }))
-            .catch(next)
-    });
+    // app.get('/edituser/:id', function(req, res, next) {
+    //     User.findById(req.params.id)
+    //         .then(data => res.render('edituser', {
+    //             user: data
+    //         }))
+    //         .catch(next)
+    // });
 
-    app.get('/adduser', function(req, res, nex) {
-        res.render('adduser');
-    });
+    // app.get('/adduser', function(req, res, nex) {
+    //     res.render('adduser');
+    // });
 
-    app.post('/adduser', function(req, res, next) {
-        try {
-            db.AddOneUser(req.body);
-        } catch (err) {
-            console.log(err);
-        }
+    // app.post('/adduser', function(req, res, next) {
+    //     try {
+    //         db.AddOneUser(req.body);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
 
-        res.render('adduser');
-    });
+    //     res.render('adduser');
+    // });
 
-    app.put('/edituser/:id', function(req, res, next) {
-        User.updateOne({ _id: req.params.id }, req.body)
-            .then(() => res.redirect('/admin'))
-            .catch(next)
-    });
+    // app.put('/edituser/:id', function(req, res, next) {
+    //     User.updateOne({ _id: req.params.id }, req.body)
+    //         .then(() => res.redirect('/admin'))
+    //         .catch(next)
+    // });
 
-    app.delete('/admin/:id', function(req, res, next) {
-        User.deleteOne({ _id: req.params.id })
-            .then(() => res.render('back'))
-            .catch(next)
-    });
+    // app.delete('/admin/:id', function(req, res, next) {
+    //     User.deleteOne({ _id: req.params.id })
+    //         .then(() => res.render('back'))
+    //         .catch(next)
+    // });
 
     // order information
     app.post('/buynow/:id', function(req, res, next) {
