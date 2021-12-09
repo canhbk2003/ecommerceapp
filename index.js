@@ -1,31 +1,7 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
-
-const querystring = require('querystring');
-
 const methodOverride = require('method-override');
-
-const url = require('url');
-const http = require('http');
-
-const db = require('./db.js');
-const util = require('./utils/util.js');
-
-const Product = require('./models/product');
-const User = require('./models/user');
-
 const cookieParser = require('cookie-parser');
-
-const authMiddleware = require('./middlewares/auth.middleware');
-
-const authController = require('./controllers/auth.controller');
-
-const { application } = require('express');
-const { type } = require('os');
-
-const router = express.Router();
-
 const PORT = 3000;
 
 const app = express();

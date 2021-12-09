@@ -1,30 +1,12 @@
 const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-
-const querystring = require('querystring');
-
-const methodOverride = require('method-override');
-
-const url = require('url');
-const http = require('http');
-
 const db = require('../db.js');
 const util = require('../utils/util.js');
-
-const Product = require('../models/product');
 const User = require('../models/user');
-
-const cookieParser = require('cookie-parser');
-
 const authMiddleware = require('../middlewares/auth.middleware');
 
-const authController = require('../controllers/auth.controller');
-
-const { application } = require('express');
-const { type } = require('os');
-
 const routerAuth = require('./route.login');
+const routerUser = require('./route.user');
+const routerProduct = require('./route.product');
 
 function route(app) {
     // home page
@@ -159,38 +141,37 @@ function route(app) {
         res.render('addproduct');
     });
 
-    app.get('/producttable', function(req, res) {
+    // app.get('/producttable', function(req, res) {
+    //     db.QueryAllProduct().then(data_ => {
+    //         res.render('producttable', { data: data_ });
+    //     });
+    // });
 
-        db.QueryAllProduct().then(data_ => {
-            res.render('producttable', { data: data_ });
-        });
-    });
+    // app.get('/editproduct/:id', function(req, res, next) {
+    //     Product.findById(req.params.id)
+    //         .then(data => res.render('editproduct', {
+    //             product: data
+    //         }))
+    //         .catch(next);
+    // });
 
-    app.get('/editproduct/:id', function(req, res, next) {
-        Product.findById(req.params.id)
-            .then(data => res.render('editproduct', {
-                product: data
-            }))
-            .catch(next);
-    });
+    // app.put('/editproduct/:id', function(req, res, next) {
+    //     Product.updateOne({ _id: req.params.id }, req.body)
+    //         .then(() => res.redirect('/producttable'))
+    //         .catch(next)
+    // });
 
-    app.put('/editproduct/:id', function(req, res, next) {
-        Product.updateOne({ _id: req.params.id }, req.body)
-            .then(() => res.redirect('/producttable'))
-            .catch(next)
-    });
+    // app.delete('/producttable/:id', function(req, res, next) {
+    //     Product.deleteOne({ _id: req.params.id })
+    //         .then(() => res.redirect('back'))
+    //         .catch(next)
+    // });
 
-    app.delete('/producttable/:id', function(req, res, next) {
-        Product.deleteOne({ _id: req.params.id })
-            .then(() => res.redirect('back'))
-            .catch(next)
-    });
-
-    app.get('/productdetail/:id', function(req, res, next) {
-        Product.findOne({ _id: req.params.id }, req.body)
-            .then(data => res.render('productdetail', { product: data }))
-            .catch(next);
-    });
+    // app.get('/productdetail/:id', function(req, res, next) {
+    //     Product.findOne({ _id: req.params.id }, req.body)
+    //         .then(data => res.render('productdetail', { product: data }))
+    //         .catch(next);
+    // });
 
     // user information
     // app.get('/edituser/:id', function(req, res, next) {
@@ -255,7 +236,8 @@ function route(app) {
 
 
     app.use('/', routerAuth);
-
+    app.use('/', routerUser);
+    app.use('/', routerProduct);
 }
 
 module.exports = route;

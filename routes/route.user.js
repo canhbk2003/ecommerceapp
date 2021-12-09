@@ -19,3 +19,5 @@ router.put('/changepassword', authMiddle.requireAuth, userController.putChangePa
 
 router.get('/signup', userController.getSignup);
 router.post('/signup', userController.postSignup);
+
+module.exports = router;

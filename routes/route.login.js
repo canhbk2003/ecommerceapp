@@ -1,8 +1,5 @@
 // route for a express instance
 const express = require('express');
-
-const User = require('../models/user');
-
 const authController = require('../controllers/auth.controller');
 
 const router = express.Router();
