@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const multer = require('multer');
 
-const max_size = 1 * 1024 * 1024; // 1MB
+const max_size = 100 * 1024 * 1024; // 100MB
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -35,7 +35,7 @@ var upload = multer({
     }
 
     // mypic is the name of file attribute
-}).single("uppic");
+}).array('uppic', 20);
 
 class UploadController {
 
@@ -50,7 +50,10 @@ class UploadController {
             } else {
                 res.send("Success, Image uploaded!")
             }
-        }, next());
+            next();
+        }, (req, res, next) => {
+            res.render('home');
+        });
     }
 }
 

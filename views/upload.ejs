@@ -18,28 +18,34 @@
 <body>
     <div class="container">
         <h1>Upload images</h1>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
+        <form action="/upload" method="POST" enctype="multipart/form-data" id="upload_form">
             <!--hidden form to upload data-->
             <label for="folder">Select folder</label>
-            <!-- <input type="file" id="folder" name="uppic" webkitdirectory multiple/> -->
-            <input type="file" name="uppic" required/>
+            <!-- <input type="file" name="uppic" multiple/> -->
+            <!-- <input type="file" name="uppic" multiple='multiple' required/> -->
+            <input type='file' multiple='multiple' accept='image/*' name='uppic' id='file' />
             <h2>Selected Files</h2>
             <ul>
             </ul>
-            <button type="submit">Upload</button>
+            <input type="submit" value="Upload"></input>
         </form>
     </div>
     <script>
-        var output;
-        document.getElementById("folder").addEventListener("change", function(event) {
-            output = document.querySelector("ul");
-            var files = event.target.files;
-            for (var i = 0; i < files.length; i++) {
-                var item = document.createElement("li");
-                item.innerHTML = files[i].webkitRelativePath;
-                output.appendChild(item);
-            };
-        }, false);
+        var data;
+        $('upload_form').addEventListener('submit', async function(e) {
+            // const files = e.target.uppic.files;
+            const files = e.target['uppic'].files;
+            if (files.length != 0) {
+                for (const single_file of files) {
+                    data.append('uppic', single_file)
+                }
+            }
+        });
+
+        const submit_data_fetch = await fetch('/upload', {
+            method: 'POST',
+            body: data
+        });
     </script>
 </body>
 
