@@ -1,68 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>League store 77</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <style>
-            input[type="text"]{
-                width: 50%;
-            }
-            textarea[type="textarea"]{
-                width: 50%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h2 style="text-align: center;"> Quản lý sản phẩm</h2>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <div style="margin-left: 25%;" class="container">
-            <form method="post" action="/addproduct">
-                <div class="form-group">
-                    <label for="editProductId"> Mã sản phẩm </label>
-                    <input type="text" name="productId" class="form-control" id="editProductId" placeholder="Mã sản phẩm">
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductName">Tên sản phẩm</label>
-                    <input type="text" name="name" class="form-control" id="editProductName" placeholder="Tên sản phẩm">
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductDescription">Mô tả</label>
-                    <textarea type="textarea" id="editProductDescription" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="editProductImage">Hình ảnh</label>
-                    <input type="text" name="image" class="form-control" id="editProductImage" placeholder="Link ảnh">
-                </div>
-                
-                <div class="form-group">
-                    <label for="editProductPrice">Giá</label>
-                    <input type="text" name="price" class="form-control" id="editProductPrice" placeholder="Giá chưa khuyến mãi">
-                </div>
+    <style>
+        input[type="text"] {
+            width: 50%;
+        }
         
-                <div class="form-group">
-                    <label for="editProductBonusPrice">Giá đã khuyến mại</label>
-                    <input type="text" name="bonusPrice" class="form-control" id="editProductBonusPrice" placeholder="Giá đã khuyến mãi">
-                </div>
+        textarea[type="textarea"] {
+            width: 50%;
+        }
+    </style>
+</head>
 
-                <div class="form-group">
-                    <label for="editProductQuantity">Số lượng</label>
-                    <input type="text" name="quantity" class="form-control" id="editProductQuantity" placeholder="Số lượng">
-                </div>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;"> Quản lý sản phẩm</h2>
+    </div>
 
-                <button type="submit" class="btn btn-primary">Thêm</button>
-            </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="container">
+                    <form method="post" action="/addproduct">
+                        <div class="form-group">
+                            <label for="editProductId"> Mã sản phẩm </label>
+                            <input type="text" name="productId" class="form-control" id="editProductId" placeholder="Mã sản phẩm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductName">Tên sản phẩm</label>
+                            <input type="text" name="name" class="form-control" id="editProductName" placeholder="Tên sản phẩm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductDescription">Mô tả</label>
+                            <textarea type="textarea" id="editProductDescription" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductImage">Hình ảnh</label>
+                            <input type="text" name="image" class="form-control" id="editProductImage" placeholder="Link ảnh">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductPrice">Giá</label>
+                            <input type="text" name="price" class="form-control" id="editProductPrice" placeholder="Giá chưa khuyến mãi">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductBonusPrice">Giá đã khuyến mại</label>
+                            <input type="text" name="bonusPrice" class="form-control" id="editProductBonusPrice" placeholder="Giá đã khuyến mãi">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editProductQuantity">Số lượng</label>
+                            <input type="text" name="quantity" class="form-control" id="editProductQuantity" placeholder="Số lượng">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Thêm</button>
+                    </form>
+                </div>
+            </div>
+            <div style="margin-top: 15px;" class="col-6">
+
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
-
-

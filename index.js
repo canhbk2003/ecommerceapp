@@ -19,6 +19,9 @@ app.use(cookieParser());
 const asset = path.join(__dirname, 'public');
 app.use(express.static(asset));
 
+const upload = path.join(__dirname, 'upload');
+app.use(express.static(upload));
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('views', viewPath);
@@ -26,5 +29,5 @@ app.set('views', viewPath);
 
 route(app);
 // app information
-app.listen(PORT);
-console.log('Server is listening on port: ' + PORT);
+app.listen(`${PORT}`);
+console.log(`Server is listening on port: ${PORT}`);

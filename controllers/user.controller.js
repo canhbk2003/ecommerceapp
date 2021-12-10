@@ -1,8 +1,9 @@
 const db = require('../db');
 const User = require('../models/user');
 
-class UserController {
+const logger = require('logging');
 
+class UserController {
     getAdminPage(req, res, next) {
         db.QueryAllUser().then(data => res.render('admin', {
             data: data
@@ -55,7 +56,9 @@ class UserController {
         res.render('signup');
     }
 
-    postSignup(req, res, next) {}
+    postSignup(req, res, next) {
+
+        }
         // reset password
     getResetPasswordPage(req, res, next) {
         res.render('reset');

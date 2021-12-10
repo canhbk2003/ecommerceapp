@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Upload images</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <!--hidden form to upload data-->
+            <label for="folder">Select folder</label>
+            <!-- <input type="file" id="folder" name="uppic" webkitdirectory multiple/> -->
+            <input type="file" name="uppic" required/>
+            <h2>Selected Files</h2>
+            <ul>
+            </ul>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <script>
+        var output;
+        document.getElementById("folder").addEventListener("change", function(event) {
+            output = document.querySelector("ul");
+            var files = event.target.files;
+            for (var i = 0; i < files.length; i++) {
+                var item = document.createElement("li");
+                item.innerHTML = files[i].webkitRelativePath;
+                output.appendChild(item);
+            };
+        }, false);
+    </script>
+</body>
+
+</html>

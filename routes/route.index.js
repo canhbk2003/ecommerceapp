@@ -7,6 +7,7 @@ const authMiddleware = require('../middlewares/auth.middleware');
 const routerAuth = require('./route.login');
 const routerUser = require('./route.user');
 const routerProduct = require('./route.product');
+const routerUpload = require('./route.upload');
 
 function route(app) {
     // home page
@@ -234,10 +235,10 @@ function route(app) {
         res.render('notfound404');
     });
 
-
     app.use('/', routerAuth);
     app.use('/', routerUser);
     app.use('/', routerProduct);
+    app.use('/', routerUpload);
 }
 
 module.exports = route;
