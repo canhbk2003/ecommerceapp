@@ -22,6 +22,8 @@ app.use(express.static(asset));
 const upload = path.join(__dirname, 'upload');
 app.use(express.static(upload));
 
+const logger = require('./log/logger');
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.set('views', viewPath);
@@ -30,4 +32,5 @@ app.set('views', viewPath);
 route(app);
 // app information
 app.listen(`${PORT}`);
-console.log(`Server is listening on port: ${PORT}`);
+logger.info('=======================APP START========================');
+logger.info(`Server is listening on port: ${PORT}`);

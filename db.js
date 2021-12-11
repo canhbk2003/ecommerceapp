@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const Product = require('./models/product');
 const User = require('./models/user');
 
+const logger = require('./log/logger');
+
 exports.GetById = async function QueryById(id) {
     const uri = 'mongodb://127.0.0.1:27017/product_test';
 
@@ -10,9 +12,9 @@ exports.GetById = async function QueryById(id) {
         await mongoose.connect(uri, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed!');
+        console.error('Connect to database failed!');
         return;
     }
 
@@ -60,7 +62,7 @@ exports.AddOneProduct = async function addOne(_product) {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
 
     }
@@ -69,7 +71,9 @@ exports.AddOneProduct = async function addOne(_product) {
     console.log(product);
     return await product.save().then(err => {
         if (!err) {
-            console.log('Save model successfully');
+            logger.info('Save model successfully!');
+        } else {
+            logger.error('Save model failed!');
         }
     });
 }
@@ -81,9 +85,9 @@ exports.AddOneUser = async function addOneUser(_user) {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-
+        logger.error(err);
     }
     const user = new User(_user);
     // encrypt user
@@ -103,9 +107,9 @@ exports.FindByProductId = async function findProductById(id) {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed!');
+        console.error(`Connect to database failed! -> ${err}`);
     }
 
     return await Product.findOne({ 'productId': id }).then(data => {
@@ -120,9 +124,9 @@ exports.QueryAllProduct = async function queryAllProduct() {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed!');
+        logger.error(`Connect to database failed! -> ${err}`);
     }
 
     return await Product.find({})
@@ -138,9 +142,9 @@ exports.QueryAllUser = async function queryAllUser() {
         await mongoose.connect(uri, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed!');
+        console.log(`Connect to database failed! -> ${err}`);
     }
 
     return await User.find({})
@@ -156,9 +160,9 @@ exports.QueryOneUser = async function queryOneUser(name) {
         await mongoose.connect(uri, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed!');
+        logger.error(`Connect to database failed! -> ${err}`);
         return;
     }
 

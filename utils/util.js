@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+const logger = require('../log/logger');
 // validate email
 exports.valid = function valid(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -16,9 +18,9 @@ exports.opendb = async function connect() {
         await mongoose.connect(URI, {
             connectTimeoutMS: 1000
         });
-        console.log('Connect to database successfully!');
+        logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log('Connect to database failed');
+        logger.error(`Connect to database failed -> ${err}`);
     }
 }
 

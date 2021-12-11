@@ -9,6 +9,8 @@ const routerUser = require('./route.user');
 const routerProduct = require('./route.product');
 const routerUpload = require('./route.upload');
 
+const logger = require('../log/logger');
+
 function route(app) {
     // home page
     app.get('/', function(req, res) {
@@ -16,7 +18,7 @@ function route(app) {
         var userName = "Đăng nhập";
         if (authMiddleware.requireAuth) {
             const userId = req.cookies.userId;
-            console.log('home cookie: ' + userId);
+            logger.info('home cookie: ' + userId);
             db.GetById(req.cookies.userId).then(data => {
                 if (data) {
                     const user = new User(data);
