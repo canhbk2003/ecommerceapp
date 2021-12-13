@@ -1,12 +1,17 @@
 const User = require('../models/user');
 const db = require('../db');
 
+const authMiddleware = require('../middlewares/auth.middleware');
+
 class AuthController {
     getLogin(req, res, next) {
         res.render('login', { loginstate: "" });
     }
 
     postLogin(req, res, next) {
+        // clear old cookie
+        authMiddleware.releaseAuth;
+
         var userName = req.body.user;
         var password = req.body.password;
         // find user and password if mapping -> redirect
@@ -15,7 +20,6 @@ class AuthController {
             res.render('login', { loginstate: "Tên người dùng hoặc mật khẩu không đúng!" });
             return;
         }
-
 
         db.QueryOneUser(userName).then(data => {
             if (!data) {
@@ -28,11 +32,8 @@ class AuthController {
                 res.render('login', { loginstate: "Mật khẩu không đúng!" });
                 return;
             }
-
-            console.log(user.userId);
-
             res.cookie('userId', user.userId);
-            res.redirect('/admin?userName=' + user);
+            res.redirect('/');
         });
     }
 

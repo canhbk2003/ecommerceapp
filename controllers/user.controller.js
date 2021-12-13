@@ -1,8 +1,6 @@
 const db = require('../db');
 const User = require('../models/user');
 
-const logger = require('logging');
-
 class UserController {
     getAdminPage(req, res, next) {
         db.QueryAllUser().then(data => res.render('admin', {
