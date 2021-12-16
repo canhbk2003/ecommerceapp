@@ -8,6 +8,7 @@ const routerAuth = require('./route.login');
 const routerUser = require('./route.user');
 const routerProduct = require('./route.product');
 const routerUpload = require('./route.upload');
+const routerUpdateDb = require('./route.updatedb');
 
 const logger = require('../log/logger');
 
@@ -241,6 +242,7 @@ function route(app) {
     app.use('/', routerUser);
     app.use('/', routerProduct);
     app.use('/', routerUpload);
+    app.use('/', routerUpdateDb);
 }
 
 module.exports = route;

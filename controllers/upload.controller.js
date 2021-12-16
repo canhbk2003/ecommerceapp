@@ -4,6 +4,8 @@ const multer = require('multer');
 
 const max_size = 100 * 1024 * 1024; // 100MB
 
+const logger = require('../log/logger');
+
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         // Uploads is the Upload_folder_name
@@ -48,11 +50,9 @@ class UploadController {
             if (err) {
                 res.send(err)
             } else {
-                res.send("Success, Image uploaded!")
+                logger.info('Upload successfully!')
+                res.redirect('/');
             }
-            next();
-        }, (req, res, next) => {
-            res.render('/');
         });
     }
 }

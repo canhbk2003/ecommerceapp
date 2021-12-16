@@ -8,3 +8,4 @@ npm install bcrypt-nodejs
 npm install util
 npm install winston --save
 npm install multer --save
+npm install fs --save

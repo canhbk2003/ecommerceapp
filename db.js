@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+const path = require('path');
 const Product = require('./models/product');
 const User = require('./models/user');
-
+const Image = require('./models/upload');
 const logger = require('./log/logger');
 
 exports.GetById = async function QueryById(id) {
@@ -14,7 +14,7 @@ exports.GetById = async function QueryById(id) {
         });
         logger.info('Connect to database successfully!');
     } catch (err) {
-        console.error('Connect to database failed!');
+        logger.error('Connect to database failed!');
         return;
     }
 
@@ -68,7 +68,7 @@ exports.AddOneProduct = async function addOne(_product) {
     }
 
     const product = new Product(_product);
-    console.log(product);
+    logger.info(product);
     return await product.save().then(err => {
         if (!err) {
             logger.info('Save model successfully!');
@@ -92,10 +92,10 @@ exports.AddOneUser = async function addOneUser(_user) {
     const user = new User(_user);
     // encrypt user
     user.password = user.encryptPassword(user.password);
-    console.log(user);
+    logger.info(user);
     return await user.save().then(err => {
         if (!err) {
-            console.log('Save model successfully');
+            logger.info('Save model successfully');
         }
     });
 }
@@ -109,7 +109,7 @@ exports.FindByProductId = async function findProductById(id) {
         });
         logger.info('Connect to database successfully!');
     } catch (err) {
-        console.error(`Connect to database failed! -> ${err}`);
+        logger.error(`Connect to database failed! -> ${err}`);
     }
 
     return await Product.findOne({ 'productId': id }).then(data => {
@@ -144,7 +144,7 @@ exports.QueryAllUser = async function queryAllUser() {
         });
         logger.info('Connect to database successfully!');
     } catch (err) {
-        console.log(`Connect to database failed! -> ${err}`);
+        logger.error(`Connect to database failed! -> ${err}`);
     }
 
     return await User.find({})
@@ -170,4 +170,31 @@ exports.QueryOneUser = async function queryOneUser(name) {
         .then(doc => {
             return doc;
         })
+}
+
+exports.Upload = async function upload(files){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        // connect db
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        logger.info('connect to db successfully');
+        const upload_path = path.join(__dirname, './upload/');
+        // save model
+        for(var i=0;i<files.length;i++){
+            let _url = upload_path+files[i];
+            let Img = {
+                name: files[i],
+                url: _url
+            };
+            const img = new Image(Img);
+            return await img.save().then(err => {
+                logger.error(err);
+            })
+        }
+    }
+    catch(err){
+        logger.error(`connect db failed: ${err}`);
+    }
 }
