@@ -119,18 +119,27 @@
                 <!-- get all number item from database then page panigate -->
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
                         <%for(var i=1; i<=numItems;i++) { %>
                             <li class="page-item">
-                                <a class="page-link" href="#">
+                                <a class="page-link" href="/<%= i %>">
                                     <%= i %>
                                 </a>
                             </li>
                             <% } %>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
+            <script type="text/javascript">
+                function change_page(page_number){
+
+                }
+            </script>
 
             <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
 
@@ -177,7 +186,9 @@
                 <!-- get all number item from database then page panigate -->
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
                         <%for(var i=1; i<=numItems;i++) { %>
                             <li class="page-item">
                                 <a class="page-link" href="#">
@@ -185,7 +196,9 @@
                                 </a>
                             </li>
                             <% } %>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

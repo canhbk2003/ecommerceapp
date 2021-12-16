@@ -3,13 +3,12 @@ const db = require('../db.js');
 const util = require('../utils/util.js');
 const User = require('../models/user');
 const authMiddleware = require('../middlewares/auth.middleware');
-
 const routerAuth = require('./route.login');
 const routerUser = require('./route.user');
 const routerProduct = require('./route.product');
 const routerUpload = require('./route.upload');
 const routerUpdateDb = require('./route.updatedb');
-
+const routerPagination = require('./route.pagination');
 const logger = require('../log/logger');
 
 function route(app) {
@@ -30,24 +29,34 @@ function route(app) {
 
         // query all data
         db.QueryAllProduct().then(data_ => {
-            var numitems = data_.length / 12;
-            if (numitems < 1) {
-                numitems = 1;
+            var _numitems = data_.length / 9;
+            console.log(parseInt(_numitems));
+            if (_numitems < 1) {
+                _numitems = 1;
             }
-            res.render('index', { numItems: parseInt(numitems), product: data_, user: userName });
+            _numitems = _numitems + 1;
+            let dpData = [];
+            for(var i=0;i<9;i++){
+                dpData.push(data_[i]);
+            }
+            res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName });
         });
     });
 
     app.get('/home', authMiddleware.releaseAuth, function(req, res) {
         var userName = "Đăng nhập";
-
         // query all data
         db.QueryAllProduct().then(data_ => {
-            var numitems = data_.length / 12;
-            if (numitems < 1) {
-                numitems = 1;
+            var _numitems = data_.length / 12;
+            if (_numitems < 1) {
+                _numitems = 1;
             }
-            res.render('home', { numItems: parseInt(numitems), product: data_, user: userName });
+            _numitems = _numitems + 1;
+            let dpData = [];
+            for(var i=0;i<9;i++){
+                dpData.push(data_[i]);
+            }
+            res.render('home', { numItems: parseInt(_numitems), product: dpData, user: userName });
         });
     });
 
@@ -123,7 +132,11 @@ function route(app) {
 
     // product information
     app.get('/addproduct', authMiddleware.requireAuth, function(req, res) {
-        res.render('addproduct');
+        // get all images from upload db
+        db.queryImages().then(data => {
+            logger.info(data.length);
+            res.render('addproduct', {images: data});
+        });
     });
 
     app.post('/addproduct', authMiddleware.requireAuth, async function(req, res, next) {
@@ -142,7 +155,11 @@ function route(app) {
         if (docs == null) {
             await db.AddOneProduct(formData);
         }
-        res.render('addproduct');
+        // get all images from upload db
+        db.queryImages().then(data => {
+            logger.info(data.length);
+            res.render('addproduct', {images: data});
+        });
     });
 
     // app.get('/producttable', function(req, res) {
@@ -214,22 +231,25 @@ function route(app) {
 
     // order information
     app.post('/buynow/:id', function(req, res, next) {
-        console.log(req.body.quantity);
+        logger.info(req.body.quantity);
         res.render('buynow');
     });
 
     // sending email from customer
     app.get('/sendemail', function(req, res, next) {
+        logger.info('app get sendemail');
         res.render('sendemail');
     });
 
     // summary
     app.get('/summary', function(req, res, next) {
+        logger.info('app get summary');
         res.render('summary');
     });
 
     // campaign
     app.get('/campaign', function(req, res, next) {
+        logger.info('app get campaign');
         res.render('campaign');
     });
 
@@ -243,6 +263,7 @@ function route(app) {
     app.use('/', routerProduct);
     app.use('/', routerUpload);
     app.use('/', routerUpdateDb);
+    app.use('/', routerPagination);
 }
 
 module.exports = route;

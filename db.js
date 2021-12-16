@@ -198,3 +198,53 @@ exports.Upload = async function upload(files){
         logger.error(`connect db failed: ${err}`);
     }
 }
+
+exports.updatebanner = async function updatebanner(){
+
+}
+
+exports.queryByPageNumber = async function query(page_number){
+    var max_value = 10*page_number-2; // 18
+    var min_value = max_value-9; // 9
+
+    const URI = 'mongodb://127.0.0.1:27017/product_test';
+
+    try {
+        await mongoose.connect(URI, {
+            connectTimeoutMS: 1000
+        });
+        logger.info('Connect to database successfully!');
+    } catch (err) {
+        logger.error(`Connect to database failed! -> ${err}`);
+    }
+
+    let data;
+    return await Product.find({})
+        .then(docs => {
+            // data = docs;
+            // let data_length = data.length;
+            // let ret_data = [];
+            // var idx = min_value+data_length;
+            // for(var i = min_value; i < idx; i++){
+            //     ret_data.push(data[i]);
+            // }
+            // return ret_data;
+            return docs;
+        });
+}
+
+exports.queryImages = async function(){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        return await Image.find({})
+        .then(docs => {
+            return docs;
+        });
+    }
+    catch(err){
+        logger.error(err);
+    }
+}
