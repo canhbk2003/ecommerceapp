@@ -9,6 +9,7 @@ const routerProduct = require('./route.product');
 const routerUpload = require('./route.upload');
 const routerUpdateDb = require('./route.updatedb');
 const routerPagination = require('./route.pagination');
+const routerUpdateBanner = require('./route.updatebanner');
 const logger = require('../log/logger');
 
 function route(app) {
@@ -30,7 +31,6 @@ function route(app) {
         // query all data
         db.QueryAllProduct().then(data_ => {
             var _numitems = data_.length / 9;
-            console.log(parseInt(_numitems));
             if (_numitems < 1) {
                 _numitems = 1;
             }
@@ -139,10 +139,30 @@ function route(app) {
         });
     });
 
-    app.post('/addproduct', authMiddleware.requireAuth, async function(req, res, next) {
-        next();
-    }, async function(req, res, next) {
+    // app.post('/addproduct', authMiddleware.requireAuth, async function(req, res, next) {
+    //     next();
+    // }, async function(req, res, next) {
 
+    //     const formData = req.body;
+    //     let docs = null;
+    //     try {
+    //         await db.FindByProductId(req.body.productId).then(data => {
+    //             docs = data;
+    //         });
+    //     } catch (err) {
+
+    //     }
+    //     if (docs == null) {
+    //         await db.AddOneProduct(formData);
+    //     }
+    //     // get all images from upload db
+    //     db.queryImages().then(data => {
+    //         logger.info(data.length);
+    //         res.render('addproduct', {images: data});
+    //     });
+    // });
+
+    app.post('/addproduct', authMiddleware.requireAuth, async function(req, res, next) {
         const formData = req.body;
         let docs = null;
         try {
@@ -150,7 +170,8 @@ function route(app) {
                 docs = data;
             });
         } catch (err) {
-
+            logger.error(err);
+            return;
         }
         if (docs == null) {
             await db.AddOneProduct(formData);
@@ -258,11 +279,16 @@ function route(app) {
         res.render('notfound404');
     });
 
+    // app.get('/uploadbanner', function(req, res, next){
+    //     res.render('uploadbanner');
+    // });
+
     app.use('/', routerAuth);
     app.use('/', routerUser);
     app.use('/', routerProduct);
     app.use('/', routerUpload);
     app.use('/', routerUpdateDb);
+    app.use('/', routerUpdateBanner);
     app.use('/', routerPagination);
 }
 

@@ -1,5 +1,6 @@
 const db = require('../db');
 const User = require('../models/user');
+const logger = require('../log/logger');
 
 class UserController {
     getAdminPage(req, res, next) {
@@ -16,7 +17,7 @@ class UserController {
         try {
             db.AddOneUser(req.body);
         } catch (err) {
-            console.log(err);
+            logger.error(err);
         }
 
         res.render('adduser');

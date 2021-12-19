@@ -11,38 +11,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        .container{
-            align-items: center;
-        }
+
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Upload images</h1>
-        <form action="/upload" method="POST" enctype="multipart/form-data" id="upload_form" style="align-items: center;">
+        <h1>Upload banner images</h1>
+        <form action="/uploadbanner" method="POST" enctype="multipart/form-data" id="upload_form">
             <!--hidden form to upload data-->
             <label for="folder">Select folder</label>
-            <input type='file' class="btn btn-primary" multiple='multiple' accept='image/*' name='uppic' id='file' />
+            <input type='file' multiple='multiple' accept='image/*' name='banner' id='file' />
             <h2>Selected Files</h2>
             <ul>
             </ul>
-            <input type="submit" class="btn btn-primary btn-lg" value="Upload"></input>
+            <input type="submit" class="btn btn-primary" value="Upload banner"></input>
         </form>
     </div>
     <script>
         var data;
         $('upload_form').addEventListener('submit', async function(e) {
-            // const files = e.target.uppic.files;
-            const files = e.target['uppic'].files;
+            const files = e.target['banner'].files;
             if (files.length != 0) {
                 for (const single_file of files) {
-                    data.append('uppic', single_file)
+                    data.append('banner', single_file)
                 }
             }
         });
 
-        const submit_data_fetch = await fetch('/upload', {
+        const submit_data_fetch = await fetch('/uploadbanner', {
             method: 'POST',
             body: data
         });

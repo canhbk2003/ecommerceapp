@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
         cb(null, path.join(__dirname, '/../upload/'))
     },
     filename: function(req, file, cb) {
-        cb(null, file.fieldname + "-" + Date.now() + ".jpg")
+        cb(null, file.originalname + Date.now);
     }
 });
 
@@ -48,7 +48,7 @@ class UploadController {
     post(req, res, next) {
         upload(req, res, function(err) {
             if (err) {
-                res.send(err)
+                res.send(err);
             } else {
                 logger.info('Upload successfully!')
                 res.redirect('/');

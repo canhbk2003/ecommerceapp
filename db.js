@@ -218,10 +218,15 @@ exports.queryByPageNumber = async function query(page_number){
         logger.error(`Connect to database failed! -> ${err}`);
     }
 
-    return await Product.find({productId: `{$elemMatch: {$gte: min_value, $lte: max_value}}`})
+    let data = [];
+    return await Product.find({})
         .then(docs => {
-            console.log(docs.length); 
-            return docs;
+            for(var i=min_value;i<=max_value;i++){
+                if(docs[i] !== undefined){
+                    data.push(docs[i]);
+                }
+            }
+            return data;
         });
 }
 

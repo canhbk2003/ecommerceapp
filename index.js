@@ -22,8 +22,8 @@ app.use(express.static(asset));
 const upload = path.join(__dirname, 'upload');
 app.use(express.static(upload));
 
-const banner = path.join(__dirname, 'banner');
-app.use(express.static(banner));
+// const banner = path.join(__dirname, 'banner');
+// app.use(express.static(banner));
 
 const logger = require('./log/logger');
 
