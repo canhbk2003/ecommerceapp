@@ -30,16 +30,23 @@ function route(app) {
 
         // query all data
         db.QueryAllProduct().then(data_ => {
+            console.log(data_.length);
             var _numitems = data_.length / 9;
             if (_numitems < 1) {
                 _numitems = 1;
             }
             _numitems = _numitems + 1;
             let dpData = [];
-            for(var i=0;i<9;i++){
-                dpData.push(data_[i]);
+            if(data_.length>0){
+                for(var i=0;i<9;i++){
+                    dpData.push(data_[i]);
+                }
+                console.log(dpData.length);
+                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName });
             }
-            res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName });
+            else{
+                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName });
+            }
         });
     });
 
@@ -53,10 +60,15 @@ function route(app) {
             }
             _numitems = _numitems + 1;
             let dpData = [];
-            for(var i=0;i<9;i++){
-                dpData.push(data_[i]);
+            if(data_.length>0){
+                for(var i=0;i<9;i++){
+                    dpData.push(data_[i]);
+                }
+                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: userName });
             }
-            res.render('home', { numItems: parseInt(_numitems), product: dpData, user: userName });
+            else{
+                res.render('home', { numItems: parseInt(_numitems), product: {}, user: userName });
+            }
         });
     });
 
