@@ -47,7 +47,7 @@ class UserController {
 
     deleteUser(req, res, next) {
             User.deleteOne({ _id: req.params.id })
-                .then(() => res.render('back'))
+                .then(() => res.redirect('/admin'))
                 .catch(next)
         }
         // sign up

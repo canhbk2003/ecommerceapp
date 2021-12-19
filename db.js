@@ -64,7 +64,7 @@ exports.AddOneProduct = async function addOne(_product) {
         });
         logger.info('Connect to database successfully!');
     } catch (err) {
-
+        logger.error('Connect to db failed');
     }
 
     const product = new Product(_product);
@@ -183,14 +183,16 @@ exports.Upload = async function upload(files){
         const upload_path = path.join(__dirname, './upload/');
         // save model
         for(var i=0;i<files.length;i++){
-            let _url = upload_path+files[i];
-            let Img = {
+            var _url = upload_path+files[i];
+            var Img = {
                 name: files[i],
                 url: _url
             };
             const img = new Image(Img);
-            return await img.save().then(err => {
-                logger.error(err);
+            await img.save().then(err => {
+                if(err){
+                    logger.error(err);
+                }
             })
         }
     }
