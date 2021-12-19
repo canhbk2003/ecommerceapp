@@ -78,39 +78,41 @@
 
             <div class="container">
                 <div class="card-deck">
-                    <%for(var i=0; i<product.length;i++) { %>
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="card h-100">
-                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= product[i].name %>
-                                    </h5>
-                                    <p class="card-text">
-                                        <% if(product[i].bonusPrice > 0) { %>
-                                            <p class="line-through">
-                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </p>
-                                            <p class="none">
-                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </p>
-
-                                            <% } else { %>
-                                                <p class="normal">
+                    <% if(product.length > 0) {%>
+                        <%for(var i=0; i<product.length;i++) { %>
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="card h-100">
+                                    <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= product[i].name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <% if(product[i].bonusPrice > 0) { %>
+                                                <p class="line-through">
                                                     <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                                 </p>
-                                                <% } %>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Chi tiết</a>
-                                    <a href="#" class="btn btn-success btn-sm">
-                                        <img src="/assets/carts.png" />
-                                    </a>
+                                                <p class="none">
+                                                    <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                </p>
+
+                                                <% } else { %>
+                                                    <p class="normal">
+                                                        <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                    </p>
+                                                    <% } %>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Chi tiết</a>
+                                        <a href="#" class="btn btn-success btn-sm">
+                                            <img src="/assets/carts.png" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <% } %>
+                    <%}%>
                 </div>
 
             </div>
@@ -145,39 +147,41 @@
 
             <div class="container">
                 <div class="card-deck">
-                    <%for(var i=0; i<product.length;i++) { %>
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="card h-100">
-                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= product[i].name %>
-                                    </h5>
-                                    <p class="card-text">
-                                        <% if(product[i].bonusPrice > 0) { %>
-                                            <p class="line-through">
-                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </p>
-                                            <p class="none">
-                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </p>
-
-                                            <% } else { %>
-                                                <p class="normal">
+                    <% if(product.length > 0) {%>
+                        <%for(var i=0; i<product.length;i++) { %>
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="card h-100">
+                                    <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <%= product[i].name %>
+                                        </h5>
+                                        <p class="card-text">
+                                            <% if(product[i].bonusPrice > 0) { %>
+                                                <p class="line-through">
                                                     <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                                 </p>
-                                                <% } %>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Chi tiết</a>
-                                    <a href="#" class="btn btn-success btn-sm">
-                                        <img src="/assets/carts.png" />
-                                    </a>
+                                                <p class="none">
+                                                    <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                </p>
+
+                                                <% } else { %>
+                                                    <p class="normal">
+                                                        <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                                    </p>
+                                                    <% } %>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="/productdetail/<%= product[i]._id %>" class="btn btn-primary btn-sm">Chi tiết</a>
+                                        <a href="#" class="btn btn-success btn-sm">
+                                            <img src="/assets/carts.png" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <% } %>
+                    <% } %>
                 </div>
 
             </div>
