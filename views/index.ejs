@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="ejs.min.js"></script>
     <style>
         .container {
             align-items: center;
@@ -71,9 +72,8 @@
 
 <body>
     <%- include ('header'); -%>
-
-        <%- include ('slideshow'); -%>
-
+    <%- include ('slideshow') -%>
+        
             <h2 class="new_product">SẢN PHẨM MỚI</h2>
 
             <div class="container">
@@ -111,15 +111,15 @@
                                     </div>
                                 </div>
                             </div>
-                        <% } %>
-                    <%}%>
+                            <% } %>
+                                <%}%>
                 </div>
 
             </div>
 
             <div class="container">
                 <!-- get all number item from database then page panigate -->
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#">Previous</a>
@@ -131,14 +131,14 @@
                                 </a>
                             </li>
                             <% } %>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
                     </ul>
                 </nav>
             </div>
             <script type="text/javascript">
-                function change_page(page_number){
+                function change_page(page_number) {
 
                 }
             </script>
@@ -180,15 +180,15 @@
                                     </div>
                                 </div>
                             </div>
-                        <% } %>
-                    <% } %>
+                            <% } %>
+                                <% } %>
                 </div>
 
             </div>
 
             <div class="container">
                 <!-- get all number item from database then page panigate -->
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" href="#">Previous</a>
@@ -200,9 +200,9 @@
                                 </a>
                             </li>
                             <% } %>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
                     </ul>
                 </nav>
             </div>

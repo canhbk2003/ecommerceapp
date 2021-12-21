@@ -39,7 +39,7 @@ var upload = multer({
     }
 
     // mypic is the name of file attribute
-}).array('banner', 5);
+}).array('bn', 10);
 
 class UpdateBannerController {
     get(req, res, next) {

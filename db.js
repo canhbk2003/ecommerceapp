@@ -4,6 +4,7 @@ const Product = require('./models/product');
 const User = require('./models/user');
 const Image = require('./models/upload');
 const logger = require('./log/logger');
+const fs = require('fs');
 
 exports.GetById = async function QueryById(id) {
     const uri = 'mongodb://127.0.0.1:27017/product_test';
@@ -246,4 +247,21 @@ exports.queryImages = async function(){
     catch(err){
         logger.error(err);
     }
+}
+
+exports.readfile = async function readfile(){
+    var arrayObject = [];
+    var folder_name = path.join(__dirname, '/public/banner/');
+    var files = fs.readdirSync(folder_name);
+
+    for (var i = 0; i < files.length; i++) {
+        console.log(files[i]);
+        var file = {
+            url: files[i]
+        };
+
+        arrayObject.push(file);
+    }
+    // return array of file object
+    return arrayObject;
 }

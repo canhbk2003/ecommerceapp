@@ -36,17 +36,17 @@ function route(app) {
             }
             _numitems = _numitems + 1;
             var dpData = [];
-            if(data_.length>0){
+            if (data_.length > 0) {
                 dpData.length = 0;
-                for(var i=0;i<9;i++){
-                    if(data_[i] !== undefined){
+                for (var i = 0; i < 9; i++) {
+                    if (data_[i] !== undefined) {
                         dpData.push(data_[i]);
                     }
                 }
-                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName });
-            }
-            else{
-                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName });
+
+                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName});
+            } else {
+                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName});
             }
         });
     });
@@ -61,16 +61,15 @@ function route(app) {
             }
             _numitems = _numitems + 1;
             var dpData = [];
-            if(data_.length>0){
+            if (data_.length > 0) {
                 dpData.length = 0;
-                for(var i=0;i<9;i++){
-                    if(data_[i] !== undefined){
+                for (var i = 0; i < 9; i++) {
+                    if (data_[i] !== undefined) {
                         dpData.push(data_[i]);
                     }
                 }
                 res.render('home', { numItems: parseInt(_numitems), product: dpData, user: userName });
-            }
-            else{
+            } else {
                 res.render('home', { numItems: parseInt(_numitems), product: {}, user: userName });
             }
         });
@@ -151,7 +150,7 @@ function route(app) {
         // get all images from upload db
         db.queryImages().then(data => {
             logger.info(data.length);
-            res.render('addproduct', {images: data});
+            res.render('addproduct', { images: data });
         });
     });
 
@@ -195,7 +194,7 @@ function route(app) {
         // get all images from upload db
         db.queryImages().then(data => {
             logger.info(data.length);
-            res.render('addproduct', {images: data});
+            res.render('addproduct', { images: data });
         });
     });
 
