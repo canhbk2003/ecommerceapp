@@ -297,6 +297,10 @@ function route(app) {
         res.render('notfound404');
     });
 
+    app.get('/carts', (req, res, next) => {
+        res.send('FUNCTION IS DEVELOPING');
+    });
+
     // app.get('/uploadbanner', function(req, res, next){
     //     res.render('uploadbanner');
     // });
