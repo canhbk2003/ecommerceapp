@@ -12,27 +12,28 @@ const routerPagination = require('./route.pagination');
 const routerUpdateBanner = require('./route.updatebanner');
 const routerUploadNotify = require('./route.uploadnotify');
 const routerNewArrival = require('./route.newarrival');
+const routerNews = require('./route.news');
 
 const logger = require('../log/logger');
 
-function route(app) {
+function route(app) { 
     // home page
     app.get('/', function(req, res) {
         // check if have login user -> display user name
-        var userName = "Đăng nhập";
-        if (authMiddleware.requireAuth) {
-            const userId = req.cookies.userId;
-            logger.info('home cookie: ' + userId);
+        let userName = "Login";
+        const userId = req.cookies.userId;
+        console.log(userId);
+        if(userId !== ''){
             db.GetById(req.cookies.userId).then(data => {
-                if (data) {
-                    const user = new User(data);
-                    userName = user.name;
-                }
+            if (data) {
+                const user = new User(data);
+                userName = user.name;
+            }
             });
         }
-
         // query all data
         db.QueryAllProduct().then(data_ => {
+            console.log(userName);
             var _numitems = data_.length / 9;
             if (_numitems < 1) {
                 _numitems = 1;
@@ -55,7 +56,6 @@ function route(app) {
     });
 
     app.get('/home', authMiddleware.releaseAuth, function(req, res) {
-        var userName = "Đăng nhập";
         // query all data
         db.QueryAllProduct().then(data_ => {
             var _numitems = data_.length / 12;
@@ -71,9 +71,9 @@ function route(app) {
                         dpData.push(data_[i]);
                     }
                 }
-                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: userName });
+                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: "Login" });
             } else {
-                res.render('home', { numItems: parseInt(_numitems), product: {}, user: userName });
+                res.render('home', { numItems: parseInt(_numitems), product: {}, user: "Login" });
             }
         });
     });
@@ -301,6 +301,7 @@ function route(app) {
     //     res.render('uploadbanner');
     // });
 
+    app.use('/', routerAuth);
     app.use('/', routerUser);
     app.use('/', routerProduct);
     app.use('/', routerUpload);
@@ -308,8 +309,8 @@ function route(app) {
     app.use('/', routerUpdateBanner);
     app.use('/', routerUploadNotify);
     app.use('/', routerNewArrival);
+    app.use('/', routerNews);
     app.use('/', routerPagination);
-    app.use('/', routerAuth);
 }
 
 module.exports = route;

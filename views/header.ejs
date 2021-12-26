@@ -2,72 +2,75 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #FFF;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
+    <style>
+        .sidenav {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #FFF;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+            }
 
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
 
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
 
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
 
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-        }
+            @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+                .sidenav a {font-size: 18px;}
+            }
 
-        .dropdown{
-            position: absolute;
-            display: inline-block;
-        }
+            .dropdown{
+                position: absolute;
+                display: inline-block;
+            }
 
-        .dropdown-menu a:hover {
-            background-color: #ddd;
-            color: coral;
-        }
+            .dropdown-menu a:hover {
+                background-color: #ddd;
+                color: coral;
+            }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            color: coral;
-        }
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
 
-        .dropdown{
-            font-weight: 500;
-        }
-        .dropdown :hover{
-            color: coral;
-        }
-        .nav navbar-nav {
-            font-weight: 500;
-        }
+            .dropdown{
+                font-weight: 500;
+            }
+            .dropdown :hover{
+                color: coral;
+            }
+            .nav navbar-nav {
+                font-weight: 500;
+            }
 
-</style>
+            .dropdown .dropdown-menu a:hover{
+                font-weight: 500;
+            }
+
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark" style="background-color: #FFF;">
@@ -113,7 +116,7 @@
     
                 <li><a href="/news" style="color: black; font-weight: 500;">NEWS</a></li>
     
-                <% if(user !== "Đăng nhập") {%>
+                <% if(user !== "Login") {%>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/admin">Quản lý người dùng</a></li>
@@ -133,9 +136,10 @@
                     <a href="/signup"><span class="glyphicon glyphicon-user" style="color: black;"></span></a>
                 </li>
                 <li class="dropdown">
-                    <% if(user !== "Đăng nhập") { %>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">
-                            <%= user %><span class="caret" style="color: black;"></span></a>
+                    <% if(user !== "Login") { %>
+                        <a style="color: black;">
+                            <%= user %><span class="caret" style="color: black;"></span>
+                        </a>
                     <% } else { %>
                         <a href="/login" style="color: black;">
                             <%= user %><span class="caret" style="color: black;"></span></a>
@@ -143,29 +147,29 @@
     
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> ĐĂNG XUẤT </a>
+                            <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
                         </li>
                     </ul>
-    
+                </li>
+
+                <li>
+                    <a href="/cart" style="color: black; font-weight: 500;">
+                        <span class="glyphicon glyphicon-shopping-cart">
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
+                            <h3 style="text-align: center;"> TÌM KIẾM </h3>
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
+                        </form>
+                    </div>
                     <li>
-                        <a href="/cart" style="color: black; font-weight: 500;">
-                            <span class="glyphicon glyphicon-shopping-cart">
-                            </span>
-                        </a>
-                    </li>
-    
-                    <li>
-                        <div id="mySidenav" class="sidenav">
-                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                            <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
-                                <h3 style="text-align: center;"> TÌM KIẾM </h3>
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
-                            </form>
-                        </div>
-                        <li>
-                            <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
-                        </li>
+                        <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
                     </li>
                 </li>
             </ul>
