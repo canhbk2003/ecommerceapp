@@ -1,0 +1,283 @@
+<!-- render trang san pham moi -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="ejs.min.js"></script>
+    <style>
+        .container {
+            align-items: center;
+        }
+        
+        .product-item {
+            margin-top: 15px;
+        }
+        
+        @media screen and (max-height: 450px) {}
+        
+        .new_product {
+            text-align: center;
+        }
+        
+        .populate_product {
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #333;
+            color: white;
+            bottom: 0rem;
+            position: relative;
+            width: 100%;
+            opacity: calc();
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+            margin-top: 15px;
+        }
+        
+        .carousel-inner>.item>img,
+        .carousel-inner>.item>a>img {
+            width: 70%;
+            margin: auto;
+        }
+        
+        .line-through {
+            text-decoration: line-through;
+        }
+        
+        .none {
+            color: coral;
+        }
+        
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(243, 238, 238, 0.2), 0 6px 20px 0 rgba(231, 221, 221, 0.19);
+        }
+
+        .dropdown a:hover{
+            text-decoration: underline;
+        }
+
+        .row{
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .container-fluid {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar p {padding: 4px 0;margin-bottom:0;}
+        .topbar-hotline a.phone-num { display: inline-block;}
+        .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
+        .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
+        .topbar-hotline span.circle-phone{
+            display: inline-block;border-radius: 50%;
+            -webkit-animation: ripple 1.0s linear infinite;
+            animation: ripple 1.0s linear infinite;
+        }
+        .topbar-hotline a.phone-num .fa {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            border-color:#e00000;
+            color:#e00000;
+            font-size: 16px;	 margin: 0;	
+        }
+        .topbar-hotline a.phone-num .fa {
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            border: 1px solid #FFFF;
+            color: #FFFF;
+            border-radius: 50%;
+            text-align: center;
+            animation: 1s ease-in-out 0s normal none infinite running h-alo-ring-ring;
+            font-size: 10px;
+            display: inline-block;
+            vertical-align: middle;margin-right:5px;
+        }
+        @keyframes h-alo-ring-ring{0%{transform:rotate(0deg) scale(1) skew(1deg)}10%{transform:rotate(-25deg) scale(1) skew(1deg)}20%{transform:rotate(25deg) scale(1) skew(1deg)}30%{transform:rotate(-25deg) scale(1) skew(1deg)}40%{transform:rotate(25deg) scale(1) skew(1deg)}50%{transform:rotate(0deg) scale(1) skew(1deg)}100%{transform:rotate(0deg) scale(1) skew(1deg)}}
+    </style>
+</head>
+
+<body>
+    <div id="topbar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                    <p>
+                        <strong> Miễn phí </strong>
+                        giao hàng toàn quốc với đơn hàng
+                        <strong> trên 500k </strong>
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-hotline">
+                    <a class="phone-num" href="tel:0123456789"></a>
+                    <span class="circle-phone">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                    <span class="text-phone">Hot line: 0123456789</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include ('header'); -%>
+    <h2 class="new_product">SẢN PHẨM MỚI</h2>
+
+    <div class="container">
+      <div class="card-deck">
+          <% if(product.length > 0) {%>
+              <%for(var i=0; i<product.length;i++) { %>
+                  <div class="col-sm-12 col-lg-4">
+                      <div class="card h-100">
+                          <a href="/productdetail/<%= product[i]._id %>" >
+                              <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
+                          </a>
+                          <div class="card-body">
+                              <h5 class="card-title">
+                                  <%= product[i].name %>
+                              </h5>
+                              <p class="card-text">
+                                  <% if(product[i].bonusPrice > 0) { %>
+                                      <p>
+                                          <span class="line-through" style="font-size: 85%;">
+                                              <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                          </span>    
+                                          <span class="none" style="font-weight: 550;">
+                                              <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                          </span>
+                                      </p>
+
+                                      <% } else { %>
+                                          <p>
+                                              <span class="normal">
+                                                  <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                              </span>
+                                          </p>
+                                  <% } %>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+                  <% } %>
+              <%}%>
+      </div>
+  </div>
+
+  <div class="container">
+      <!-- get all number item from database then page panigate -->
+      <nav aria-label="Page navigation">
+          <ul class="pagination">
+              <li class="page-item">
+                  <a class="page-link" href="#">Previous</a>
+              </li>
+              <%for(var i=1; i<=numItems;i++) { %>
+                  <li class="page-item">
+                      <a class="page-link" href="/<%= i %>">
+                          <%= i %>
+                      </a>
+                  </li>
+              <% } %>
+              <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+  <footer>
+      <div class="container">
+          <h2> LIÊN HỆ VỚI CHÚNG TÔI </h2>
+      </div>
+      <div class="container">
+          <!--three js representation-->
+          <div class="row">
+              <div class="col-sm-6">
+                  <div class="card">
+                      <a href="sendemail">
+                          <img class="hover-shadow cursor" src="/icon/email.png" alt="Card image cap">
+                      </a>
+                      <div class="card-body">
+                          <h5 class="card-title">EMAIL</h5>
+                          <p class="card-text">Contact with us via Email</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-6">
+                  <div class="card">
+                      <a href="">
+                          <img class="hover-shadow cursor" src="/icon/telephone.png" alt="Card image cap">
+                      </a>
+                      <div class="card-body">
+                          <h5 class="card-title">PHONE</h5>
+                          <p class="card-text">Phone num: (+84) 0862263986</p>
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                  <div class="card">
+                      <a href="https://www.facebook.com/LeagueStore77">
+                          <img class="hover-shadow cursor" src="/icon/facebook.png" alt="Card image cap">
+                      </a>
+
+                      <div class="card-body">
+                          <h5 class="card-title">FACEBOOK</h5>
+                          <p class="card-text">Contact with us via Facebook</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-sm-6">
+                  <div class="card">
+                      <a href="https://www.facebook.com/LeagueStore77">
+                          <img class="hover-shadow cursor" src="/icon/instagram.png" alt="Card image cap">
+                      </a>
+
+                      <div class="card-body">
+                          <h5 class="card-title">INSTAGRAM</h5>
+                          <p class="card-text">Contact with us via Instagram</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <p>Địa chỉ: số 66 ngõ 191 Minh Khai, Hai Bà Trưng, Hà Nội</p>
+  </footer>
+</body>
+
+<script>
+    function formatCash(cash) {
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        });
+    }
+</script>
+
+</html>

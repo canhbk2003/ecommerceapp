@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
+const fs = require('fs');
 
 const max_size = 100 * 1024 * 1024; // 100MB
 
 const logger = require('../log/logger');
-var idx = 1;
 
+var idx = 1;
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         // Uploads is the Upload_folder_name
@@ -38,12 +39,28 @@ var upload = multer({
             "following filetypes - " + filetypes);
     }
 
-    // mypic is the name of file attribute
+    // bn is the name of file attribute
 }).array('bn', 10);
+
+var verify = function(){
+    // count all file, if < 10 files -> make copy
+    var folder_name = path.join(__dirname, '/public/banner/');
+    var files = fs.readdirSync(folder_name);
+
+    const len = files.length;
+    if(len<10){
+        // copy
+        for(var i=len;i<10;i++){
+            var file_ext = files[i].split('.').pop();
+            fs.copyFile(files[i], `bn-${i}.file_ext`, err => {
+                if(err) throw err;
+            });
+        }
+    }
+}
 
 class UpdateBannerController {
     get(req, res, next) {
-      console.log('upload banner index');
       res.render('uploadbanner');
     }
 
@@ -54,7 +71,7 @@ class UpdateBannerController {
           } 
           else {
               logger.info('Upload successfully!')
-              res.redirect('/');
+              res.redirect('/uploadnotify');
           }
       });
     }

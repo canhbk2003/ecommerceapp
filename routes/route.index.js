@@ -10,6 +10,9 @@ const routerUpload = require('./route.upload');
 const routerUpdateDb = require('./route.updatedb');
 const routerPagination = require('./route.pagination');
 const routerUpdateBanner = require('./route.updatebanner');
+const routerUploadNotify = require('./route.uploadnotify');
+const routerNewArrival = require('./route.newarrival');
+
 const logger = require('../log/logger');
 
 function route(app) {
@@ -298,13 +301,15 @@ function route(app) {
     //     res.render('uploadbanner');
     // });
 
-    app.use('/', routerAuth);
     app.use('/', routerUser);
     app.use('/', routerProduct);
     app.use('/', routerUpload);
     app.use('/', routerUpdateDb);
     app.use('/', routerUpdateBanner);
+    app.use('/', routerUploadNotify);
+    app.use('/', routerNewArrival);
     app.use('/', routerPagination);
+    app.use('/', routerAuth);
 }
 
 module.exports = route;

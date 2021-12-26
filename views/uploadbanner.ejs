@@ -21,7 +21,7 @@
         <form action="/uploadbanner" method="POST" enctype="multipart/form-data" id="upload_form">
             <!--hidden form to upload data-->
             <label for="folder">Select folder</label>
-            <input type='file' multiple='multiple' accept='image/*' name='banner' id='file' />
+            <input type='file' multiple='multiple' accept='image/*' name='bn' id='file' />
             <h2>Selected Files</h2>
             <ul>
             </ul>
@@ -31,10 +31,10 @@
     <script>
         var data;
         $('upload_form').addEventListener('submit', async function(e) {
-            const files = e.target['banner'].files;
+            const files = e.target['bn'].files;
             if (files.length != 0) {
                 for (const single_file of files) {
-                    data.append('banner', single_file)
+                    data.append('bn', single_file)
                 }
             }
         });

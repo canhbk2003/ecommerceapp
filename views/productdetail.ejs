@@ -33,7 +33,7 @@
                                     <figure class="view overlay rounded z-depth-1 main-img">
                                         <a href=<%=product.image%>
                             width="550" height="600">
-                            <img src=<%= product.image%>
+                            <img src="/products/<%= product.image%>"
                                 class="img-fluid z-depth-1" width="550" height="600">
                             </a>
                                     </figure>
@@ -49,51 +49,55 @@
                             <p><span class="mr-1"><strong>Giá: <%= product.bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
                             <% } else {%>
                                 <p><span class="mr-1"><strong>Giá: <%= product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
-                                <% } %>
+                            <% } %>
 
-                                    <p class="pt-1">
-                                        <%= product.description %>
-                                    </p>
-                                    <hr>
-                                    <div class="table-responsive mb-2">
-                                        <table class="table table-sm table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="pl-0 pb-0 w-25">Số lượng</td>
-                                                    <td class="pb-0">Chọn kích cỡ</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="pl-0">
-                                                        <div class="def-number-input number-input safari_only mb-0">
-                                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="mt-1">
-                                                            <div class="form-check form-check-inline pl-0">
-                                                                <input type="radio" class="form-check-input" id="small" name="radSizeS" checked>
-                                                                <label class="form-check-label small text-uppercase card-link-secondary" for="small">S</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline pl-0">
-                                                                <input type="radio" class="form-check-input" id="medium" name="radSizeL">
-                                                                <label class="form-check-label small text-uppercase card-link-secondary" for="medium">L</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline pl-0">
-                                                                <input type="radio" class="form-check-input" id="large" name="radSizeXL">
-                                                                <label class="form-check-label small text-uppercase card-link-secondary" for="large">XL</label>
-                                                            </div>
-                                                            <div class="form-check form-check-inline pl-0">
-                                                                <input type="radio" class="form-check-input" id="extralarge" name="radSizeXXL">
-                                                                <label class="form-check-label small text-uppercase card-link-secondary" for="extralarge">XXL</label>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">Đặt mua ngay</button>
-                                    <a href="" class="btn btn-warning btn-md mr-1 mb-2"><i
+                        <p class="pt-1">
+                            <%= product.description %>
+                        </p>
+                        <hr>
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl-0 pb-0 w-25">Số lượng</td>
+                                        <td class="pb-0">Chọn kích cỡ</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pl-0">
+                                            <div class="def-number-input number-input safari_only mb-0">
+                                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mt-1">
+                                                <div class="form-check form-check-inline pl-0">
+                                                    <input type="checkbox" class="form-check-input" id="small" name="radSizeS">
+                                                    <label class="form-check-label small text-uppercase card-link-secondary" for="small">S</label>
+                                                </div>
+                                                <div class="form-check form-check-inline pl-0">
+                                                    <input type="checkbox" class="form-check-input" id="medium" name="radSizeL" checked>
+                                                    <label class="form-check-label small text-uppercase card-link-secondary" for="medium">L</label>
+                                                </div>
+                                                <div class="form-check form-check-inline pl-0">
+                                                    <input type="checkbox" class="form-check-input" id="large" name="radSizeXL">
+                                                    <label class="form-check-label small text-uppercase card-link-secondary" for="large">XL</label>
+                                                </div>
+                                                <div class="form-check form-check-inline pl-0">
+                                                    <input type="checkbox" class="form-check-input" id="extralarge" name="radSizeXXL">
+                                                    <label class="form-check-label small text-uppercase card-link-secondary" for="extralarge">XXL</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>
+                            Để lại tin nhắn cho chúng tôi: (trong trường hợp mà bạn chọn nhiều size)
+                        </p>
+                        <textarea type="textarea" id="editProductDescription" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"></textarea><br>
+                        <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">Đặt mua ngay</button>
+                        <a href="" class="btn btn-warning btn-md mr-1 mb-2"><i
                         class="fas fa-shopping-cart pr-2"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
