@@ -41,18 +41,44 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
+
+        .dropdown{
+            position: absolute;
+            display: inline-block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+            color: coral;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            color: coral;
+        }
+
+        .dropdown{
+            font-weight: 500;
+        }
+        .dropdown :hover{
+            color: coral;
+        }
+        .nav navbar-nav {
+            font-weight: 500;
+        }
+
 </style>
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark" style="background-color: #FFF;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/" style="color: black;">LEAGUE STORE 77</a>
+                <a class="navbar-brand" href="/" style="color: black; font-weight: 800;">LEAGUE STORE 77</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/" style="color: black;">TRANG CHỦ</a></li>
+                <li class="active"><a href="/" style="color: black; font-weight: 500;">TRANG CHỦ</a></li>
                 <li>
-                    <a href="/newarrivals" style="color: black;">NEW ARRIVAL</a>
+                    <a href="/newarrivals" style="color: black; font-weight: 500;">NEW ARRIVAL</a>
                 </li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">SẢN PHẨM<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -83,9 +109,9 @@
                     </ul>
                 </li>
     
-                <li><a href="/contact" style="color: black;">LIÊN HỆ</a></li>
+                <li><a href="/contact" style="color: black; font-weight: 500;">LIÊN HỆ</a></li>
     
-                <li><a href="/news" style="color: black;">NEWS</a></li>
+                <li><a href="/news" style="color: black; font-weight: 500;">NEWS</a></li>
     
                 <% if(user !== "Đăng nhập") {%>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
@@ -122,7 +148,10 @@
                     </ul>
     
                     <li>
-                        <a href="/cart"  style="color: black;"><span></span> GIỎ HÀNG</a>
+                        <a href="/cart" style="color: black; font-weight: 500;">
+                            <span class="glyphicon glyphicon-shopping-cart">
+                            </span>
+                        </a>
                     </li>
     
                     <li>
@@ -134,7 +163,9 @@
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
                             </form>
                         </div>
-                        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+                        <li>
+                            <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
+                        </li>
                     </li>
                 </li>
             </ul>
