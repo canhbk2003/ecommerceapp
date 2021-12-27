@@ -22,16 +22,24 @@
         
         .new_product {
             text-align: center;
+            font-weight: bold;
+        }
+        .new_product:hover{
+            color: coral;
         }
         
         .populate_product {
             text-align: center;
+            font-weight: bold;
+        }
+        .populate_product:hover{
+            color: coral;
         }
         
         footer {
             text-align: center;
             padding: 3px;
-            background-color: #333;
+            background-color: #111;
             color: white;
             bottom: 0rem;
             position: relative;
@@ -115,7 +123,36 @@
             display: inline-block;
             vertical-align: middle;margin-right:5px;
         }
-        @keyframes h-alo-ring-ring{0%{transform:rotate(0deg) scale(1) skew(1deg)}10%{transform:rotate(-25deg) scale(1) skew(1deg)}20%{transform:rotate(25deg) scale(1) skew(1deg)}30%{transform:rotate(-25deg) scale(1) skew(1deg)}40%{transform:rotate(25deg) scale(1) skew(1deg)}50%{transform:rotate(0deg) scale(1) skew(1deg)}100%{transform:rotate(0deg) scale(1) skew(1deg)}}
+
+        .banner-footer-item-title{
+            font-weight: 450;
+        }
+
+        .box-icon:not(.policy_home) .banner-footer-item {
+            border: 1px black solid;
+            padding: 10px 10px 52px 10px;
+            margin-bottom: 45px;
+        }
+        .box-icon:not(.policy_home) .banner-footer-item img {
+            float: left;
+            margin-left: 0px;
+            max-height: 42px;
+        }
+        .box-icon:not(.policy_home) .banner-footer-item .banner-footer-item-info {
+            float: left;
+            padding-left: 15px;
+            margin: 10px 0 0 0;
+        }
+        .box-icon:not(.policy_home) .banner-footer-item .banner-footer-item-info .banner-footer-item-title {
+            color: black;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .banner-footer-item-des {
+            display: none;
+        }
     </style>
 </head>
 
@@ -144,9 +181,9 @@
     <%- include ('header'); -%>
     <%- include ('slideshow') -%>
 
-    <div class="container" style="margin-top: 25px;" style="align-items: center;">
+    <div class="container" style="margin-top: 25px;">
         <div class="card-deck">    
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px">
+            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
                 <div class="banner-footer-item-image">
                     <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1_home.png?v=431" style="width: 45px; height: 45px;">
                 </div>
@@ -155,7 +192,7 @@
                     <p class="banner-footer-item-title">FREESHIP đơn hàng từ 500.000đ trở lên</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px">
+            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
                 <div class="banner-footer-item-image">
                     <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2_home.png?v=431" style="width: 45px; height: 45px;">
                 </div>
@@ -163,7 +200,7 @@
                     <p class="banner-footer-item-title">Kiểm tra hàng trước khi thanh toán</p>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px">
+            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
                 <div class="banner-footer-item-image">
                     <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3_home.png?v=431" style="width: 45px; height: 45px;">
                 </div>
@@ -175,7 +212,7 @@
         </div>
     </div>
         
-            <h2 class="new_product">SẢN PHẨM MỚI</h2>
+            <h1 class="new_product">SẢN PHẨM MỚI</h1>
 
             <div class="container">
                 <div class="card-deck">
@@ -238,7 +275,7 @@
                 </nav>
             </div>
 
-            <h2 class="populate_product">SẢN PHẨM BÁN CHẠY</h2>
+            <h1 class="populate_product">SẢN PHẨM BÁN CHẠY</h1>
 
             <div class="container">
                 <div class="card-deck">
@@ -305,66 +342,40 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
             <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 
-            <footer>
-                <div class="container">
-                    <h2> LIÊN HỆ VỚI CHÚNG TÔI </h2>
-                </div>
-                <div class="container">
-                    <!--three js representation-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <a href="/sendemail">
-                                    <img class="hover-shadow cursor" src="/icon/email.png" style="border-radius: 10px;" alt="Card image cap">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">EMAIL</h5>
-                                    <p class="card-text">Contact with us via Email</p>
-                                </div>
+            <div class="container">
+                <div class="info-bellow-product box-icon row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item" style="margin-bottom:15px"> 
+                            <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1.png?v=431">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">FREE SHIP ĐƠN HÀNG TỪ 500.000Đ</p>
+                                <p class="banner-footer-item-des"></p>
                             </div>
                         </div>
-
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <a href="">
-                                    <img class="hover-shadow cursor" src="/icon/telephone.png" style="border-radius: 10px;" alt="Card image cap">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">PHONE</h5>
-                                    <p class="card-text">Phone num: (+84) 0862263986</p>
-                                </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item" style="margin-bottom:15px">
+                            <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2.png?v=431">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">ĐỔI TRẢ TRONG VÒNG 7 NGÀY</p>
+                                <p class="banner-footer-item-des"></p>
                             </div>
                         </div>
-
-
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <a href="https://www.facebook.com/LeagueStore77">
-                                    <img class="hover-shadow cursor" src="/icon/facebook.png" style="border-radius: 10px;" alt="Card image cap">
-                                </a>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">FACEBOOK</h5>
-                                    <p class="card-text">Contact with us via Facebook</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <a href="https://www.facebook.com/LeagueStore77">
-                                    <img class="hover-shadow cursor" src="/icon/instagram.png" style="border-radius: 10px;" alt="Card image cap">
-                                </a>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">INSTAGRAM</h5>
-                                    <p class="card-text">Contact with us via Instagram</p>
-                                </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item" style="margin-bottom:15px">
+                            <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3.png?v=431">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">THANH TOÁN KHI NHẬN HÀNG</p>
+                                <p class="banner-footer-item-des"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p>Địa chỉ: số 66 ngõ 191 Minh Khai, Hai Bà Trưng, Hà Nội</p>
+            </div>
+
+            <footer>
+                <%- include('footer'); -%>
             </footer>
 </body>
 
