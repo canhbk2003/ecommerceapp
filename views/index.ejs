@@ -21,10 +21,14 @@
         @media screen and (max-height: 450px) {}
         
         .new_product {
-            text-align: center;
             font-weight: bold;
+            text-align: center;
         }
-        .new_product:hover{
+        .new_product > a{
+            font-weight: bold;
+            color: black;
+        }
+        .new_product:hover a{
             color: coral;
         }
         
@@ -32,7 +36,13 @@
             text-align: center;
             font-weight: bold;
         }
-        .populate_product:hover{
+
+        .populate_product > a{
+            font-weight: bold;
+            color: black;
+        }
+
+        .populate_product:hover a{
             color: coral;
         }
         
@@ -211,8 +221,9 @@
             
         </div>
     </div>
-        
-            <h1 class="new_product">SẢN PHẨM MỚI</h1>
+    <h2 class="new_product">
+        <a href="/newarrivals">SẢN PHẨM MỚI</a>
+    </h2>
 
             <div class="container">
                 <div class="card-deck">
@@ -275,7 +286,9 @@
                 </nav>
             </div>
 
-            <h1 class="populate_product">SẢN PHẨM BÁN CHẠY</h1>
+        <h2 class="populate_product">
+            <a href="/newarrivals"> SẢN PHẨM BÁN CHẠY </a>
+        </h2>
 
             <div class="container">
                 <div class="card-deck">
