@@ -22,7 +22,6 @@ function route(app) {
         // check if have login user -> display user name
         let userName = "Login";
         const userId = req.cookies.userId;
-        console.log(userId);
         if(userId !== ''){
             db.GetById(req.cookies.userId).then(data => {
             if (data) {
@@ -33,7 +32,6 @@ function route(app) {
         }
         // query all data
         db.QueryAllProduct().then(data_ => {
-            console.log(userName);
             var _numitems = data_.length / 9;
             if (_numitems < 1) {
                 _numitems = 1;
