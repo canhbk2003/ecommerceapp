@@ -10,8 +10,8 @@ class CartController{
       return res.render('carts', {products: null});
     }
     const cart = new Cart(req.session.cart);
+    console.log(cart.generateArray());
     return res.render('carts', {products: cart.generateArray(), totalPrice: cart.totalPrice});
-    //return res.send({products: cart.generateArray(), totalPrice: cart.totalPrice});
   }
   addToCart(req, res ){
     const productId = req.params.id;

@@ -11,22 +11,23 @@
     <script src="ejs.min.js"></script>
   </head>
   <body>
-    <% if(products.length > 0) {%>
+    <h2 style="text-align: center;">GIỎ HÀNG CỦA BẠN</h2>
+    <% if(products) {%>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="list-group">
                 <% products.forEach(function (product) { %>
                   <div class="list-group-item border">
-                        <strong><%= product.name %></strong>
+                        <strong><%= product.item.name %></strong>
                         <span class="badge price-cart"><%= product.price %></span>
                         <div class="btn-group">
                             <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Action
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="cart/reduce/{{ this.item._id }}">Reduce by 1</a>
-                                <a class="dropdown-item" href="cart/remove/{{ this.item._id }}">Remove All</a>
+                                <a class="dropdown-item" href="/carts/reduce/<%= product.item._id %>">Reduce by 1</a>
+                                <a class="dropdown-item" href="/carts/remove/<%= product.item._id %>">Remove All</a>
                             </div>
                         </div>
                         <span class="total"><%= product.qty %></span>
@@ -51,7 +52,7 @@
 <% } else {%>
     <div class="empty">
         <h2>Oops, your cart is empty</h2>
-        <img src="/icons/empty-cart.svg" alt="Empty cart">
+        <a href="/" class="btn btn-primary">Turn back home page</a>
     </div>
 <% } %>
   </body>
