@@ -1,1 +1,58 @@
 <!--CART page-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="ejs.min.js"></script>
+  </head>
+  <body>
+    <% if(products.length > 0) {%>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="list-group">
+                <% products.forEach(function (product) { %>
+                  <div class="list-group-item border">
+                        <strong><%= product.name %></strong>
+                        <span class="badge price-cart"><%= product.price %></span>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Action
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="cart/reduce/{{ this.item._id }}">Reduce by 1</a>
+                                <a class="dropdown-item" href="cart/remove/{{ this.item._id }}">Remove All</a>
+                            </div>
+                        </div>
+                        <span class="total"><%= product.qty %></span>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <strong>Total: <%= totalPrice %></strong>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <a href="/checkout" class="btn btn-raised  btn-success">Checkout</a>
+        </div>
+    </div>
+<% } else {%>
+    <div class="empty">
+        <h2>Oops, your cart is empty</h2>
+        <img src="/icons/empty-cart.svg" alt="Empty cart">
+    </div>
+<% } %>
+  </body>
+</html>

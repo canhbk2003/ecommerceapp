@@ -1,4 +1,3 @@
-const express = require('express');
 const db = require('../db.js');
 const util = require('../utils/util.js');
 const User = require('../models/user');
@@ -13,7 +12,7 @@ const routerUpdateBanner = require('./route.updatebanner');
 const routerUploadNotify = require('./route.uploadnotify');
 const routerNewArrival = require('./route.newarrival');
 const routerNews = require('./route.news');
-
+const routerCart = require('./route.cart');
 const logger = require('../log/logger');
 
 function route(app) { 
@@ -46,9 +45,9 @@ function route(app) {
                     }
                 }
 
-                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName});
+                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, session: req.session.cart? req.session.cart : {}});
             } else {
-                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName});
+                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, session: req.session.cart? req.session.cart : {}});
             }
         });
     });
@@ -295,9 +294,9 @@ function route(app) {
         res.render('notfound404');
     });
 
-    app.get('/carts', (req, res, next) => {
-        res.send('FUNCTION IS DEVELOPING');
-    });
+    // app.get('/carts', (req, res, next) => {
+    //     res.send('FUNCTION IS DEVELOPING');
+    // });
 
     // app.get('/uploadbanner', function(req, res, next){
     //     res.render('uploadbanner');
@@ -312,6 +311,7 @@ function route(app) {
     app.use('/', routerUploadNotify);
     app.use('/', routerNewArrival);
     app.use('/', routerNews);
+    app.use('/', routerCart);
     app.use('/', routerPagination);
 }
 

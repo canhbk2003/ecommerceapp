@@ -4,10 +4,10 @@ const Product = require('../models/product');
 class ProductController {
     // product table
     getProductPage(req, res, next) {
-            db.QueryAllProduct()
-                .then(data_ => {
-                    res.render('producttable', { data: data_ });
-                });
+        db.QueryAllProduct()
+            .then(data_ => {
+                res.render('producttable', { data: data_ });
+            });
         }
         // update product
     getProductById(req, res, next) {
@@ -27,8 +27,18 @@ class ProductController {
     }
 
     getProductDetailPage(req, res, next) {
+        let userName = "Login";
+        const userId = req.cookies.userId;
+        if(userId !== ''){
+          db.GetById(req.cookies.userId).then(data => {
+            if (data) {
+                const user = new User(data);
+                userName = user.name;
+            }
+          });
+        }
         Product.findOne({ _id: req.params.id }, req.body)
-            .then(data => res.render('productdetail', { product: data }))
+            .then(data => res.render('productdetail', { product: data, user: userName }))
             .catch(next);
     }
 }
