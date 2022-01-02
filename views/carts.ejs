@@ -17,36 +17,61 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="list-group">
-                <% products.forEach(function (product) { %>
-                  <div class="list-group-item border">
-                        <strong><%= product.item.name %></strong>
-                        <span class="badge price-cart"><%= product.price %></span>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/carts/reduce/<%= product.item._id %>">Reduce by 1</a>
-                                <a class="dropdown-item" href="/carts/remove/<%= product.item._id %>">Remove All</a>
-                            </div>
-                        </div>
-                        <span class="total"><%= product.qty %></span>
-                    </div>
-                <% }); %>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Chỉnh sửa</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tin nhắn</th>
+                            <th scope="col">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i = 0; %>
+                        <% products.forEach(function (product) { %>
+                            <tr>
+                                <td>
+                                    <strong><%= product.item.name %></strong>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Chỉnh sửa
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="btn btn-primary" href="/carts/reduce/<%= product.item._id %>">Xóa một</a>
+                                            <a class="btn btn-danger" href="/carts/remove/<%= product.item._id %>">Xóa tất cả</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="total"><%= product.qty %></span>
+                                </td>
+                                <td>
+                                    <span class="msg"><%= product.msg %></span>
+                                </td>
+                                <td>
+                                    <span class="badge price-cart"><%= product.price %></span>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <strong>Total: <%= totalPrice %></strong>
+            <strong>Tổng: <%= totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %> </strong>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <a href="/checkout" class="btn btn-raised  btn-success">Checkout</a>
+            <a href="/checkout" class="btn btn-raised  btn-success">Đặt hàng</a>
         </div>
     </div>
 <% } else {%>
@@ -55,5 +80,12 @@
         <a href="/" class="btn btn-primary">Turn back home page</a>
     </div>
 <% } %>
+
+    <script>
+        function formatCash(cash){
+
+        }
+    </script>
   </body>
+  
 </html>

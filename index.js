@@ -16,6 +16,10 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+const bodyParser = require('body-parser'); 
+app.use(bodyParser.json()); // to support JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })); // to support URL-encoded bodies
+
 app.use(cookieParser());
 app.use(session({
   secret: 'secret',

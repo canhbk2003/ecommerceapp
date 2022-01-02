@@ -55,13 +55,20 @@ module.exports = function Cart(oldCart) {
   this.items = oldCart.items || {};
   this.totalQty = oldCart.totalQty || 0;
   this.totalPrice = oldCart.totalPrice || 0;
+  // size
+  this.size = "L";
+  this.message = "";
+  this.numItem = 0;
 
-  this.add = function (item, id) {
+  this.add = function (item, id, size, msg, numItems) {
       let storedItem = this.items[id];
       if (!storedItem) {
-          storedItem = this.items[id] = {item: item, qty: 0, price: 0};
+          storedItem = this.items[id] = {item: item, qty: 0, price: 0, size: size, msg: msg, numItem: numItems};
       }
-      storedItem.qty++;
+      storedItem.qty += numItems;
+      storedItem.size = size;
+      storedItem.msg = msg;
+      storedItem.numItem = numItems;
       if(storedItem.item.bonusPrice> 0){
         storedItem.price = storedItem.item.bonusPrice * storedItem.qty;
       }
@@ -69,7 +76,7 @@ module.exports = function Cart(oldCart) {
         storedItem.price = storedItem.item.price * storedItem.qty;
       }
       
-      this.totalQty++;
+      this.totalQty += numItems;
       this.totalPrice += storedItem.price;
   };
 
@@ -84,7 +91,7 @@ module.exports = function Cart(oldCart) {
       }
       this.totalQty--;
       if(this.items[id].item.bonusPrice > 0){
-        this.totalPrice -= this.items[id].item.bonusPrice;  
+        this.totalPrice -= this.items[id].item.bonusPrice;
       }
       else{
         this.totalPrice -= this.items[id].item.price;
