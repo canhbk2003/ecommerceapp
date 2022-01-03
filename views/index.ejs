@@ -18,8 +18,6 @@
             margin-top: 15px;
         }
         
-        @media screen and (max-height: 450px) {}
-        
         .new_product {
             font-weight: bold;
             text-align: center;
@@ -188,7 +186,7 @@
         </div>
     </div>
 
-    <%- include ('header'); -%>
+    <%- include ('header', {user: user, products: products}); -%>
     <%- include ('slideshow') -%>
 
     <div class="container" style="margin-top: 25px;">
@@ -227,7 +225,7 @@
 
             <div class="container">
                 <div class="card-deck">
-                    <% if(product.length > 0) {%>
+                    <% if(product) {%>
                         <%for(var i=0; i<product.length;i++) { %>
                             <div class="col-sm-12 col-lg-4">
                                 <div class="card h-100">
@@ -292,7 +290,7 @@
 
             <div class="container">
                 <div class="card-deck">
-                    <% if(product.length > 0) {%>
+                    <% if(product) {%>
                         <%for(var i=0; i<product.length;i++) { %>
                             <div class="col-sm-12 col-lg-4">
                                 <div class="card h-100">
