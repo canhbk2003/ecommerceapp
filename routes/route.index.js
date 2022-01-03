@@ -15,6 +15,8 @@ const routerNews = require('./route.news');
 const routerCart = require('./route.cart');
 const logger = require('../log/logger');
 
+const Cart = require('../models/cart');
+
 function route(app) { 
     // home page
     app.get('/', function(req, res) {
@@ -36,7 +38,11 @@ function route(app) {
                 _numitems = 1;
             }
             _numitems = _numitems + 1;
+            
             var dpData = [];
+            if(req.session.cart){
+                var cart = new Cart(req.session.cart);
+            }
             if (data_.length > 0) {
                 dpData.length = 0;
                 for (var i = 0; i < 9; i++) {
@@ -45,9 +51,9 @@ function route(app) {
                     }
                 }
 
-                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, session: req.session.cart? req.session.cart : {}});
+                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, products: req.session.cart? cart.generateArray() : {}});
             } else {
-                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, session: req.session.cart? req.session.cart : {}});
+                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, products: req.session.cart? cart.generateArray() : {}});
             }
         });
     });
@@ -61,6 +67,9 @@ function route(app) {
             }
             _numitems = _numitems + 1;
             var dpData = [];
+            if(req.session.cart){
+                var cart = new Cart(req.session.cart);
+            }
             if (data_.length > 0) {
                 dpData.length = 0;
                 for (var i = 0; i < 9; i++) {
@@ -68,9 +77,9 @@ function route(app) {
                         dpData.push(data_[i]);
                     }
                 }
-                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: "Login" });
+                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
             } else {
-                res.render('home', { numItems: parseInt(_numitems), product: {}, user: "Login" });
+                res.render('home', { numItems: parseInt(_numitems), product: {}, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
             }
         });
     });

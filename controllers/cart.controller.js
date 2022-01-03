@@ -5,7 +5,6 @@ const Cart = require('../models/cart');
 
 class CartController{
   index(req, res ){
-    console.log(req.session.cart);
     if(!req.session.cart) {
       return res.render('carts', {products: null});
     }
@@ -37,7 +36,7 @@ class CartController{
     res.redirect('/carts');
   }
   addone (req, res ){
-
+f5t
   }
   remove (req, res, ){
     const productId = req.params.id;
