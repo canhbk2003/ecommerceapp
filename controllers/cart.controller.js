@@ -36,7 +36,7 @@ class CartController{
     res.redirect('/carts');
   }
   addone (req, res ){
-
+f5t
   }
   remove (req, res, ){
     const productId = req.params.id;

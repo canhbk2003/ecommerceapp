@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../db.js');
 const User = require('../models/user');
+const Cart = require('../models/cart');
 const authMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
 
@@ -24,6 +25,9 @@ router.get('/newarrivals', (req, res, next) => {
       }
       _numitems = _numitems + 1;
       var dpData = [];
+      if(req.session.cart){
+          var cart = new Cart(req.session.cart);
+      }
       if (data_.length > 0) {
           dpData.length = 0;
           for (var i = 0; i < 9; i++) {
@@ -32,9 +36,9 @@ router.get('/newarrivals', (req, res, next) => {
               }
           }
 
-          res.render('newarrivals', { numItems: parseInt(_numitems), product: dpData, user: userName});
+          res.render('newarrivals', { numItems: parseInt(_numitems), product: dpData, user: userName, products: req.session.cart? cart.generateArray():{}});
       } else {
-          res.render('newarrivals', { numItems: parseInt(_numitems), product: {}, user: userName});
+          res.render('newarrivals', { numItems: parseInt(_numitems), product: {}, user: userName, products: req.session.cart? cart.generateArray():{}});
       }
   });
 });

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .sidenav {
             height: 100%;
@@ -37,12 +38,7 @@
             margin-left: 50px;
         }
 
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-        }
-
-        .dropdown{
+        /*.dropdown{
             position: absolute;
             display: inline-block;
         }
@@ -85,7 +81,130 @@
         .dropdown a:hover{
             color: coral;
             text-decoration: underline;
+        } */
+
+        .topnav {
+            overflow: hidden;
+            background-color: #fff;
         }
+
+        .topnav a {
+        float: left;
+        display: block;
+        color: #000;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        font-weight: bold;
+        }
+
+        .active {
+            background-color: #fff;
+            color: coral;
+        }
+
+        .topnav .icon {
+            display: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 17px;   
+            font-weight: bold; 
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .topnav a:hover, .dropdown:hover .dropbtn{
+            background-color: rgb(245, 238, 238);
+            color: coral;
+            text-decoration: underline;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .topnav .dropdown:hover .dropbtn{
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        .topnav .dropdown .dropbtn{
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        @media screen and (max-width: 600px) {
+            .topnav a, .dropdown .dropbtn {  
+                display: none;
+            }
+            .topnav .navbar-right a{
+                display: none;
+            }
+            .topnav a.icon {
+                float: left;
+                display: block;
+            }
+        }
+        /* RESPONSIVE */
+        @media screen and (max-width: 600px) {
+            .topnav.responsive {position: relative;}
+            .topnav.responsive .icon {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+            .topnav.responsive a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .topnav.responsive .dropdown {float: none;}
+            .topnav.responsive .dropdown-content {position: relative;}
+            .topnav.responsive .dropdown .dropbtn {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+        }
+<<<<<<< HEAD
 
         .navbar.navbar-dark.bg-dark a.icon{
             display: none;
@@ -117,134 +236,275 @@
                 text-align: left;
             }
         }
+=======
+         /* RESPONSIVE */
+>>>>>>> b2c0716320aa0c2f20665c7a12bf5ad1c9794e40
 
     </style>
 </head>
 <body>
+<<<<<<< HEAD
     <nav class="navbar navbar-dark bg-dark" id="topMenu" style="background-color: #FFF;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/" style="color: black; font-weight: 800;">LEAGUE STORE 77</a>
+=======
+    <div class="topnav" id="topMenu">
+        <a href="/" class="active">TRANG CHỦ</a>
+        <a href="/newarrivals">NEW ARRIVAL</a>
+        <div class="dropdown">
+            <button class="dropbtn">SẢN PHẨM 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">QUẦN ÁO</a>
+                <a href="#">QUẦN ÁO THỂ THAO</a>
+                <a href="#">PHỤ KIỆN</a>
+>>>>>>> b2c0716320aa0c2f20665c7a12bf5ad1c9794e40
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">TRANG CHỦ</a></li>
-                <li>
-                    <a href="/newarrivals">NEW ARRIVAL</a>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >SẢN PHẨM<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >QUẦN ÁO</a></li>
-                        <li><a href="#" >QUẦN ÁO THỂ THAO</a></li>
-                        <li><a href="#" >PHỤ KIỆN</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">BỘ SƯU TẬP<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >HÈ</a></li>
-                        <li><a href="#" >THU ĐÔNG</a></li>
-                        <li><a href="#" >PHỤ KIỆN</a></li>
-                    </ul>
-                </li>
+        </div>
 
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CHÍNH SÁCH - HƯỚNG DẪN<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >HƯỚNG DẪN CHỌN SIZE</a></li>
-                        <li><a href="#" >HƯỚNG DẪN ĐẶT HÀNG</a></li>
-                        <li><a href="#" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
-                        <li><a href="#" >TÀI KHOẢN NGÂN HÀNG</a></li>
-                    </ul>
-                </li>
+        <div class="dropdown"><button class="dropbtn">BỘ SƯU TẬP<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">HÈ</a>
+                <a href="#">THU ĐÔNG</a>
+                <a href="#">PHỤ KIỆN</a>
+            </div>
+        </div>
 
-    
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GIẢI ĐẤU<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >NGOẠI HẠNG ANH</a></li>
-                        <li><a href="#" >LA LIGA</a></li>
-                        <li><a href="#" >BUNDES LIGA</a></li>
-                        <li><a href="#" >LEAGUE 1</a></li>
-                        <li><a href="#" >SERI A</a></li>
-                        <li><a href="#" >WORLD CUP</a></li>
-                        <li><a href="#" >UEFA CHAMPIONS LEAGUE</a></li>
-                        <li><a href="#" >UEFA EUROPA LEAGUE</a></li>
-                        <li><a href="#" >EURO</a></li>
-                    </ul>
-                </li>
-    
-                <li><a class="contact" href="/contact">LIÊN HỆ</a></li>
-    
-                <li><a class="news" href="/news">NEWS</a></li>
-    
-                <% if(user !== "Login") {%>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/admin">Quản lý người dùng</a></li>
-                            <li><a href="/producttable">Quản lý sản phẩm</a></li>
-                            <li><a href="/summary">Thống kê</a></li>
-                            <li><a href="/campaign">Chiến dịch bán hàng</a></li>
-                            <li><a href="/uploadbanner">Upload banner</a></li>
-                            <li><a href="/upload">Upload product</a></li>
-                            <li><a href="/updatedb">Update database</a></li>
-                        </ul>
-                    </li>   
-                <%}%>
-    
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="/signup"><span class="glyphicon glyphicon-user" style="color: black;"></span></a>
-                </li>
-                <li class="dropdown">
-                    <% if(user !== "Login") { %>
-                        <a style="color: black;">
-                            <%= user %><span class="caret" style="color: black;"></span>
-                        </a>
-                    <% } else { %>
-                        <a href="/login" style="color: black;">
-                            <%= user %><span class="caret" style="color: black;"></span></a>
-                    <% } %>
-    
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
-                        </li>
-                    </ul>
-                </li>
+        <div class="dropdown"><button class="dropbtn">GIẢI ĐẤU<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">NGOẠI HẠNG ANH</a>
+                <a href="#">LA LIGA</a>
+                <a href="#">BUNDES LIGA</a>
+                <a href="#">LEAGUE 1</a>
+                <a href="#">SERI A</a>
+                <a href="#">WORLD CUP</a>
+                <a href="#">UEFA CHAMPIONS LEAGUE</a>
+                <a href="#">UEFA EUROPA LEAGUE</a>
+                <a href="#">EURO</a>
+            </div>
+        </div>
 
-                <li>
-                    <a href="/carts" style="color: black; font-weight: 500;">
-                        <span class="glyphicon glyphicon-shopping-cart">
+        <div class="dropdown"><button class="dropbtn">CHÍNH SÁCH - HƯỚNG DẪN<i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">HƯỚNG DẪN CHỌN SIZE</a>
+                <a href="#">HƯỚNG DẪN ĐẶT HÀNG</a>
+                <a href="#">CHÍNH SÁCH ĐỔI TRẢ</a>
+                <a href="#">TÀI KHOẢN NGÂN HÀNG</a>
+            </div>
+        </div>
+
+        <a href="/contact">LIÊN HỆ</a>
+
+        <a href="/news">NEWS</a>
+
+        <% if(user !== "Login") {%>
+            <div class="dropdown">
+                <button class="dropbtn" style="color: black;">QUẢN LÝ<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="/admin">Quản lý người dùng</a>
+                    <a href="/producttable">Quản lý sản phẩm</a>
+                    <a href="/summary">Thống kê</a>
+                    <a href="/campaign">Chiến dịch bán hàng</a>
+                    <a href="/uploadbanner">Upload banner</a>
+                    <a href="/upload">Upload product</a>
+                    <a href="/updatedb">Update database</a>
+                </div>
+            </div>   
+        <%}%>
+
+        <div class="navbar-right">
+            <a href="/signup"><span class="glyphicon glyphicon-user" style="color: black;"></span></a>
+            <div class="dropdown">
+                <% if(user !== "Login") { %>
+                    <a style="color: black;">
+                        <%= user %><span class="caret" style="color: black;"></span>
+                    </a>
+                <% } else { %>
+                    <a href="/login" style="color: black;">
+                        <%= user %><span class="caret" style="color: black;"></span></a>
+                <% } %>
+
+                <div class="dropdown-content">
+                    <a href="/home"> Logout </a>
+                </div>
+            </div>
+
+            <a href="/carts" style="color: black; font-weight: 500;">
+                <span class="glyphicon glyphicon-shopping-cart">
+                </span>
+                <% if (products || products !== undefined) {%>
+                    <span style="color: coral;">
+                        <%= products.length %>
+                    </span>
+                <%} else {%>
+                    <span>
+                        0
+                    </span>
+                <% } %>
+            </a>
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
+                    <h3 style="text-align: center; margin-right: 10px;"> TÌM KIẾM </h3>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
+                </form>
+            </div>
+            <a><span class="glyphicon glyphicon-search" style="color: black; margin-right: 20px;" onclick="openNav()"></span></a> 
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <!-- <nav class="navbar" style="background-color: #FFF;" id="topNav">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/logo.jpg" width="120px" height="60" style="position: relative;">
+            </a>
+        </div>
+        <li class="active"><a href="/">TRANG CHỦ</a></li>
+            <li>
+                <a href="/newarrivals">NEW ARRIVAL</a>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >SẢN PHẨM<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" >QUẦN ÁO</a></li>
+                    <li><a href="#" >QUẦN ÁO THỂ THAO</a></li>
+                    <li><a href="#" >PHỤ KIỆN</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">BỘ SƯU TẬP<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" >HÈ</a></li>
+                    <li><a href="#" >THU ĐÔNG</a></li>
+                    <li><a href="#" >PHỤ KIỆN</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CHÍNH SÁCH - HƯỚNG DẪN<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" >HƯỚNG DẪN CHỌN SIZE</a></li>
+                    <li><a href="#" >HƯỚNG DẪN ĐẶT HÀNG</a></li>
+                    <li><a href="#" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                    <li><a href="#" >TÀI KHOẢN NGÂN HÀNG</a></li>
+                </ul>
+            </li>
+
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GIẢI ĐẤU<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" >NGOẠI HẠNG ANH</a></li>
+                    <li><a href="#" >LA LIGA</a></li>
+                    <li><a href="#" >BUNDES LIGA</a></li>
+                    <li><a href="#" >LEAGUE 1</a></li>
+                    <li><a href="#" >SERI A</a></li>
+                    <li><a href="#" >WORLD CUP</a></li>
+                    <li><a href="#" >UEFA CHAMPIONS LEAGUE</a></li>
+                    <li><a href="#" >UEFA EUROPA LEAGUE</a></li>
+                    <li><a href="#" >EURO</a></li>
+                </ul>
+            </li>
+
+            <li><a class="contact" href="/contact">LIÊN HỆ</a></li>
+
+            <li><a class="news" href="/news">NEWS</a></li>
+
+            <% if(user !== "Login") {%>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/admin">Quản lý người dùng</a></li>
+                        <li><a href="/producttable">Quản lý sản phẩm</a></li>
+                        <li><a href="/summary">Thống kê</a></li>
+                        <li><a href="/campaign">Chiến dịch bán hàng</a></li>
+                        <li><a href="/uploadbanner">Upload banner</a></li>
+                        <li><a href="/upload">Upload product</a></li>
+                        <li><a href="/updatedb">Update database</a></li>
+                    </ul>
+                </li>   
+            <%}%>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/signup"><span class="glyphicon glyphicon-user" style="color: black;"></span></a>
+            </li>
+            <li class="dropdown">
+                <% if(user !== "Login") { %>
+                    <a style="color: black;">
+                        <%= user %><span class="caret" style="color: black;"></span>
+                    </a>
+                <% } else { %>
+                    <a href="/login" style="color: black;">
+                        <%= user %><span class="caret" style="color: black;"></span></a>
+                <% } %>
+
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="/carts" style="color: black; font-weight: 500;">
+                    <span class="glyphicon glyphicon-shopping-cart">
+                    </span>
+                    <% if (products || products !== undefined) {%>
+                        <span style="color: coral;">
+                            <%= products.length %>
                         </span>
+                    <%} else {%>
                         <span>
                             0
                         </span>
-                    </a>
-                </li>
+                    <% } %>
+                </a>
+            </li>
 
+            <li>
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
+                        <h3 style="text-align: center;"> TÌM KIẾM </h3>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
+                    </form>
+                </div>
                 <li>
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
-                            <h3 style="text-align: center;"> TÌM KIẾM </h3>
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
-                        </form>
-                    </div>
-                    <li>
-                        <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
-                    </li>
+                    <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
                 </li>
+<<<<<<< HEAD
             </ul>
         </div>
         <a href="javascript:void(0);" class="icon" style="font-size: 30px; margin-left: 10px;" onclick="responsiveMenu()">&#9776;</a>
     </nav>
+=======
+            </li>     
+        </ul>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </nav> -->
+>>>>>>> b2c0716320aa0c2f20665c7a12bf5ad1c9794e40
     
     <script>
         function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "250px";
         }
 
         function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function myFunction() {
+            var x = document.getElementById("topMenu");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
         }
 
         function responsiveMenu() {
