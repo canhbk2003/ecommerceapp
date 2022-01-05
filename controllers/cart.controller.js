@@ -5,7 +5,6 @@ const Cart = require('../models/cart');
 
 class CartController{
   index(req, res ){
-    console.log(req.session.cart);
     if(!req.session.cart) {
       return res.render('carts', {products: null});
     }
