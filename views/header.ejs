@@ -123,18 +123,35 @@
         }
 
         @media screen and (max-width: 600px) {
+            /* left menu */
             .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
                 display: none;
             }
-            .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown > .dropdown-menu{
-                position: relative;
-            }
             .navbar.navbar-dark.bg-dark a.icon{
-                float: right;
+                float: left;
                 display: block;
-                top: 20px;
-                right: 20px;
+                top: 10px;
+                left: 10px;
                 position: absolute;
+            }
+
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > .login-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 70px;
+            }
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > .cart-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 35px;
+            }
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > a, .search-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 10px;
             }
         }
 
@@ -142,8 +159,8 @@
             .navbar.navbar-dark.bg-dark.responsive {position: relative;}
             .navbar.navbar-dark.bg-dark.responsive a.icon{
                 position:absolute;
-                right: 20px;
-                top: 20px;
+                left: 10px;
+                top: 10px;
             }
             .navbar.navbar-dark.bg-dark.responsive > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
                 display: block;
@@ -158,8 +175,8 @@
     
     <nav class="navbar navbar-dark bg-dark" id="topMenu" style="background-color: #FFF;">
         <div class="navbar navbar-header">
-            <a class="navbar-brand" href="/">
-                <img src="/assets/logo.jpg" width="90px" height="60px" alt="League store 77">
+            <a class="navbar-brand" href="/" style="margin-left: 35%;">
+                <img src="/assets/logo.jpg" width="90px" height="50px" alt="League store 77">
             </a>
         </div>
         <div class="container-fluid"> 
@@ -224,54 +241,59 @@
                         </ul>
                     </li>   
                 <%}%>
-    
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/signup"><span class="glyphicon glyphicon-user" style="color: black;"></span></a>
+                    <a href="/signup"><span style="color: black;">ĐĂNG KÝ</span></a>
                 </li>
-                <li class="dropdown">
-                    <% if(user !== "Login") { %>
-                        <a style="color: black;">
-                            <%= user %><span class="caret" style="color: black;"></span>
-                        </a>
-                    <% } else { %>
-                        <a href="/login" style="color: black;">
-                            <%= user %><span class="caret" style="color: black;"></span></a>
-                    <% } %>
-    
+            </ul>
+            
+        </div>
+        <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
+            <% if(user !== "Login") { %>
+                <li class="dropdown-right">
+                    <a style="color: black;">
+                        <%= user %><span class="caret" style="color: black;"></span>
+                    </a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
                         </li>
                     </ul>
                 </li>
-
-                <li>
-                    <a href="/carts" style="color: black; font-weight: 500;">
-                        <span class="glyphicon glyphicon-shopping-cart">
-                        </span>
-                        <span>
-                            0
+            <% } else {%>
+                <li class="login-item">
+                    <a href="/login" style="color: black; font-weight: 500;">
+                        <span class="glyphicon glyphicon-user">
                         </span>
                     </a>
                 </li>
+            <% } %>
 
+            <li class="cart-item">
+                <a href="/carts" style="color: black; font-weight: 500;">
+                    <%if(products){%>
+                        <span class="glyphicon glyphicon-shopping-cart">
+                        </span>
+                    <%}else{%>
+                        <span class="glyphicon glyphicon-shopping-cart"><%=products.length%>
+                        </span>
+                    <%}%>
+                </a>
+            </li>
+
+            <li class="search-item">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
+                        <h3 style="text-align: center;"> TÌM KIẾM </h3>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
+                    </form>
+                </div>
                 <li>
-                    <div id="mySidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
-                            <h3 style="text-align: center;"> TÌM KIẾM </h3>
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
-                        </form>
-                    </div>
-                    <li>
-                        <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
-                    </li>
+                    <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
                 </li>
-            </ul>
-        </div>
+            </li>
+        </ul>
         <a href="javascript:void(0);" class="icon" style="font-size: 35px; margin-left: 10px; color: black;" onclick="responsiveMenu()">
             <i class="glyphicon glyphicon-menu-hamburger"></i>
         </a>
