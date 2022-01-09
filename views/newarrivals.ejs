@@ -121,6 +121,30 @@
             width: 100%;
             height: auto;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-gap: 10px;
+                background-color: #ffff;
+                padding: 10px;
+            }
+        }
 
     </style>
 </head>
@@ -149,38 +173,36 @@
 
     <%- include ('header'); -%>
     <h2 class="new_product">SẢN PHẨM MỚI</h2>
-    <div class="card-deck">
+    <div class="grid-container">
         <% if(product.length > 0) {%>
             <%for(var i=0; i<product.length;i++) { %>
-                <div class="col-sm-12 col-lg-4">
-                    <div class="card h-100">
-                        <a href="/productdetail/<%= product[i]._id %>" >
-                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= product[i].name %>
-                            </h5>
-                            <p class="card-text">
-                                <% if(product[i].bonusPrice > 0) { %>
+                <div class="card h-100">
+                    <a href="/productdetail/<%= product[i]._id %>" >
+                        <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= product[i].name %>
+                        </h5>
+                        <p class="card-text">
+                            <% if(product[i].bonusPrice > 0) { %>
+                                <p>
+                                    <span class="line-through" style="font-size: 85%;">
+                                        <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                    </span>    
+                                    <span class="none" style="font-weight: 550;">
+                                        <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                    </span>
+                                </p>
+
+                                <% } else { %>
                                     <p>
-                                        <span class="line-through" style="font-size: 85%;">
+                                        <span class="normal">
                                             <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                        </span>    
-                                        <span class="none" style="font-weight: 550;">
-                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                         </span>
                                     </p>
-
-                                    <% } else { %>
-                                        <p>
-                                            <span class="normal">
-                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </span>
-                                        </p>
-                                <% } %>
-                            </p>
-                        </div>
+                            <% } %>
+                        </p>
                     </div>
                 </div>
                 <% } %>
