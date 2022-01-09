@@ -9,10 +9,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        /* .container > .col-12.mb-0 > a, img {
-            width: 75%;
+       .flex-container {
+            display: flex;
+            flex-wrap: nowrap;
+            background-color: #fff;
+            align-items: center;
+        }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            width: 150px;
+            margin: 2.5px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+        }
+        .flex-container > div > .flex-item {
+            width: 100%;
             height: auto;
-        } */
+        }
     </style>
 </head>
 
@@ -32,9 +47,21 @@
                                 <div class="col-12 mb-0">
                                     <figure class="view overlay rounded z-depth-1 main-img">
                                         <a width="550" height="600">
-                                            <img src="/products/<%= product.image%>" class="img-fluid z-depth-1" width="550" height="600" style="width: 100%; height: auto;">
+                                            <img src="/products/<%= product.image%>" id="current-img" class="img-fluid z-depth-1" width="550" height="600" style="width: 100%; height: auto;">
                                         </a>
                                     </figure>
+                                </div>
+                                <div class="flex-container">
+                                    <div>
+                                        <img class="flex-item" src="/products/bayern.jpeg" onclick="display(this)">
+                                    </div>
+                                    <div>2</div>
+                                    <div>3</div>  
+                                    <div>4</div>
+                                    <div>5</div>
+                                    <div>6</div>  
+                                    <div>7</div>
+                                    <div>8</div>
                                 </div>
                             </div>
                         </div>
@@ -104,6 +131,8 @@
                 </div>
             </section>
         </form>
+        <br>
+       
     </div>
     <script>
         window.addEventListener("load", () => {
@@ -134,6 +163,13 @@
                 return false; 
             });
         });
+
+        function display(img){
+            var _img = document.getElementById('current-img');
+            if(_img){
+                _img.src = img.src;
+            }
+        }
     </script>
 </body>
 </html>

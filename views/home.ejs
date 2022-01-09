@@ -222,44 +222,42 @@
         <a href="/newarrivals">SẢN PHẨM MỚI</a>
     </h2>
 
-    <div class="container">
-        <div class="card-deck">
-            <% if(product) {%>
-                <%for(var i=0; i<product.length;i++) { %>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card h-100">
-                            <a href="/productdetail/<%= product[i]._id %>" >
-                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= product[i].name %>
-                                </h5>
-                                <p class="card-text">
-                                    <% if(product[i].bonusPrice > 0) { %>
+    <div class="card-deck">
+        <% if(product) {%>
+            <%for(var i=0; i<product.length;i++) { %>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card h-100">
+                        <a href="/productdetail/<%= product[i]._id %>" >
+                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product[i].name %>
+                            </h5>
+                            <p class="card-text">
+                                <% if(product[i].bonusPrice > 0) { %>
+                                    <p>
+                                        <span class="line-through" style="font-size: 85%;">
+                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>    
+                                        <span class="none" style="font-weight: 550;">
+                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>
+                                    </p>
+
+                                    <% } else { %>
                                         <p>
-                                            <span class="line-through" style="font-size: 85%;">
+                                            <span class="normal">
                                                 <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </span>    
-                                            <span class="none" style="font-weight: 550;">
-                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                             </span>
                                         </p>
-
-                                        <% } else { %>
-                                            <p>
-                                                <span class="normal">
-                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span>
-                                            </p>
-                                    <% } %>
-                                </p>
-                            </div>
+                                <% } %>
+                            </p>
                         </div>
                     </div>
-                    <% } %>
-                <%}%>
-        </div>
+                </div>
+                <% } %>
+            <%}%>
     </div>
 
     <br>
@@ -274,45 +272,42 @@
         <a href="/newarrivals"> SẢN PHẨM BÁN CHẠY </a>
     </h2>
 
-    <div class="container">
-        <div class="card-deck">
-            <% if(product) {%>
-                <%for(var i=0; i<product.length;i++) { %>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="card h-100">
-                            <a href="/productdetail/<%= product[i]._id %>" >
-                                <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= product[i].name %>
-                                </h5>
-                                <p class="card-text">
-                                    <% if(product[i].bonusPrice > 0) { %>
+    <div class="card-deck">
+        <% if(product) {%>
+            <%for(var i=0; i<product.length;i++) { %>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card h-100">
+                        <a href="/productdetail/<%= product[i]._id %>" >
+                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product[i].name %>
+                            </h5>
+                            <p class="card-text">
+                                <% if(product[i].bonusPrice > 0) { %>
+                                    <p>
+                                        <span class="line-through" style="font-size: 85%;">
+                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span> 
+                                        <span class="none" style="font-weight: 550;">
+                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>
+                                    </p>
+
+                                    <% } else { %>
                                         <p>
-                                            <span class="line-through" style="font-size: 85%;">
+                                            <span class="normal">
                                                 <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                            </span> 
-                                            <span class="none" style="font-weight: 550;">
-                                                <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
                                             </span>
                                         </p>
-
-                                        <% } else { %>
-                                            <p>
-                                                <span class="normal">
-                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span>
-                                            </p>
-                                    <% } %>
-                                </p>
-                            </div>
+                                <% } %>
+                            </p>
                         </div>
                     </div>
-                <% } %>
+                </div>
             <% } %>
-        </div>
-
+        <% } %>
     </div>
 
     <br>

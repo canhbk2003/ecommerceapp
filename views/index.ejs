@@ -209,8 +209,8 @@
         </div>
     </div>
 
-    <%- include ('header'); -%>
-    <%- include ('slideshow') -%>
+    <%- include ('header', {products: products }) %>
+    <%- include ('slideshow') %>
 
     <div class="container" style="margin-top: 25px;">
         <div class="card-deck">    
@@ -246,158 +246,153 @@
         <a href="/newarrivals">SẢN PHẨM MỚI</a>
     </h2>
 
-        <div class="container">
-            <div class="card-deck">
-                <% if(product) {%>
-                    <%for(var i=0; i<product.length;i++) { %>
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="card h-100">
-                                <a href="/productdetail/<%= product[i]._id %>" >
-                                    <img class="card-img-top img-responsive" src="<%= product[i].image %>" alt="Card image cap" >
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= product[i].name %>
-                                    </h5>
-                                    <p class="card-text">
-                                        <% if(product[i].bonusPrice > 0) { %>
-                                            <p>
-                                                <span class="line-through" style="font-size: 85%;">
-                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span>    
-                                                <span class="none" style="font-weight: 550;">
-                                                    <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span>
-                                            </p>
-
-                                            <% } else { %>
-                                                <p>
-                                                    <span class="normal">
-                                                        <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                    </span>
-                                                </p>
-                                        <% } %>
+    <div class="card-deck">
+        <% if(product) {%>
+            <%for(var i=0; i<product.length;i++) { %>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card h-100">
+                        <a href="/productdetail/<%= product[i]._id %>" >
+                            <img class="card-img-top img-responsive" src="<%= product[i].image %>" alt="Card image cap" >
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product[i].name %>
+                            </h5>
+                            <p class="card-text">
+                                <% if(product[i].bonusPrice > 0) { %>
+                                    <p>
+                                        <span class="line-through" style="font-size: 85%;">
+                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>    
+                                        <span class="none" style="font-weight: 550;">
+                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>
                                     </p>
-                                </div>
-                            </div>
+
+                                    <% } else { %>
+                                        <p>
+                                            <span class="normal">
+                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </span>
+                                        </p>
+                                <% } %>
+                            </p>
                         </div>
-                    <% } %>
-                <%}%>
-            </div>
-        </div>
-        <br>
-        <div class="button-showmore">
-            <a href="/newarrivals" class="moreproduct button">
-                Xem thêm
-            </a>
-        </div>
-        <br>
-        <h2 class="populate_product">
-            <a href="/newarrivals"> SẢN PHẨM BÁN CHẠY </a>
-        </h2>
+                    </div>
+                </div>
+            <% } %>
+        <%}%>
+    </div>
+    <br>
+    <div class="button-showmore">
+        <a href="/newarrivals" class="moreproduct button">
+            Xem thêm
+        </a>
+    </div>
+    <br>
+    <h2 class="populate_product">
+        <a href="/newarrivals"> SẢN PHẨM BÁN CHẠY </a>
+    </h2>
 
-        <div class="container">
-            <div class="card-deck">
-                <% if(product) {%>
-                    <%for(var i=0; i<product.length;i++) { %>
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="card h-100">
-                                <a href="/productdetail/<%= product[i]._id %>" >
-                                    <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= product[i].name %>
-                                    </h5>
-                                    <p class="card-text">
-                                        <% if(product[i].bonusPrice > 0) { %>
-                                            <p>
-                                                <span class="line-through" style="font-size: 85%;">
-                                                    <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span> 
-                                                <span class="none" style="font-weight: 550;">
-                                                    <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                </span>
-                                            </p>
-
-                                            <% } else { %>
-                                                <p>
-                                                    <span class="normal">
-                                                        <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                                                    </span>
-                                                </p>
-                                        <% } %>
+    <div class="card-deck">
+        <% if(product) {%>
+            <%for(var i=0; i<product.length;i++) { %>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="card h-100">
+                        <a href="/productdetail/<%= product[i]._id %>" >
+                            <img class="card-img-top" src="<%= product[i].image %>" alt="Card image cap" >
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product[i].name %>
+                            </h5>
+                            <p class="card-text">
+                                <% if(product[i].bonusPrice > 0) { %>
+                                    <p>
+                                        <span class="line-through" style="font-size: 85%;">
+                                            <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span> 
+                                        <span class="none" style="font-weight: 550;">
+                                            <%= product[i].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                        </span>
                                     </p>
-                                </div>
-                            </div>
+
+                                    <% } else { %>
+                                        <p>
+                                            <span class="normal">
+                                                <%= product[i].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                            </span>
+                                        </p>
+                                <% } %>
+                            </p>
                         </div>
-                    <% } %>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+    <br>
+    <div class="button-showmore">
+        <!-- get all number item from database then page panigate -->
+        <!-- <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#">Previous</a>
+                </li>
+                <%for(var i=1; i<=numItems;i++) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="#">
+                            <%= i %>
+                        </a>
+                    </li>
                 <% } %>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav> -->
+        <a href="/newarrivals" class="moreproduct button">
+            Xem thêm
+        </a>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="info-bellow-product box-icon row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="banner-footer-item" style="margin-bottom:15px"> 
+                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1.png?v=431">
+                    <div class="banner-footer-item-info">
+                        <p class="banner-footer-item-title">FREE SHIP ĐƠN HÀNG TỪ 500.000Đ</p>
+                        <p class="banner-footer-item-des"></p>
+                    </div>
+                </div>
             </div>
-
-        </div>
-        <br>
-        <div class="button-showmore">
-            <!-- get all number item from database then page panigate -->
-            <!-- <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#">Previous</a>
-                    </li>
-                    <%for(var i=1; i<=numItems;i++) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <%= i %>
-                            </a>
-                        </li>
-                    <% } %>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav> -->
-            <a href="/newarrivals" class="moreproduct button">
-                Xem thêm
-            </a>
-        </div>
-
-        <br><br>
-
-        <div class="container">
-            <div class="info-bellow-product box-icon row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="banner-footer-item" style="margin-bottom:15px"> 
-                        <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1.png?v=431">
-                        <div class="banner-footer-item-info">
-                            <p class="banner-footer-item-title">FREE SHIP ĐƠN HÀNG TỪ 500.000Đ</p>
-                            <p class="banner-footer-item-des"></p>
-                        </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="banner-footer-item" style="margin-bottom:15px">
+                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2.png?v=431">
+                    <div class="banner-footer-item-info">
+                        <p class="banner-footer-item-title">ĐỔI TRẢ TRONG VÒNG 7 NGÀY</p>
+                        <p class="banner-footer-item-des"></p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="banner-footer-item" style="margin-bottom:15px">
-                        <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2.png?v=431">
-                        <div class="banner-footer-item-info">
-                            <p class="banner-footer-item-title">ĐỔI TRẢ TRONG VÒNG 7 NGÀY</p>
-                            <p class="banner-footer-item-des"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="banner-footer-item" style="margin-bottom:15px">
-                        <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3.png?v=431">
-                        <div class="banner-footer-item-info">
-                            <p class="banner-footer-item-title">THANH TOÁN KHI NHẬN HÀNG</p>
-                            <p class="banner-footer-item-des"></p>
-                        </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="banner-footer-item" style="margin-bottom:15px">
+                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3.png?v=431">
+                    <div class="banner-footer-item-info">
+                        <p class="banner-footer-item-title">THANH TOÁN KHI NHẬN HÀNG</p>
+                        <p class="banner-footer-item-des"></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer>
-            <%- include('footer'); -%>
-        </footer>
+    <footer>
+        <%- include('footer'); -%>
+    </footer>
 </body>
 
 <script>

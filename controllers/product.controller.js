@@ -1,6 +1,7 @@
 const db = require('../db');
 const Product = require('../models/product');
 const Cart = require('../models/cart');
+const User = require('../models/user');
 
 class ProductController {
     // product table

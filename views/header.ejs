@@ -251,11 +251,14 @@
         </div>
         <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
             <% if(user !== "Login") { %>
-                <li class="dropdown-right">
+                <li class="dropdown">
                     <a style="color: black;">
-                        <%= user %><span class="caret" style="color: black;"></span>
+                        <span class="glyphicon glyphicon-user"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        <a style="color: black;">
+                            <%= user %>
+                        </a>
                         <li>
                             <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
                         </li>
@@ -272,10 +275,10 @@
 
             <li class="cart-item">
                 <a href="/carts" style="color: black; font-weight: 500;">
-                    <%if(products){%>
+                    <% if(products){ %>
                         <span class="glyphicon glyphicon-shopping-cart">
                         </span>
-                    <%}else{%>
+                    <% } else { %>
                         <span class="glyphicon glyphicon-shopping-cart"><%=products.length%>
                         </span>
                     <%}%>

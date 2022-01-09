@@ -13,6 +13,7 @@ const routerUploadNotify = require('./route.uploadnotify');
 const routerNewArrival = require('./route.newarrival');
 const routerNews = require('./route.news');
 const routerCart = require('./route.cart');
+const routerOrder = require('./route.order');
 const logger = require('../log/logger');
 
 const Cart = require('../models/cart');
@@ -52,7 +53,8 @@ function route(app) {
                 }
 
                 res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, products: req.session.cart? cart.generateArray() : {}});
-            } else {
+            } 
+            else {
                 res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, products: req.session.cart? cart.generateArray() : {}});
             }
         });
@@ -78,7 +80,8 @@ function route(app) {
                     }
                 }
                 res.render('home', { numItems: parseInt(_numitems), product: dpData, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
-            } else {
+            } 
+            else {
                 res.render('home', { numItems: parseInt(_numitems), product: {}, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
             }
         });
@@ -321,6 +324,7 @@ function route(app) {
     app.use('/', routerNewArrival);
     app.use('/', routerNews);
     app.use('/', routerCart);
+    app.use('/', routerOrder);
     app.use('/', routerPagination);
 }
 
