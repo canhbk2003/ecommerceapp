@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .sidenav {
             height: 100%;
@@ -98,7 +99,7 @@
         .navbar-nav a{
             font-weight: bold;
             color: black;
-            
+            font-size: 18px;
         }
         .navbar-nav a:hover{
             color: coral;
@@ -166,7 +167,8 @@
                 display: block;
                 width: 100%;
                 text-align: left;
-            }
+                left: 0px;
+            }  
         }
 
     </style>
@@ -298,7 +300,7 @@
             <i class="glyphicon glyphicon-menu-hamburger"></i>
         </a>
     </nav>
-    
+
     <script>
         function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -315,6 +317,7 @@
             } else {
                 x.className = "navbar navbar-dark bg-dark";
             }
+            x.slideDown("slow");
         } 
     </script>
 </body>

@@ -9,11 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-
-        #img {
-            width: 100%;
+        /* .container > .col-12.mb-0 > a, img {
+            width: 75%;
             height: auto;
-        }
+        } */
     </style>
 </head>
 
@@ -33,7 +32,7 @@
                                 <div class="col-12 mb-0">
                                     <figure class="view overlay rounded z-depth-1 main-img">
                                         <a width="550" height="600">
-                                            <img src="/products/<%= product.image%>" class="img-fluid z-depth-1" width="550" height="600">
+                                            <img src="/products/<%= product.image%>" class="img-fluid z-depth-1" width="550" height="600" style="width: 100%; height: auto;">
                                         </a>
                                     </figure>
                                 </div>
@@ -93,7 +92,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="/guide.choosesize" class="btn btn-primary btn-md mr-1 mb-2">Size choose guide</a><br>
+                        <a href="/guide.choosesize" class="btn btn-primary btn-md mr-1 mb-2">Hướng dẫn chọn size</a><br>
                         <p>
                             Để lại tin nhắn cho chúng tôi: (trong trường hợp mà bạn chọn nhiều size)
                         </p>
