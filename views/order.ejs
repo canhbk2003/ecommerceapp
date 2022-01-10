@@ -1,1 +1,75 @@
-<h1>ORDER page</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>League store 77</title>
+    <link rel="icon" href="/assets/logo.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1 style="text-align: center;">ĐƠN HÀNG CỦA BẠN</h1>
+    <% if(bill) {%>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <label>Khách hàng: <%= bill.name%></label><br>
+        <div class="col-md-2"></div>
+        <label>Email: <%= bill.email%></label><br>
+        <div class="col-md-2"></div>
+        <label>Điện thoại: <%= bill.phone%></label><br>
+        <div class="col-md-2"></div>
+        <label>Địa chỉ: <%= bill.address%></label><br>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="list-group">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i = 0; %>
+                        <% var products = [];
+                          products = bill.cart.generateArray();
+                          products.forEach(function (product) {
+                        %>
+                            <tr>
+                                <td>
+                                    <strong><%= product.item.name %></strong>
+                                </td>
+                                <td>
+                                    <strong><%= product.size %></strong>
+                                </td>
+                                <td>
+                                    <span class="total"><%= product.qty %></span>
+                                </td>
+                                <td>
+                                    <span class="badge price-cart"><%= product.price %></span>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+              <strong>Tổng: <%= bill.cart.totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %> </strong>
+          </div>
+      </div>
+        
+    <%} else {%>
+      <a href="/" class="btn btn-primary">Home</a>
+    <% } %>
+  </body>
+</html>

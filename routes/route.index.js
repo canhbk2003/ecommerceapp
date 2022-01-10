@@ -26,10 +26,10 @@ function route(app) {
         const userId = req.cookies.userId;
         if(userId !== ''){
             db.GetById(req.cookies.userId).then(data => {
-            if (data) {
-                const user = new User(data);
-                userName = user.name;
-            }
+                if (data) {
+                    const user = new User(data);
+                    userName = user.name;
+                }
             });
         }
         // query all data
@@ -41,9 +41,10 @@ function route(app) {
             _numitems = _numitems + 1;
             
             var dpData = [];
-            if(req.session.cart){
-                var cart = new Cart(req.session.cart);
-            }
+            // if(req.session.cart){
+            //     var cart = new Cart(req.session.cart);
+            // }
+            var productData = [];
             if (data_.length > 0) {
                 dpData.length = 0;
                 for (var i = 0; i < 9; i++) {
@@ -52,10 +53,20 @@ function route(app) {
                     }
                 }
 
-                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, products: req.session.cart? cart.generateArray() : {}});
+                if(req.session.cart){
+                    var cart = new Cart(req.session.cart);
+                    productData = cart.generateArray(); 
+                }
+                console.log(productData.length);
+                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, products: productData.length > 0 ? productData:{}});
             } 
             else {
-                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, products: req.session.cart? cart.generateArray() : {}});
+                if(req.session.cart){
+                    var cart = new Cart(req.session.cart);
+                    productData = cart.generateArray(); 
+                }
+                console.log(productData.length);
+                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, products: productData.length > 0 ? productData:{}});
             }
         });
     });
@@ -71,18 +82,19 @@ function route(app) {
             var dpData = [];
             if(req.session.cart){
                 var cart = new Cart(req.session.cart);
-            }
-            if (data_.length > 0) {
-                dpData.length = 0;
-                for (var i = 0; i < 9; i++) {
-                    if (data_[i] !== undefined) {
-                        dpData.push(data_[i]);
+            
+                if (data_.length > 0) {
+                    dpData.length = 0;
+                    for (var i = 0; i < 9; i++) {
+                        if (data_[i] !== undefined) {
+                            dpData.push(data_[i]);
+                        }
                     }
                 }
-                res.render('home', { numItems: parseInt(_numitems), product: dpData, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
+                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {}, user: "Login",  products:cart.generateArray()});
             } 
             else {
-                res.render('home', { numItems: parseInt(_numitems), product: {}, user: "Login",  products:req.session.cart? cart.generateArray() : {} });
+                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {}, user: "Login",  products: {} });
             }
         });
     });

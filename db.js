@@ -262,3 +262,19 @@ exports.find_by_product_code = async function find_by_product_code(code){
         logger.error(err);
     }
 }
+
+// save guest order data
+exports.save_guest_order = async function save_guest_order(order){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        return await order.save().then(err => {
+            logger.error(err);
+        });
+    }
+    catch(err){
+        logger.error(err);
+    }
+}
