@@ -34,26 +34,7 @@ exports.ResetEmail = async function ResetEmail(email) {
     await mongoose.connect(uri, {
         connectTimeoutMS: 1000
     });
-    var schema = mongoose.Schema;
-    var UserSchema = new schema({
-        userId: String,
-        name: String,
-        age: String,
-        addr: String,
-        email: String,
-        phone: String
-    });
-    let user;
-    try {
-        user = mongoose.model('UserModel');
-
-    } catch (error) {
-        user = mongoose.model('UserModel', UserSchema, 'administrator');
-    }
-
-    return await user.findOne({ 'email': email }).then(data => {
-        return data;
-    });
+    // @TODO: reset email
 }
 
 exports.AddOneProduct = async function addOne(_product) {
@@ -170,7 +151,7 @@ exports.QueryOneUser = async function queryOneUser(name) {
     return await User.findOne({ 'name': name })
         .then(doc => {
             return doc;
-        })
+        });
 }
 
 exports.Upload = async function upload(files){
@@ -194,7 +175,7 @@ exports.Upload = async function upload(files){
                 if(err){
                     logger.error(err);
                 }
-            })
+            });
         }
     }
     catch(err){
@@ -264,4 +245,20 @@ exports.readfile = async function readfile(){
     }
     // return array of file object
     return arrayObject;
+}
+
+exports.find_by_product_code = async function find_by_product_code(code){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        return await Image.find({productId: code})
+        .then(docs => {
+            return docs;
+        });
+    }
+    catch(err){
+        logger.error(err);
+    }
 }

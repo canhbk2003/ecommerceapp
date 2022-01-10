@@ -42,6 +42,7 @@ class ProductController {
         if(req.session.cart){
             var cart = new Cart(req.session.cart);
         }
+        // lay tat ca san pham co id = productId
         Product.findOne({ _id: req.params.id }, req.body)
             .then(data => res.render('productdetail', { product: data, user: userName , products: req.session.cart? cart.generateArray(): {}}))
             .catch(next);

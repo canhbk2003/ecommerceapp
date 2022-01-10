@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-md-6">
                     <% for(var i=0;i<images.length; i++) {%>
-                        <div class="col-sm-12 col-lg-6">
+                        <div class="col-sm-12 col-lg-2">
                             <img src="<%= images[i].name %>" onclick="sendurl(this)" style="margin-top: 5px; width:100%">
                         </div>
                     <% } %>
@@ -109,7 +109,6 @@
             var url = img.src;
             var filename = getImgName(url);
             document.getElementById('editProductImage').value = filename;
-            img.style.border = "1px solid black";
         }
 
     </script>
