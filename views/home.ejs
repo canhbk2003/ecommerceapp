@@ -14,10 +14,8 @@
         }
         
         .product-item {
-            margin-top: 15px;
+            margin-top: 5px;
         }
-        
-        @media screen and (max-height: 450px) {}
         
         .new_product {
             font-weight: bold;
@@ -60,7 +58,7 @@
             width: 100%;
             height: 15vw;
             object-fit: cover;
-            margin-top: 15px;
+            margin-top: 5px;
         }
         
         .carousel-inner>.item>img,
@@ -85,6 +83,22 @@
             box-shadow: 0 4px 8px 0 rgba(243, 238, 238, 0.2), 0 6px 20px 0 rgba(231, 221, 221, 0.19);
         }
 
+        .dropdown a:hover{
+            text-decoration: underline;
+        }
+
+        .row{
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .container-fluid {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
         #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
         #topbar p {padding: 4px 0;margin-bottom:0;}
         .topbar-hotline a.phone-num { display: inline-block;}
@@ -101,7 +115,8 @@
             line-height: 35px;
             border-color:#e00000;
             color:#e00000;
-            font-size: 16px;	 margin: 0;	
+            font-size: 16px;	 
+            margin: 0;	
         }
         .topbar-hotline a.phone-num .fa {
             width: 22px;
@@ -115,6 +130,10 @@
             font-size: 10px;
             display: inline-block;
             vertical-align: middle;margin-right:5px;
+        }
+
+        .banner-footer-item-title{
+            font-weight: 450;
         }
 
         .box-icon:not(.policy_home) .banner-footer-item {
@@ -142,12 +161,6 @@
         .banner-footer-item-des {
             display: none;
         }
-
-        .card-img-top{
-            width: 100%;
-            height: auto;
-        }
-
         /* button xem them san pham */
         .button-showmore .moreproduct {
             padding: 7px 20px;
@@ -159,6 +172,11 @@
             color: #000 !important;
             margin-left: 45%;
         }
+        .card-img-top{
+            width: 100%;
+            height: auto;
+        }
+        
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto auto;
@@ -170,7 +188,7 @@
         .grid-container > div {
             background-color: rgba(255, 255, 255, 0.8);
             text-align: center;
-            padding: 20px 0;
+            padding: 0px 0px;
             font-size: 14px;
         }
 
@@ -178,7 +196,7 @@
             .grid-container {
                 display: grid;
                 grid-template-columns: auto auto;
-                grid-gap: 10px;
+                grid-gap: 3px 3px;
                 background-color: #ffff;
                 padding: 10px;
             }
