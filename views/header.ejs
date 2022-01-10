@@ -38,9 +38,12 @@
             margin-left: 50px;
         }
 
-        @media screen and (max-height: 450px) {
+        @media screen and (max-width: 600px) {
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
+            .sidenav .form-inline.my-2.my-lg-0 .form-control.mr-sm-2{
+                width: 85%;
+            }
         }
 
         .dropdown{
@@ -306,7 +309,7 @@
 
     <script>
         function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("mySidenav").style.width = "220px";
         }
 
         function closeNav() {
