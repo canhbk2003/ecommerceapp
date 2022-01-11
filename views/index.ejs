@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>League store 77</title>
-    <link rel="icon" href="/assets/logo.jpg">
+    <link rel="icon" href="/assets/logoweb.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -193,6 +193,21 @@
             font-size: 14px;
         }
 
+        .grid-container-top {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container-top > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
+
         @media screen and (max-width: 600px) {
             .grid-container {
                 display: grid;
@@ -200,6 +215,16 @@
                 grid-gap: 3px 3px;
                 background-color: #ffff;
                 padding: 10px;
+            }
+
+            .grid-container-top {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-gap: 3px 3px;
+                background-color: #ffff;
+                padding: 10px;
+                border: thin solid rgb(228, 216, 216);
+                border-radius: 3px;
             }
             
             .button-showmore .moreproduct{
@@ -243,35 +268,32 @@
         <%- include ('header') %>
     <%}%>
     <%- include ('slideshow') %>
+    <br>
+    <div class="grid-container-top">
+        <div class="card h-100">
+            <div class="banner-footer-item-image">
+                <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1_home.png?v=431" style="width: 45px; height: 45px;">
+            </div>
 
-    <div class="container" style="margin-top: 25px;">
-        <div class="card-deck">    
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
-                <div class="banner-footer-item-image">
-                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_1_home.png?v=431" style="width: 45px; height: 45px;">
-                </div>
-
-                <div class="banner-footer-item-info">
-                    <p class="banner-footer-item-title">FREESHIP đơn hàng từ 500.000đ trở lên</p>
-                </div>
+            <div class="banner-footer-item-info">
+                <p class="banner-footer-item-title" >FREESHIP đơn hàng từ 500.000đ trở lên</p>
             </div>
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
-                <div class="banner-footer-item-image">
-                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2_home.png?v=431" style="width: 45px; height: 45px;">
-                </div>
-                <div class="banner-footer-item-info">
-                    <p class="banner-footer-item-title">Kiểm tra hàng trước khi thanh toán</p>
-                </div>
+        </div>
+        <div class="card h-100">
+            <div class="banner-footer-item-image">
+                <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_2_home.png?v=431" style="width: 45px; height: 45px;">
             </div>
-            <div class="col-sm-12 col-lg-4" style="margin-bottom:15px; align-items: center;">
-                <div class="banner-footer-item-image">
-                    <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3_home.png?v=431" style="width: 45px; height: 45px;">
-                </div>
-                <div class="banner-footer-item-info">
-                    <p class="banner-footer-item-title">Đổi trả trong vòng 7 ngày</p>
-                </div>
+            <div class="banner-footer-item-info">
+                <p class="banner-footer-item-title">Kiểm tra hàng trước khi thanh toán</p>
             </div>
-            
+        </div>
+        <div class="card h-100">
+            <div class="banner-footer-item-image">
+                <img src="//theme.hstatic.net/1000253775/1000799526/14/info_img_3_home.png?v=431" style="width: 45px; height: 45px;">
+            </div>
+            <div class="banner-footer-item-info">
+                <p class="banner-footer-item-title">Đổi trả trong vòng 7 ngày</p>
+            </div>
         </div>
     </div>
     <h2 class="new_product">
