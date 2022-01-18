@@ -173,7 +173,6 @@
                 float: right;
                 right: 10px;
             }
-
         }
 
         @media screen and (max-width: 600px){   
@@ -188,9 +187,9 @@
                 width: 100%;
                 text-align: left;
                 left: 0px;
-            }  
-            .navbar.navbar-dark.bg-dark.responsive > .navbar.navbar-header > a, .brand-img{
-                margin-left: 125px;
+            }
+            .navbar.navbar-dark.bg-dark.responsive > .container-fluid > .nav.navbar-nav{
+                margin-left: 0px;
             }
         }
 
@@ -200,12 +199,12 @@
     
     <nav class="navbar navbar-dark bg-dark" id="topMenu" style="background-color: #FFF;">
         <div class="navbar navbar-header">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/" style="margin-left: 35%;">
                 <img class="brand-img" src="/assets/logo.jpg" width="90px" height="50px" alt="League store 77">
             </a>
         </div>   
         <div class="container-fluid" style="margin-top: 20px;"> 
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" style="margin-left: 35px;">
                 <li class="active"><a href="/">TRANG CHỦ</a></li>
                 <li>
                     <a href="/newarrivals">NEW ARRIVAL</a>
