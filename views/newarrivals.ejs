@@ -207,6 +207,17 @@
             }
         }
 
+        .button-showmore .moreproduct{
+            padding: 7px 20px;
+            text-transform: uppercase;
+            border: 2px solid #000;
+            border-radius: 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: #000 !important;
+            margin-left: 35%;
+        }
+
     </style>
 </head>
 
@@ -287,7 +298,15 @@
             <%}%>
     </div>
 
-    <!-- get all number item from database then page panigate -->
+    <div class="button-showmore">
+        <a href="/newarrivals" class="moreproduct button">
+            Xem thêm
+        </a>
+    </div>
+
+    <br>
+
+    <!-- get all number item from database then page panigate
     <nav aria-label="Page navigation" class="page-panigation" style="margin-left: 30%;">
         <ul class="pagination">
             <li class="page-item">
@@ -304,7 +323,7 @@
                 <a class="page-link" href="#">Next</a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
