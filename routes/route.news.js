@@ -33,9 +33,9 @@ router.get('/news', (req, res, next) => {
               }
           }
 
-          res.render('news', { numItems: parseInt(_numitems), product: dpData, user: userName});
+          res.render('news', { numItems: parseInt(_numitems), product: dpData, products: {}, user: userName});
       } else {
-          res.render('news', { numItems: parseInt(_numitems), product: {}, user: userName});
+          res.render('news', { numItems: parseInt(_numitems), product: {}, products:{}, user: userName});
       }
   });
 });

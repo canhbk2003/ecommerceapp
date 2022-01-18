@@ -58,7 +58,7 @@ function route(app) {
                     productData = cart.generateArray(); 
                 }
                 console.log(productData.length);
-                res.render('index', { numItems: parseInt(_numitems), product: dpData, user: userName, products: productData.length > 0 ? productData:{}});
+                res.render('index', { numItems: parseInt(_numitems), product: dpData,  products: productData.length > 0 ? productData:{}, user: userName});
             } 
             else {
                 if(req.session.cart){
@@ -66,7 +66,7 @@ function route(app) {
                     productData = cart.generateArray(); 
                 }
                 console.log(productData.length);
-                res.render('index', { numItems: parseInt(_numitems), product: {}, user: userName, products: productData.length > 0 ? productData:{}});
+                res.render('index', { numItems: parseInt(_numitems), product: {},  products: productData.length > 0 ? productData:{}, user: userName});
             }
         });
     });
@@ -91,10 +91,10 @@ function route(app) {
                         }
                     }
                 }
-                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {}, user: "Login",  products:cart.generateArray()});
+                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {},  products:cart.generateArray() , user: "Login"});
             } 
             else {
-                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {}, user: "Login",  products: {} });
+                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {},   products: {} , user: "Login"});
             }
         });
     });

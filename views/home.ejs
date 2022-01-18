@@ -101,7 +101,9 @@
         }
 
         #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
         #topbar p {padding: 4px 0;margin-bottom:0;}
+        #topbar-down p {padding: 4px 0;margin-bottom:0;}
         .topbar-hotline a.phone-num { display: inline-block;}
         .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
         .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
@@ -237,8 +239,8 @@
         </div>
     </div>
 
-    <%- include ('header'); -%>
-    <%- include ('slideshow'); -%>
+    <%- include ('header', {products: products}) -%>
+    <%- include ('slideshow') -%>
 
     <div class="container" style="margin-top: 25px;">
         <div class="card-deck">    

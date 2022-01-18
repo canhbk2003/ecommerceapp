@@ -103,7 +103,9 @@
         }
 
         #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
         #topbar p {padding: 4px 0;margin-bottom:0;}
+        #topbar-down p {padding: 4px 0;margin-bottom:0;}
         .topbar-hotline a.phone-num { display: inline-block;}
         .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
         .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
@@ -231,6 +233,23 @@
     </div>
 
     <%- include ('header'); -%>
+    <div id="topbar-down">
+        <div class="container-fluid" style="margin-left: 20px;">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                  <p>
+                    <a href="/">Trang chủ</a> / Sản phẩm mới
+                  </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-hotline">
+                    <a class="phone-num" href="tel:0123456789"></a>
+                    <span class="circle-phone">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     <h2 class="new_product">SẢN PHẨM MỚI</h2>
     <div class="grid-container">
         <% if(product.length > 0) {%>

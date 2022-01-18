@@ -92,6 +92,7 @@
         }
         .nav.navbar-nav {
             font-weight: bold;
+            background: transparent;
         }
 
         .dropdown .dropdown-menu a:hover{
@@ -110,10 +111,13 @@
             font-weight: bold;
             color: black;
             font-size: 18px;
+            background: transparent;
         }
         .navbar-nav a:hover{
             color: coral;
             text-decoration: underline;
+            background-color: transparent;
+            background: transparent;
         }
 
         .dropdown a:hover{
@@ -131,6 +135,11 @@
 
         .navbar.navbar-dark.bg-dark a.icon:hover{
             color: coral;
+        }
+
+        .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown:hover{
+            background: transparent;
+            background-color: transparent;
         }
 
         @media screen and (max-width: 600px) {
@@ -199,6 +208,7 @@
                 </li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >SẢN PHẨM<span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="#" >TẤT CẢ SẢN PHẨM</a></li>
                         <li><a href="#" >QUẦN ÁO</a></li>
                         <li><a href="#" >QUẦN ÁO THỂ THAO</a></li>
                         <li><a href="#" >PHỤ KIỆN</a></li>
@@ -255,7 +265,7 @@
                     </li>   
                 <%}%>
                 <li>
-                    <a href="/signup"><span style="color: black;">ĐĂNG KÝ</span></a>
+                    <a href="/signup"><span >ĐĂNG KÝ</span></a>
                 </li>
             </ul>
             
@@ -287,7 +297,7 @@
             <li class="cart-item">
                 <a href="/carts" style="color: black; font-weight: 500;">
                     <% if(products){ %>
-                        <span class="glyphicon glyphicon-shopping-cart">
+                        <span class="glyphicon glyphicon-shopping-cart">0
                         </span>
                     <% } else { %>
                         <span class="glyphicon glyphicon-shopping-cart"><%=products.length%>
