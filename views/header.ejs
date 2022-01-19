@@ -111,7 +111,7 @@
         .navbar-nav a{
             font-weight: 350;
             color: black;
-            font-size: 18px;
+            font-size: 16px;
             background: transparent;
             transition: 0.5s;
         }
@@ -148,6 +148,7 @@
             /* left menu */
             .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
                 display: none;
+                transition: 0.5s;
             }
             .navbar.navbar-dark.bg-dark a.icon{
                 float: left;
@@ -292,7 +293,7 @@
                 </li>
             <% } else {%>
                 <li class="login-item">
-                    <a href="/login" style="color: black; font-weight: 500;">
+                    <a href="/login" style="color: black; font-weight: 350;">
                         <span class="glyphicon glyphicon-user">
                         </span>
                     </a>
@@ -300,7 +301,7 @@
             <% } %>
 
             <li class="cart-item">
-                <a href="/carts" style="color: black; font-weight: 500;">
+                <a href="/carts" style="color: black; font-weight: 350;">
                     <% if(products){ %>
                         <span class="glyphicon glyphicon-shopping-cart">0
                         </span>
@@ -332,19 +333,21 @@
 
     <script>
         function openNav() {
-        document.getElementById("mySidenav").style.width = "220px";
+            document.getElementById("mySidenav").style.width = "220px";
         }
 
         function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("mySidenav").style.width = "0";
         }
 
         function responsiveMenu() {
             var x = document.getElementById("topMenu");
             if (x.className === "navbar navbar-dark bg-dark") {
                 x.className += " responsive";
+                x.style.height = "435px";
             } else {
                 x.className = "navbar navbar-dark bg-dark";
+                x.style.height = "0px";
             }
         } 
     </script>
