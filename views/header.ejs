@@ -146,6 +146,10 @@
 
         @media screen and (max-width: 600px) {
             /* left menu */
+            .navbar.navbar-dark.bg-dark{
+                height: 5px;
+                transition: 0.5s;
+            }
             .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
                 display: none;
                 transition: 0.5s;
@@ -181,6 +185,7 @@
         @media screen and (max-width: 600px){   
             .navbar.navbar-dark.bg-dark.responsive {
                 position: relative;
+                height: 435px;
                 transition: 0.5s;
             }
             .navbar.navbar-dark.bg-dark.responsive a.icon{
@@ -344,10 +349,8 @@
             var x = document.getElementById("topMenu");
             if (x.className === "navbar navbar-dark bg-dark") {
                 x.className += " responsive";
-                x.style.height = "435px";
             } else {
                 x.className = "navbar navbar-dark bg-dark";
-                x.style.height = "0px";
             }
         } 
     </script>
