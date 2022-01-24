@@ -163,6 +163,7 @@ exports.Upload = async function upload(files){
         });
         logger.info('connect to db successfully');
         const upload_path = path.join(__dirname, './upload/');
+        const root_path = path.join(__dirname, './pubic/products');
         // save model
         for(var i=0;i<files.length;i++){
             var _url = upload_path+files[i];
@@ -175,6 +176,11 @@ exports.Upload = async function upload(files){
                 if(err){
                     logger.error(err);
                 }
+                // copy file into products directory
+                var root_url = root_path + files[i];
+                fs.copyFile(_url, root_url, (err) => {
+                    if (err) throw err;
+                });
             });
         }
     }
