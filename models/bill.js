@@ -7,6 +7,7 @@ const Bill = new Schema({
   phone: {type: String, require: true},
   address: {type: String, require: true},
   cart: {type: Object, require: true},
+  state: {type: String, require: true},
   paymentId: {type: String, require: true}, // for online purchase
   date: {type: Date, default: Date.now}
 });

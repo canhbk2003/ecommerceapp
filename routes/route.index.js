@@ -17,6 +17,7 @@ const routerOrder = require('./route.order');
 const logger = require('../log/logger');
 
 const Cart = require('../models/cart');
+const routerOrderManager = require('./route.ordermanager');
 
 function route(app) { 
     // home page
@@ -57,16 +58,22 @@ function route(app) {
                     var cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
                 }
-                console.log(productData.length);
-                res.render('index', { numItems: parseInt(_numitems), product: dpData,  products: productData.length > 0 ? productData:{}, user: userName});
+                res.render('index', { 
+                    numItems: parseInt(_numitems), 
+                    product: dpData,  
+                    products: productData.length > 0 ? productData:{}, 
+                    user: userName});
             } 
             else {
                 if(req.session.cart){
                     var cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
                 }
-                console.log(productData.length);
-                res.render('index', { numItems: parseInt(_numitems), product: {},  products: productData.length > 0 ? productData:{}, user: userName});
+                res.render('index', { 
+                    numItems: parseInt(_numitems), 
+                    product: {},  
+                    products: productData.length > 0 ? productData:{}, 
+                    user: userName});
             }
         });
     });
@@ -91,10 +98,19 @@ function route(app) {
                         }
                     }
                 }
-                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {},  products:cart.generateArray() , user: "Login"});
+                res.render('home', 
+                { 
+                    numItems: parseInt(_numitems), 
+                    product: dpData.length > 0 ? dpData : {},  
+                    products:cart.generateArray() , 
+                    user: "Login"});
             } 
             else {
-                res.render('home', { numItems: parseInt(_numitems), product: dpData.length > 0 ? dpData : {},   products: {} , user: "Login"});
+                res.render('home', { 
+                    numItems: parseInt(_numitems), 
+                    product: dpData.length > 0 ? dpData : {},   
+                    products: {} , 
+                    user: "Login"});
             }
         });
     });
@@ -337,6 +353,7 @@ function route(app) {
     app.use('/', routerNews);
     app.use('/', routerCart);
     app.use('/', routerOrder);
+    app.use('/', routerOrderManager);
     app.use('/', routerPagination);
 }
 

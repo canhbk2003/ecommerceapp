@@ -262,7 +262,7 @@
             </div>
         </div>
     </div>
-    <%- include ('header', {products: products}) %>
+    <%- include ('header') %>
     <%- include ('slideshow') %>
     <br>
     <div class="grid-container-top">
@@ -377,24 +377,6 @@
     </div>
     <br>
     <div class="button-showmore">
-        <!-- get all number item from database then page panigate -->
-        <!-- <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#">Previous</a>
-                </li>
-                <%for(var i=1; i<=numItems;i++) { %>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <%= i %>
-                        </a>
-                    </li>
-                <% } %>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav> -->
         <a href="/newarrivals" class="moreproduct button">
             Xem thêm
         </a>

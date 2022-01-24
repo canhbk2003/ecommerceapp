@@ -307,11 +307,11 @@
 
             <li class="cart-item">
                 <a href="/carts" style="color: black; font-weight: 350;">
-                    <% if(products){ %>
-                        <span class="glyphicon glyphicon-shopping-cart">0
+                    <% if(products === undefined){ %>
+                        <span class="glyphicon glyphicon-shopping-cart" style="color: black;">0
                         </span>
                     <% } else { %>
-                        <span class="glyphicon glyphicon-shopping-cart"><%=products.length%>
+                        <span class="glyphicon glyphicon-shopping-cart" style="color:coral;"><%=products.length%>
                         </span>
                     <%}%>
                 </a>

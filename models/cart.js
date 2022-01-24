@@ -45,6 +45,8 @@ module.exports = function Cart(oldCart) {
       }
       
       if(this.items[id].qty <= 0) {
+        // clear tien
+        this.totalPrice = 0;
         delete this.items[id];
       }
   };
@@ -59,6 +61,10 @@ module.exports = function Cart(oldCart) {
       const arr = [];
       for (let id in this.items) {
           arr.push(this.items[id]);
+      }
+      if(arr.length === 0){
+        this.totalPrice = 0;
+        this.totalQty = 0;
       }
       return arr;
   };

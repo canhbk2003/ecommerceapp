@@ -20,7 +20,7 @@ class UpdateDbController {
         }
         db.Upload(files).then(() => {
             res.render('uploaddbnotify');
-        })
+        });
     }
 }
 
