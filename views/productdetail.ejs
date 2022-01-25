@@ -29,6 +29,29 @@
             width: 100%;
             height: auto;
         }
+        .container {
+            align-items: center;
+        }
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #111;
+            color: white;
+            bottom: 0rem;
+            position: relative;
+            width: 100%;
+            opacity: calc();
+        }
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(243, 238, 238, 0.2), 0 6px 20px 0 rgba(231, 221, 221, 0.19);
+        }
+        .img-responsive{
+            margin:0 auto;
+        }
     </style>
 </head>
 
@@ -114,20 +137,38 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="/guide.choosesize" class="btn btn-primary btn-md mr-1 mb-2">Hướng dẫn chọn size</a><br>
+                        <a data-toggle="modal" data-target="#modal-size-guide" class="btn btn-primary btn-md mr-1 mb-2" style="background-color: #111;">Hướng dẫn chọn size</a><br>
                         <p>
                             Để lại tin nhắn cho chúng tôi: (trong trường hợp mà bạn chọn nhiều size)
                         </p>
                         <textarea type="textarea" id="repMsg" name="msg" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"></textarea><br>
-                        <button type="submit" class="btn btn-primary btn-md mr-1 mb-2">Đặt mua ngay</button>
-                        <a href="" class="btn btn-warning btn-md mr-1 mb-2" id="addtocart">
+                        <button type="submit" class="btn btn-primary btn-md mr-1 mb-2" style="background-color: #111;">Đặt mua ngay</button>
+                        <a href="" class="btn btn-primary btn-md mr-1 mb-2" id="addtocart" style="background-color: #111;">
                         <i class="fas fa-shopping-cart pr-2"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </section>
         </form>
-        <br>
-       
+        <br>   
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modal-size-guide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Hướng dẫn chọn size</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="img-responsive" src="/size_guide/guide.jpg" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         window.addEventListener("load", () => {
@@ -166,5 +207,9 @@
             }
         }
     </script>
+    <footer>
+        <%- include('footer')%>
+    </footer>
+    
 </body>
 </html>
