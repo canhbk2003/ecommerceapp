@@ -25,6 +25,8 @@ router.get('/news', (req, res, next) => {
       }
       _numitems = _numitems + 1;
       var dpData = [];
+      var productData = [];
+      var cart;
       if (data_.length > 0) {
           dpData.length = 0;
           for (var i = 0; i < 9; i++) {
@@ -33,9 +35,41 @@ router.get('/news', (req, res, next) => {
               }
           }
 
-          res.render('news', { numItems: parseInt(_numitems), product: dpData, products: {}, user: userName});
-      } else {
-          res.render('news', { numItems: parseInt(_numitems), product: {}, products:{}, user: userName});
+          if(req.session.cart){
+              cart = new Cart(req.session.cart);
+              productData = cart.generateArray(); 
+              res.render('news', { 
+                  numItems: parseInt(_numitems), 
+                  product: dpData,  
+                  products: parseInt(productData.length), 
+                  user: userName});
+          }
+          else{
+              res.render('news', { 
+                  numItems: parseInt(_numitems), 
+                  product: dpData,  
+                  products: parseInt(productData.length), 
+                  user: userName});
+          }
+          
+      } 
+      else {
+          if(req.session.cart){
+              cart = new Cart(req.session.cart);
+              productData = cart.generateArray(); 
+              res.render('news', { 
+                  numItems: parseInt(_numitems), 
+                  product: {},  
+                  products: parseInt(productData.length), 
+                  user: userName});
+          }
+          else{
+              res.render('news', { 
+                  numItems: parseInt(_numitems), 
+                  product: {},  
+                  products: parseInt(productData.length), 
+                  user: userName});
+          }
       }
   });
 });

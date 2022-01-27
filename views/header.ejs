@@ -237,11 +237,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" >HƯỚNG DẪN CHỌN SIZE</a></li>
                         <li><a href="#" >HƯỚNG DẪN ĐẶT HÀNG</a></li>
-                        <li><a href="#" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                        <li><a href="/guide.backitem" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
                         <li><a href="#" >TÀI KHOẢN NGÂN HÀNG</a></li>
                     </ul>
                 </li>
-
     
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GIẢI ĐẤU<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -261,7 +260,7 @@
     
                 <li><a class="news" href="/news">NEWS</a></li>
     
-                <% if(user !== "Login") {%>
+                <% if(user !== undefined && user !== "Login") {%>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/admin">Quản lý người dùng</a></li>
@@ -282,7 +281,7 @@
             
         </div>
         <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
-            <% if(user !== "Login") { %>
+            <% if(user !== undefined && user !== "Login") { %>
                 <li class="dropdown">
                     <a style="color: black;">
                         <span class="glyphicon glyphicon-user"></span>
@@ -307,13 +306,8 @@
 
             <li class="cart-item">
                 <a href="/carts" style="color: black; font-weight: 350;">
-                    <% if(products === undefined){ %>
-                        <span class="glyphicon glyphicon-shopping-cart" style="color: black;">0
-                        </span>
-                    <% } else { %>
-                        <span class="glyphicon glyphicon-shopping-cart" style="color:black;"><%=products.length%>
-                        </span>
-                    <%}%>
+                    <span class="glyphicon glyphicon-shopping-cart" style="color: black;"><%=products%>
+                    </span>
                 </a>
             </li>
 

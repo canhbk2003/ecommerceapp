@@ -33,7 +33,9 @@
             opacity: calc();
         }
         #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
         #topbar p {padding: 4px 0;margin-bottom:0;}
+        #topbar-down p {padding: 4px 0;margin-bottom:0;}
         .topbar-hotline a.phone-num { display: inline-block;}
         .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
         .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
@@ -84,10 +86,40 @@
         .img-responsive{
             margin:0 auto;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
+
+        .grid-container-top {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container-top > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
+    <%- include('header')%>
     <div id="topbar-down">
         <div class="container-fluid" style="margin-left: 20px;">
             <div class="row">

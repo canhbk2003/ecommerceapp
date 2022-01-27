@@ -19,27 +19,58 @@ router.get('/newarrivals', (req, res, next) => {
 
   // query all data
   db.QueryAllProduct().then(data_ => {
-      var _numitems = data_.length / 9;
-      if (_numitems < 1) {
-          _numitems = 1;
-      }
-      _numitems = _numitems + 1;
-      var dpData = [];
-      if(req.session.cart){
-          var cart = new Cart(req.session.cart);
-      }
-      if (data_.length > 0) {
-          dpData.length = 0;
-          for (var i = 0; i < 9; i++) {
-              if (data_[i] !== undefined) {
-                  dpData.push(data_[i]);
-              }
-          }
+        var _numitems = data_.length / 9;
+        if (_numitems < 1) {
+            _numitems = 1;
+        }
+         _numitems = _numitems + 1;
+        var dpData = [];
+        var productData = [];
+        var cart;
+        if (data_.length > 0) {
+            dpData.length = 0;
+            for (var i = 0; i < 9; i++) {
+                if (data_[i] !== undefined) {
+                    dpData.push(data_[i]);
+                }
+            }
 
-          res.render('newarrivals', { numItems: parseInt(_numitems), product: dpData, user: userName, products: req.session.cart? cart.generateArray():{}});
-      } else {
-          res.render('newarrivals', { numItems: parseInt(_numitems), product: {}, user: userName, products: req.session.cart? cart.generateArray():{}});
-      }
+            if(req.session.cart){
+                cart = new Cart(req.session.cart);
+                productData = cart.generateArray(); 
+                res.render('newarrivals', { 
+                    numItems: parseInt(_numitems), 
+                    product: dpData,  
+                    products: parseInt(productData.length), 
+                    user: userName});
+            }
+            else{
+                res.render('newarrivals', { 
+                    numItems: parseInt(_numitems), 
+                    product: dpData,  
+                    products: parseInt(productData.length), 
+                    user: userName});
+            }
+            
+        } 
+        else {
+            if(req.session.cart){
+                cart = new Cart(req.session.cart);
+                productData = cart.generateArray(); 
+                res.render('newarrivals', { 
+                    numItems: parseInt(_numitems), 
+                    product: {},  
+                    products: parseInt(productData.length), 
+                    user: userName});
+            }
+            else{
+                res.render('newarrivals', { 
+                    numItems: parseInt(_numitems), 
+                    product: {},  
+                    products: parseInt(productData.length), 
+                    user: userName});
+            }
+        }
   });
 });
 

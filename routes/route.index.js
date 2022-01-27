@@ -18,6 +18,8 @@ const logger = require('../log/logger');
 
 const Cart = require('../models/cart');
 const routerOrderManager = require('./route.ordermanager');
+const routerBackItem = require('./route.backitem');
+const routerContact = require('./route.contact');
 
 function route(app) { 
     // home page
@@ -42,10 +44,8 @@ function route(app) {
             _numitems = _numitems + 1;
             
             var dpData = [];
-            // if(req.session.cart){
-            //     var cart = new Cart(req.session.cart);
-            // }
             var productData = [];
+            var cart;
             if (data_.length > 0) {
                 dpData.length = 0;
                 for (var i = 0; i < 9; i++) {
@@ -55,31 +55,47 @@ function route(app) {
                 }
 
                 if(req.session.cart){
-                    var cart = new Cart(req.session.cart);
+                    cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
+                    res.render('index', { 
+                        numItems: parseInt(_numitems), 
+                        product: dpData,  
+                        products: parseInt(productData.length), 
+                        user: userName});
                 }
-                res.render('index', { 
-                    numItems: parseInt(_numitems), 
-                    product: dpData,  
-                    products: productData.length > 0 ? productData:{}, 
-                    user: userName});
+                else{
+                    res.render('index', { 
+                        numItems: parseInt(_numitems), 
+                        product: dpData,  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
+                
             } 
             else {
                 if(req.session.cart){
-                    var cart = new Cart(req.session.cart);
+                    cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
+                    res.render('index', { 
+                        numItems: parseInt(_numitems), 
+                        product: {},  
+                        products: parseInt(productData.length), 
+                        user: userName});
                 }
-                res.render('index', { 
-                    numItems: parseInt(_numitems), 
-                    product: {},  
-                    products: productData.length > 0 ? productData:{}, 
-                    user: userName});
+                else{
+                    res.render('index', { 
+                        numItems: parseInt(_numitems), 
+                        product: {},  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
             }
         });
     });
 
     app.get('/home', authMiddleware.releaseAuth, function(req, res) {
         // query all data
+        let userName = "Login";
         db.QueryAllProduct().then(data_ => {
             var _numitems = data_.length / 12;
             if (_numitems < 1) {
@@ -87,37 +103,58 @@ function route(app) {
             }
             _numitems = _numitems + 1;
             var dpData = [];
-            if(req.session.cart){
-                var cart = new Cart(req.session.cart);
-            
-                if (data_.length > 0) {
-                    dpData.length = 0;
-                    for (var i = 0; i < 9; i++) {
-                        if (data_[i] !== undefined) {
-                            dpData.push(data_[i]);
-                        }
+            var productData = [];
+            var cart;
+            if (data_.length > 0) {
+                dpData.length = 0;
+                for (var i = 0; i < 9; i++) {
+                    if (data_[i] !== undefined) {
+                        dpData.push(data_[i]);
                     }
                 }
-                res.render('home', 
-                { 
-                    numItems: parseInt(_numitems), 
-                    product: dpData.length > 0 ? dpData : {},  
-                    products:cart.generateArray() , 
-                    user: "Login"});
+
+                if(req.session.cart){
+                    cart = new Cart(req.session.cart);
+                    productData = cart.generateArray(); 
+                    res.render('home', { 
+                        numItems: parseInt(_numitems), 
+                        product: dpData,  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
+                else{
+                    res.render('home', { 
+                        numItems: parseInt(_numitems), 
+                        product: dpData,  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
+                
             } 
             else {
-                res.render('home', { 
-                    numItems: parseInt(_numitems), 
-                    product: dpData.length > 0 ? dpData : {},   
-                    products: {} , 
-                    user: "Login"});
+                if(req.session.cart){
+                    cart = new Cart(req.session.cart);
+                    productData = cart.generateArray(); 
+                    res.render('home', { 
+                        numItems: parseInt(_numitems), 
+                        product: {},  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
+                else{
+                    res.render('home', { 
+                        numItems: parseInt(_numitems), 
+                        product: {},  
+                        products: parseInt(productData.length), 
+                        user: userName});
+                }
             }
         });
     });
 
-    app.get('/contact', function(req, res) {
-        res.render('contact');
-    });
+    // app.get('/contact', function(req, res) {
+    //     res.render('contact');
+    // });
 
     // app.get('/edituser', function(req, res) {
     //     res.render('edituser');
@@ -354,6 +391,8 @@ function route(app) {
     app.use('/', routerCart);
     app.use('/', routerOrder);
     app.use('/', routerOrderManager);
+    app.use('/', routerBackItem);
+    app.use('/', routerContact);
     app.use('/', routerPagination);
 }
 

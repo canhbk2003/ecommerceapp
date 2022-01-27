@@ -225,6 +225,202 @@
                 margin-left: 35%;
             }
         }
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #FFF;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+            .sidenav .form-inline.my-2.my-lg-0 .form-control.mr-sm-2{
+                width: 85%;
+            }
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 10px;
+                font-size: 36px;
+                margin-left: 25px;
+            }
+        }
+
+        .dropdown{
+            position: absolute;
+            display: inline-block;
+        }
+        .dropdown-right{
+            position: absolute;
+            display: inline-block;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+            color: coral;
+        }
+        .dropdown-menu-right a:hover {
+            background-color: #ddd;
+            color: coral;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-right:hover .dropdown-menu-right {
+            display: block;
+        }
+
+        .dropdown{
+            font-weight: bold;
+        }
+        .dropdown :hover{
+            color: coral;
+        }
+        .dropdown-right{
+            font-weight: bold;
+        }
+        .dropdown-right :hover{
+            color: coral;
+        }
+        .nav.navbar-nav {
+            font-weight: bold;
+            background: transparent;
+            transition: 0.5s;
+        }
+
+        .dropdown .dropdown-menu a:hover{
+            font-weight: bold;
+            color: coral;
+            text-decoration: underline;
+        }
+
+        .dropdown-right .dropdown-menu-right a:hover{
+            font-weight: bold;
+            color: coral;
+            text-decoration: underline;
+        }
+
+        .navbar-nav a{
+            font-weight: 350;
+            color: black;
+            font-size: 16px;
+            background: transparent;
+            transition: 0.5s;
+        }
+        .navbar-nav a:hover{
+            color: coral;
+            text-decoration: underline;
+            background-color: transparent;
+            background: transparent;
+        }
+
+        .dropdown a:hover{
+            color: coral;
+            text-decoration: underline;
+        }
+        .dropdown-right a:hover{
+            color: coral;
+            text-decoration: underline;
+        }
+
+        .navbar.navbar-dark.bg-dark a.icon{
+            display: none;
+        }
+
+        .navbar.navbar-dark.bg-dark a.icon:hover{
+            color: coral;
+        }
+
+        .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown:hover{
+            background: transparent;
+            background-color: transparent;
+        }
+
+        @media screen and (max-width: 600px) {
+            /* left menu */
+            .navbar.navbar-dark.bg-dark{
+                height: 5px;
+                transition: 0.5s;
+            }
+            .navbar.navbar-dark.bg-dark > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
+                display: none;
+                transition: 0.5s;
+            }
+            .navbar.navbar-dark.bg-dark a.icon{
+                float: left;
+                display: block;
+                top: 10px;
+                left: 10px;
+                position: absolute;
+            }
+
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > .login-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 75px;
+            }
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > .cart-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 30px;
+            }
+            .navbar.navbar-dark.bg-dark > .nav.navbar-nav.navbar-right > a, .search-item{
+                position: absolute;
+                top: 0;
+                float: right;
+                right: 10px;
+            }
+        }
+
+        @media screen and (max-width: 600px){   
+            .navbar.navbar-dark.bg-dark.responsive {
+                position: relative;
+                height: 435px;
+                transition: 0.5s;
+            }
+            .navbar.navbar-dark.bg-dark.responsive a.icon{
+                position:absolute;
+                left: 10px;
+                top: 10px;
+            }
+            .navbar.navbar-dark.bg-dark.responsive > .container-fluid > .nav.navbar-nav > li > a, .dropdown{
+                display: block;
+                width: 100%;
+                text-align: left;
+                left: 0px;
+            }
+        }
     </style>
 </head>
 
@@ -250,7 +446,7 @@
         </div>
     </div>
 
-    <%- include ('header'); -%>
+    <%- include('header'); %>
     <div id="topbar-down">
         <div class="container-fluid" style="margin-left: 20px;">
             <div class="row">
@@ -312,25 +508,6 @@
     </div>
 
     <br>
-
-    <!-- get all number item from database then page panigate
-    <nav aria-label="Page navigation" class="page-panigation" style="margin-left: 30%;">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#">Previous</a>
-            </li>
-            <%for(var i=1; i<=numItems;i++) { %>
-                <li class="page-item">
-                    <a class="page-link" href="/<%= i %>">
-                        <%= i %>
-                    </a>
-                </li>
-            <% } %>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav> -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>

@@ -39,12 +39,15 @@ class ProductController {
             }
           });
         }
+        var productData = [];
+        var cart;
         if(req.session.cart){
-            var cart = new Cart(req.session.cart);
+            cart = new Cart(req.session.cart);
+            productData = cart.generateArray();
         }
         // lay tat ca san pham co id = productId
         Product.findOne({ _id: req.params.id }, req.body)
-            .then(data => res.render('productdetail', { product: data, user: userName , products: req.session.cart? cart.generateArray(): {}}))
+            .then(data => res.render('productdetail', { product: data, user: userName , products: parseInt(productData.length)}))
             .catch(next);
     }
 }
