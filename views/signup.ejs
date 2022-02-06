@@ -12,33 +12,76 @@
             .form-group{
                 align-items: center;
             }
+            #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
+            #topbar-down p {padding: 4px 0;margin-bottom:0;}
+            #formContent {
+                -webkit-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+                background: #fff;
+                padding: 15px;
+                width: 90%;
+                max-width: 450px;
+                position: relative;
+                padding: 10px;
+                -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+                box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+            }
+            .container {
+                margin-top: 10px;
+                color: rgb(8, 166, 240);
+            }
+            .wrapper {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                min-height: 100%;
+                padding: 20px;
+            }
         </style>
 
     </head>
 
     <body>
-
-        <div class="container">
-            <h3>Đăng ký tài khoản</h3>
-            <form action="/signup" method="POST">
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <div id="topbar-down">
+            <div class="container-fluid" style="margin-left: 20px;">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                      <p>
+                        <a href="/">Trang chủ</a> / Đăng ký tài khoản
+                      </p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPassword">Mật khẩu</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="formContent">
+                <div class="container">
+                    <h3 style="text-align: center;">Đăng ký tài khoản</h3>
+                    <form action="/signup" method="POST">
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Mật khẩu</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputRePassword">Nhập lại mật khẩu</label>
+                            <input type="password" class="form-control" id="inputRePassword" placeholder="Re input Password">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeCheck" name="agreeCheck" value="false">
+                            <label class="form-check-label" for="exampleCheck">Tôi đồng ý với mọi điều khoản!</label>
+                        </div>
+                        <div class="row justify-content-center">
+                          <button type="submit" class="btn btn-primary">Gửi</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="inputRePassword">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="inputRePassword" placeholder="Re input Password">
-                </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="agreeCheck" name="agreeCheck" value="false">
-                    <label class="form-check-label" for="exampleCheck">Tôi đồng ý với mọi điều khoản!</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Gửi</button>
-            </form>
+            </div>
         </div>
 
         <script>

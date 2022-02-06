@@ -19,11 +19,6 @@ router.get('/newarrivals', (req, res, next) => {
 
   // query all data
   db.QueryAllProduct().then(data_ => {
-        var _numitems = data_.length / 9;
-        if (_numitems < 1) {
-            _numitems = 1;
-        }
-         _numitems = _numitems + 1;
         var dpData = [];
         var productData = [];
         var cart;
@@ -38,17 +33,15 @@ router.get('/newarrivals', (req, res, next) => {
             if(req.session.cart){
                 cart = new Cart(req.session.cart);
                 productData = cart.generateArray(); 
-                res.render('newarrivals', { 
-                    numItems: parseInt(_numitems), 
+                res.render('newarrivals', {  
                     product: dpData,  
                     products: parseInt(productData.length), 
                     user: userName});
             }
             else{
                 res.render('newarrivals', { 
-                    numItems: parseInt(_numitems), 
                     product: dpData,  
-                    products: parseInt(productData.length), 
+                    products: 0, 
                     user: userName});
             }
             
@@ -57,17 +50,15 @@ router.get('/newarrivals', (req, res, next) => {
             if(req.session.cart){
                 cart = new Cart(req.session.cart);
                 productData = cart.generateArray(); 
-                res.render('newarrivals', { 
-                    numItems: parseInt(_numitems), 
+                res.render('newarrivals', {
                     product: {},  
                     products: parseInt(productData.length), 
                     user: userName});
             }
             else{
-                res.render('newarrivals', { 
-                    numItems: parseInt(_numitems), 
+                res.render('newarrivals', {
                     product: {},  
-                    products: parseInt(productData.length), 
+                    products: 0, 
                     user: userName});
             }
         }

@@ -37,11 +37,6 @@ function route(app) {
         }
         // query all data
         db.QueryAllProduct().then(data_ => {
-            var _numitems = data_.length / 9;
-            if (_numitems < 1) {
-                _numitems = 1;
-            }
-            _numitems = _numitems + 1;
             
             var dpData = [];
             var productData = [];
@@ -57,15 +52,13 @@ function route(app) {
                 if(req.session.cart){
                     cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
-                    res.render('index', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('index', {
                         product: dpData,  
                         products: parseInt(productData.length), 
                         user: userName});
                 }
                 else{
-                    res.render('index', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('index', {
                         product: dpData,  
                         products: parseInt(productData.length), 
                         user: userName});
@@ -76,15 +69,13 @@ function route(app) {
                 if(req.session.cart){
                     cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
-                    res.render('index', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('index', {
                         product: {},  
                         products: parseInt(productData.length), 
                         user: userName});
                 }
                 else{
-                    res.render('index', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('index', {
                         product: {},  
                         products: parseInt(productData.length), 
                         user: userName});
@@ -97,11 +88,6 @@ function route(app) {
         // query all data
         let userName = "Login";
         db.QueryAllProduct().then(data_ => {
-            var _numitems = data_.length / 12;
-            if (_numitems < 1) {
-                _numitems = 1;
-            }
-            _numitems = _numitems + 1;
             var dpData = [];
             var productData = [];
             var cart;
@@ -116,15 +102,13 @@ function route(app) {
                 if(req.session.cart){
                     cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
-                    res.render('home', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('home', {
                         product: dpData,  
                         products: parseInt(productData.length), 
                         user: userName});
                 }
                 else{
                     res.render('home', { 
-                        numItems: parseInt(_numitems), 
                         product: dpData,  
                         products: parseInt(productData.length), 
                         user: userName});
@@ -135,15 +119,13 @@ function route(app) {
                 if(req.session.cart){
                     cart = new Cart(req.session.cart);
                     productData = cart.generateArray(); 
-                    res.render('home', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('home', {
                         product: {},  
                         products: parseInt(productData.length), 
                         user: userName});
                 }
                 else{
-                    res.render('home', { 
-                        numItems: parseInt(_numitems), 
+                    res.render('home', {
                         product: {},  
                         products: parseInt(productData.length), 
                         user: userName});

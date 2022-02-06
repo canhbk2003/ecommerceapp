@@ -490,7 +490,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" >HƯỚNG DẪN CHỌN SIZE</a></li>
                         <li><a href="#" >HƯỚNG DẪN ĐẶT HÀNG</a></li>
-                        <li><a href="/guide.backitem" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                        <li><a href="/guide-backitem" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
                         <li><a href="#" >TÀI KHOẢN NGÂN HÀNG</a></li>
                     </ul>
                 </li>
@@ -549,7 +549,7 @@
                     </ul>
                 </li> -->
                 <li class="dropdown">
-                    <a href="#">
+                    <a type="button" href="#" class="btn btn-link">
                         <%= user %>
                     </a>
                     <ul class="dropdown-menu">
@@ -568,10 +568,17 @@
             <% } %>
 
             <li class="cart-item">
-                <a href="/carts" style="color: black; font-weight: 350;">
-                    <span class="glyphicon glyphicon-shopping-cart" style="color: black;"><%=products%>
-                    </span>
-                </a>
+                <%if(products){%>
+                    <a href="/carts" style="color: black; font-weight: 350;">
+                        <span class="glyphicon glyphicon-shopping-cart" style="color: black;"><%=products%>
+                        </span>
+                    </a>
+                <%}else{%>
+                    <a href="/carts" style="color: black; font-weight: 350;">
+                        <span class="glyphicon glyphicon-shopping-cart" style="color: black;">0
+                        </span>
+                    </a>
+                <%}%>
             </li>
 
             <li class="search-item">

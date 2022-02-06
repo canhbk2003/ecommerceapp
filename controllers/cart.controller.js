@@ -6,10 +6,10 @@ const Cart = require('../models/cart');
 class CartController{
   index(req, res ){
     if(!req.session.cart) {
-      return res.render('carts', {products: null});
+      return res.render('carts', {__products__: null});
     }
     const cart = new Cart(req.session.cart);
-    return res.render('carts', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+    return res.render('carts', {__products__: cart.generateArray(), totalPrice: cart.totalPrice});
   }
   addToCart(req, res ){
     const productId = req.params.id;

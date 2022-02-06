@@ -13,7 +13,7 @@
   <body>
     <h2 style="text-align: center;">GIỎ HÀNG CỦA BẠN</h2>
     <form method="POST" action="/order">
-        <% if(products) {%>
+        <% if(__products__) {%>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
@@ -31,7 +31,7 @@
                         </thead>
                         <tbody>
                             <% var i = 0; %>
-                            <% products.forEach(function (product) { %>
+                            <% __products__.forEach(function (product) { %>
                                 <tr>
                                     <td>
                                         <strong><%= product.item.name %></strong>
