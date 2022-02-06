@@ -535,7 +535,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
             <% if(user !== undefined && user !== "Login") { %>
-                <li class="dropdown">
+               <!--  <li class="dropdown">
                     <a style="color: black;">
                         <span class="glyphicon glyphicon-user"></span>
                     </a>
@@ -545,6 +545,16 @@
                         </a>
                         <li>
                             <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li class="dropdown">
+                    <a href="#">
+                        <%= user %>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/home"><span style="color: black;"></span>Logout</a>
                         </li>
                     </ul>
                 </li>

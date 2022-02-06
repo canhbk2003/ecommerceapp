@@ -10,7 +10,9 @@ const app = express();
 const route = require('./routes/route.index');
 
 const viewPath = path.join(__dirname, 'views');
+const viewPathEx = path.join(__dirname, 'views/guide-policy/');
 app.use(express.static(viewPath));
+app.use(express.static(viewPathEx));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -33,14 +35,11 @@ app.use(express.static(asset));
 
 const upload = path.join(__dirname, 'upload');
 app.use(express.static(upload));
-const logger = require('./log/logger');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-app.set('views', viewPath);
+app.set('views', [viewPath, viewPathEx]);
 // use res.render to load up an ejs view file
 route(app);
 // app information
 app.listen(`${PORT}`);
-logger.info('=======================APP START========================');
-logger.info(`Server is listening on port: ${PORT}`);

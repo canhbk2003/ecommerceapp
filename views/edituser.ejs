@@ -1,50 +1,61 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>League store 77</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<style>
-    .form-group {
-        align-items: center;
-    }
-</style>
+    <style>
+        .form-group {
+            align-items: center;
+        }
+    </style>
 
-<div class="container">
-    <h3>Cập nhật tài khoản</h3>
-    <form method="post" action="/edituser/<%= user._id %>?_method=PUT">
-        <div class="form-group">
-            <label for="editUserId">Id</label>
-            <input type="text" name="userId" class="form-control" id="editUserId" value="<%= user.userId %>" readonly>
-        </div>
+</head>
 
-        <div class="form-group">
-            <label for="editUserName">Tên đăng nhập</label>
-            <input type="text" name="name" class="form-control" id="editUserName" value="<%= user.name %>">
-        </div>
+<body>
 
-        <div class="form-group">
-            <label for="editPassword">Mật khẩu</label>
-            <input type="text" name="password" class="form-control" id="editUserName" value="<%= user.password %>">
-        </div>
+    <div class="container">
+        <h3>Cập nhật tài khoản</h3>
+        <form method="post" action="/edituser/<%= user._id %>?_method=PUT">
+            <div class="form-group">
+                <label for="editUserId">Id</label>
+                <input type="text" name="userId" class="form-control" id="editUserId" value="<%= user.userId %>" readonly>
+            </div>
 
-        <div class="form-group">
-            <label for="editEmail ">Email</label>
-            <input type="email" name="email" class="form-control" id="editEmail" value="<%= user.email %>">
-        </div>
+            <div class="form-group">
+                <label for="editUserName">Tên đăng nhập</label>
+                <input type="text" name="name" class="form-control" id="editUserName" value="<%= user.name %>">
+            </div>
 
-        <div class="form-group">
-            <label for="editAddress">Địa chỉ</label>
-            <input type="text" name="addr" class="form-control" id="editAddress" value="<%= user.addr %>">
-        </div>
+            <div class="form-group">
+                <label for="editPassword">Mật khẩu</label>
+                <input type="text" name="password" class="form-control" id="editUserName" value="<%= user.password %>">
+            </div>
 
-        <div class="form-group">
-            <label for="editPhoneNumber">Số điện thoại</label>
-            <input type="text" name="phone" class="form-control" id="editPhoneNumber" value="<%= user.phone%>">
-        </div>
+            <div class="form-group">
+                <label for="editEmail ">Email</label>
+                <input type="email" name="email" class="form-control" id="editEmail" value="<%= user.email %>">
+            </div>
 
-        <div class="form-group">
-            <input type="date" id="updatedAt" name="updatedAt">
-        </div>
+            <div class="form-group">
+                <label for="editAddress">Địa chỉ</label>
+                <input type="text" name="addr" class="form-control" id="editAddress" value="<%= user.addr %>">
+            </div>
 
-        <button type="submit" class="btn btn-primary ">Cập nhật</button>
-    </form>
-</div>
+            <div class="form-group">
+                <label for="editPhoneNumber">Số điện thoại</label>
+                <input type="text" name="phone" class="form-control" id="editPhoneNumber" value="<%= user.phone%>">
+            </div>
+
+            <div class="form-group">
+                <input type="date" id="updatedAt" name="updatedAt">
+            </div>
+
+            <button type="submit" class="btn btn-primary ">Cập nhật</button>
+        </form>
+    </div>
+
+</body>
+</html>
