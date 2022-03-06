@@ -19,6 +19,7 @@ const logger = require('../log/logger');
 const Cart = require('../models/cart');
 const routerOrderManager = require('./route.ordermanager');
 const routerBackItem = require('./route.backitem');
+const routerChooseSize = require('./route.choosesize');
 const routerContact = require('./route.contact');
 
 function route(app) { 
@@ -374,6 +375,7 @@ function route(app) {
     app.use('/', routerOrder);
     app.use('/', routerOrderManager);
     app.use('/', routerBackItem);
+    app.use('/', routerChooseSize);
     app.use('/', routerContact);
     app.use('/', routerPagination);
 }

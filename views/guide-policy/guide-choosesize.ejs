@@ -8,8 +8,50 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+      #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
+      #topbar-down p {padding: 4px 0;margin-bottom:0;}
+
+      footer {
+        text-align: center;
+        padding: 3px;
+        background-color: #111;
+        color: white;
+        bottom: 0rem;
+        position: relative;
+        width: 100%;
+        opacity: calc();
+      }
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+      }
+      h1{
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <h1>HƯỚNG DẪN CHỌN SIZE</h1>
+    <%- include('topbody'); %>
+    <%- include('header'); %>
+    <div id="topbar-down">
+      <div class="container-fluid" style="margin-left: 20px;">
+          <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                <p>
+                  <a href="/">Trang chủ</a> / Hướng dẫn chọn size
+                </p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <h1>BẢNG HƯỚNG DẪN CHỌN SIZE</h1>
+    <img src="/size_guide/guide.jpg" class="center"/>
+    <footer>
+      <%- include('footer'); %>
+    </footer>
   </body>
 </html>

@@ -248,134 +248,54 @@
                 left: 0px;
             }
         }
+        #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
+        #topbar p {padding: 4px 0;margin-bottom:0;}
+        #topbar-down p {padding: 4px 0;margin-bottom:0;}
+        .topbar-hotline a.phone-num { display: inline-block;}
+        .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
+        .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
+        .topbar-hotline span.circle-phone{
+            display: inline-block;border-radius: 50%;
+            -webkit-animation: ripple 1.0s linear infinite;
+            animation: ripple 1.0s linear infinite;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark" id="topMenu" style="background-color: #FFF;">
-        <div class="navbar navbar-header">
-            <a class="navbar-brand" href="/" style="margin-left: 35%;">
-                <img class="brand-img" src="/assets/logo.jpg" width="90px" height="50px" alt="League store 77">
-            </a>
-        </div>   
-        <div class="container-fluid" style="margin-top: 5px;"> 
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">TRANG CHỦ</a></li>
-                <li>
-                    <a href="/newarrivals">NEW ARRIVAL</a>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >SẢN PHẨM<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >TẤT CẢ SẢN PHẨM</a></li>
-                        <li><a href="#" >QUẦN ÁO</a></li>
-                        <li><a href="#" >QUẦN ÁO THỂ THAO</a></li>
-                        <li><a href="#" >PHỤ KIỆN</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">BỘ SƯU TẬP<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >HÈ</a></li>
-                        <li><a href="#" >THU ĐÔNG</a></li>
-                        <li><a href="#" >PHỤ KIỆN</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">CHÍNH SÁCH - HƯỚNG DẪN<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >HƯỚNG DẪN CHỌN SIZE</a></li>
-                        <li><a href="#" >HƯỚNG DẪN ĐẶT HÀNG</a></li>
-                        <li><a href="/guide.backitem" >CHÍNH SÁCH ĐỔI TRẢ</a></li>
-                        <li><a href="#" >TÀI KHOẢN NGÂN HÀNG</a></li>
-                    </ul>
-                </li>
-    
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">GIẢI ĐẤU<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" >NGOẠI HẠNG ANH</a></li>
-                        <li><a href="#" >LA LIGA</a></li>
-                        <li><a href="#" >BUNDES LIGA</a></li>
-                        <li><a href="#" >LEAGUE 1</a></li>
-                        <li><a href="#" >SERI A</a></li>
-                        <li><a href="#" >WORLD CUP</a></li>
-                        <li><a href="#" >UEFA CHAMPIONS LEAGUE</a></li>
-                        <li><a href="#" >UEFA EUROPA LEAGUE</a></li>
-                        <li><a href="#" >EURO</a></li>
-                    </ul>
-                </li>
-    
-                <li><a class="contact" href="/contact">GIỚI THIỆU</a></li>
-    
-                <li><a class="news" href="/news">NEWS</a></li>
-    
-                <% if(user !== undefined && user !== "Login") {%>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/admin">Quản lý người dùng</a></li>
-                            <li><a href="/producttable">Quản lý sản phẩm</a></li>
-                            <li><a href="/orders">Quản lý đơn hàng</li>
-                            <li><a href="/summary">Thống kê</a></li>
-                            <li><a href="/campaign">Chiến dịch bán hàng</a></li>
-                            <li><a href="/uploadbanner">Upload banner</a></li>
-                            <li><a href="/upload">Upload product</a></li>
-                            <li><a href="/updatedb">Update database</a></li>
-                        </ul>
-                    </li>   
-                <%}%>
-                <li>
-                    <a href="/signup"><span >ĐĂNG KÝ</span></a>
-                </li>
-            </ul>
-            
-        </div>
-        <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
-            <% if(user !== undefined && user !== "Login") { %>
-                <li class="dropdown">
-                    <a style="color: black;">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <a style="color: black;">
-                            <%= user %>
-                        </a>
-                        <li>
-                            <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
-                        </li>
-                    </ul>
-                </li>
-            <% } else {%>
-                <li class="login-item">
-                    <a href="/login" style="color: black; font-weight: 350;">
-                        <span class="glyphicon glyphicon-user">
-                        </span>
-                    </a>
-                </li>
-            <% } %>
-
-            <li class="cart-item">
-                <a href="/carts" style="color: black; font-weight: 350;">
-                    <span class="glyphicon glyphicon-shopping-cart" style="color: black;"><%=products%>
-                    </span>
-                </a>
-            </li>
-
-            <li class="search-item">
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
-                        <h3 style="text-align: center;"> TÌM KIẾM </h3>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
-                    </form>
+    <div id="topbar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                    <p>
+                        <strong> Miễn phí </strong>
+                        giao hàng toàn quốc với đơn hàng
+                        <strong> trên 500k </strong>
+                    </p>
                 </div>
-                <li>
-                    <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
-                </li>
-            </li>
-        </ul>
-        <a href="javascript:void(0);" class="icon" style="font-size: 25px; margin-left: 10px; color: black;" onclick="responsiveMenu()">
-            <i class="glyphicon glyphicon-menu-hamburger"></i>
-        </a>
-    </nav>
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-hotline">
+                    <a class="phone-num" href="tel:0123456789"></a>
+                    <span class="circle-phone">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                    <span class="text-phone">Hot line: 0123456789</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('header');%>
+    <div id="topbar-down">
+        <div class="container-fluid" style="margin-left: 20px;">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                  <p>
+                    <a href="/">Trang chủ</a> / Chi tiết sản phẩm
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
     <div style="text-align: center;" class="container">
         <h2 style="text-decoration: underline;">CHI TIẾT SẢN PHẨM</h2>
     </div>
