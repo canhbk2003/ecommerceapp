@@ -245,9 +245,9 @@
             background-color: #111;
             color: white;
             bottom: 0rem;
-            position: relative;
             width: 100%;
             opacity: calc();
+            position: relative;
         }
         img.hover-shadow {
             transition: 0.3s;
@@ -282,7 +282,9 @@
           </div>
       </div>
     </div>
-    <%- include('header') %>
+    <div class="container">
+        <%- include('header') %>
+    </div>
     <div id="topbar-down">
       <div class="container-fluid" style="margin-left: 20px;">
           <div class="row">
@@ -300,8 +302,10 @@
           </div>
       </div>
     </div>
-    <h3>TẤT CẢ BÀI VIẾT</h3>
-    <p>Hiện tại chưa có bài viết nào!</p>
+    <div class="container">
+        <h3>TẤT CẢ BÀI VIẾT</h3>
+        <p>Hiện tại chưa có bài viết nào!</p>
+    </div>
     <footer>
         <%- include('footer'); %>
     </footer>

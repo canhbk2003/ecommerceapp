@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>League store 77</title>
@@ -8,8 +9,169 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <h1>HƯỚNG DẪN ĐẶT HÀNG</h1>
-  </body>
+
+    <style>
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        
+        .container {
+            align-items: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3px;
+            color: black;
+            bottom: 0rem;
+            position: relative;
+            width: 100%;
+            opacity: calc();
+        }
+        #topbar {background: #7F7F7F ;font-size: 12px; color: #FFFF}
+        #topbar-down {background: #faf4f4 ;font-size: 14px; color: rgb(221, 207, 207)}
+        #topbar p {padding: 4px 0;margin-bottom:0;}
+        #topbar-down p {padding: 4px 0;margin-bottom:0;}
+        .topbar-hotline a.phone-num { display: inline-block;}
+        .topbar-hotline {text-align: right;margin: 3.5px 0 0;}
+        .topbar-hotline span.text-phone{color:#FFFF;font-weight:bold;letter-spacing:0.4px;}
+        .topbar-hotline span.circle-phone{
+            display: inline-block;border-radius: 50%;
+            -webkit-animation: ripple 1.0s linear infinite;
+            animation: ripple 1.0s linear infinite;
+        }
+        .topbar-hotline a.phone-num .fa {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            border-color:#e00000;
+            color:#e00000;
+            font-size: 16px;	 
+            margin: 0;	
+        }
+        .topbar-hotline a.phone-num .fa {
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            border: 1px solid #FFFF;
+            color: #FFFF;
+            border-radius: 50%;
+            text-align: center;
+            animation: 1s ease-in-out 0s normal none infinite running h-alo-ring-ring;
+            font-size: 10px;
+            display: inline-block;
+            vertical-align: middle;margin-right:5px;
+        }
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: #111;
+            color: white;
+            bottom: 0rem;
+            position: relative;
+            width: 100%;
+            opacity: calc();
+        }
+        img.hover-shadow {
+            transition: 0.3s;
+        }
+        
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(243, 238, 238, 0.2), 0 6px 20px 0 rgba(231, 221, 221, 0.19);
+        }
+        .img-responsive{
+            margin:0 auto;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
+
+        .grid-container-top {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+            background-color: #ffff;
+            padding: 10px;
+        }
+
+        .grid-container-top > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 0px 0px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('header')%>
+    <div id="topbar-down">
+        <div class="container-fluid" style="margin-left: 20px;">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
+                  <p>
+                    <a href="/">Trang chủ</a> / Đặt hàng
+                  </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 topbar-hotline">
+                    <a class="phone-num" href="tel:0123456789"></a>
+                    <span class="circle-phone">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="text-align: center;">LEAGUE STORE - FASHION X FOOTBALL</h3>
+    <h5 style="text-align: center;">THỜI TRANG THỂ THAO HÀNG ĐẦU VIỆT NAM</h5>
+    <div class="container">
+        <p>
+ 
+            <strong>LEAGUE STORE</strong> là thương hiệu thời trang mang đến cho khách hàng các xu hướng hiện đại trong và ngoài nước nhanh nhất,
+            mới nhất và độc nhất với mục tiêu mang lại giá trị thật tương xứng với chất lượng tốt nhất cho khách hàng trên từng sản phẩm. 
+        </p>
+        <br>
+        <p>
+            Với triết lý kinh doanh “KHÁCH HÀNG LÀ SỐ 1” <strong>LEAGUE STORE</strong> mong muốn mang lại sự trải nghiệm tuyệt vời nhất và những lựa chọn 
+            hoàn hảo dành cho khách hàng trong quá trình mua sắm tại SHOP.
+        </p>
+        <br>
+        <p>
+            Để làm được điều đó, <strong>LEAGUE STORE</strong> đã đặt ra những tiêu chuẩn về chất lượng trong quy trình lựa chọn sản phẩm và đào tạo dịch 
+            vụ trên nền tảng kiến thức, kinh nghiệm gặt hái được từ nhiều năm hoạt động trong ngành thời trang thể thao bán lẻ. 
+        </p>
+        <br>
+        <p>
+            <strong>LEAGUE STORE</strong> đã góp phần tạo nên một thị trường mang nhiều màu sắc rực rỡ mới và khác biệt, tiên phong trong lĩnh vực thời trang
+            kết hợp với trái bóng tròn tại Việt NAM.
+        </p>
+    </div>
+    
+    <h3 style="text-align: center;">Hướng dẫn chỉ đường</h3>
+    <div class="container">
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=21.0217269,105.7914069/20.9932004,105.8485231/@21.0064702,105.7835865,13z/data=!3m1!4b1!4m4!4m3!1m1!4e1!1m0" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" id="map"></iframe> -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d29796.61087169622!2d105.8073626613405!3d21.009612367297017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d21.021726899999997!2d105.7914069!4m5!1s0x3135ac0e787fe273%3A0x7728f6e456c3a685!2zNjYgTmfDtSAxOTEgTWluaCBLaGFpLCBNaW5oIEtoYWksIEhhaSBCw6AgVHLGsG5nLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!3m2!1d20.9974445!2d105.8583999!5e0!3m2!1svi!2s!4v1639410988768!5m2!1svi!2s"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <footer>
+        <%- include('footer')%>
+    </footer>
+</body>
+
 </html>

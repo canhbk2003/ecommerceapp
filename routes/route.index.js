@@ -20,6 +20,8 @@ const Cart = require('../models/cart');
 const routerOrderManager = require('./route.ordermanager');
 const routerBackItem = require('./route.backitem');
 const routerChooseSize = require('./route.choosesize');
+const routerBankPurchase = require('./route.bankpurchase');
+const routerGuideOrder =require('./route.guideorder');
 const routerContact = require('./route.contact');
 
 function route(app) { 
@@ -376,6 +378,8 @@ function route(app) {
     app.use('/', routerOrderManager);
     app.use('/', routerBackItem);
     app.use('/', routerChooseSize);
+    app.use('/', routerBankPurchase);
+    app.use('/', routerGuideOrder);
     app.use('/', routerContact);
     app.use('/', routerPagination);
 }
