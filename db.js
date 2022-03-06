@@ -98,7 +98,7 @@ exports.FindByProductId = async function findProductById(id) {
         return data;
     });
 }
-
+// product
 exports.QueryAllProduct = async function queryAllProduct() {
     const URI = 'mongodb://127.0.0.1:27017/product_test';
 
@@ -115,6 +115,23 @@ exports.QueryAllProduct = async function queryAllProduct() {
         .then(docs => {
             return docs;
         });
+}
+
+// new products
+exports.QueryNewProduct = async function query_new_product(){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        logger.info('Connect to database return ok');
+    }
+    catch(err){
+        logger.error(`Connect to db failed, err code: ${err}`);
+    }
+
+    return await NewProduct.find({}).then(
+        docs => {return docs;});
 }
 
 exports.QueryAllUser = async function queryAllUser() {
@@ -253,6 +270,7 @@ exports.readfile = async function readfile(){
     return arrayObject;
 }
 
+
 exports.find_by_product_code = async function find_by_product_code(code){
     const uri = 'mongodb://127.0.0.1:27017/product_test';
     try{
@@ -284,3 +302,21 @@ exports.save_guest_order = async function save_guest_order(order){
         logger.error(err);
     }
 }
+
+// for updating new produtcs
+exports.find_new_product_by_id = async function find_by_id(id){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+
+    try{
+        await mongoose.connect(uri, {
+            connectTimeoutMS: 1000
+        });
+        return await order.save().then(err => {
+            logger.error(err);
+        });
+    }
+    catch(err){
+
+    }
+}
+

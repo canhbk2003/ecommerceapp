@@ -256,8 +256,6 @@
                     </ul>
                 </li>
     
-                <li><a class="contact" href="/contact">GIỚI THIỆU</a></li>
-    
                 <li><a class="news" href="/news">NEWS</a></li>
     
                 <% if(user !== undefined && user !== "Login") {%>
@@ -274,9 +272,6 @@
                         </ul>
                     </li>   
                 <%}%>
-                <li>
-                    <a href="/signup"><span >ĐĂNG KÝ</span></a>
-                </li>
             </ul>
             
         </div>
@@ -315,13 +310,15 @@
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <form style="margin-top: 7.5px;" class="form-inline my-2 my-lg-0">
-                        <h3 style="text-align: center;"> TÌM KIẾM </h3>
+                        <h3 style="text-align: center;"> MENU </h3>
+                        <a href="/contact" style="text-align: left;">Giới thiệu</a>
+                        <a href="/signup" style="text-align: left;">Đăng ký</a>
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="margin-left: 10px;">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-top: 5px; margin-left: 10px;"> Tìm kiếm </button>
                     </form>
                 </div>
                 <li>
-                    <a><span class="glyphicon glyphicon-search" style="color: black;" onclick="openNav()"></span></a>
+                    <a><span class="glyphicon glyphicon-heart-empty" style="color: black;" onclick="openNav()"></span></a>
                 </li>
             </li>
         </ul>
