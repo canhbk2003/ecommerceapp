@@ -12,7 +12,7 @@ const NewProduct = new Schema({
     quantity: { type: Number, min: 1 },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
-    status: {type: String default: 'newer'}
+    status: {type: String, default: 'newer'}
 });
 NewProduct.methods.calculateOrder = function(quantity) {
     if (NewProduct.bonusPrice > 0) {
