@@ -300,7 +300,7 @@
         <h2 style="text-decoration: underline;">CHI TIẾT SẢN PHẨM</h2>
     </div>
     <div class="container">
-        <form method="POST" action="/buynow/<%= product._id %>">
+        <form method="POST" action="/buynow/<%= product[0]._id %>">
             <section class="mb-5">
                 <div class="row">
                     <div class="col-md-6 mb-4 mb-md-0">
@@ -310,35 +310,33 @@
                                 <div class="col-12 mb-0">
                                     <figure class="view overlay rounded z-depth-1 main-img">
                                         <a width="550" height="600">
-                                            <img src="/products/<%= product.image%>" id="current-img" class="img-fluid z-depth-1" width="550" height="600" style="width: 100%; height: auto;">
+                                            <img src="<%= product[0].image%>" id="current-img" class="img-fluid z-depth-1" width="550" height="600" style="width: 100%; height: auto;">
                                         </a>
                                     </figure>
                                 </div>
                                 <div class="flex-container">
-                                    <div>
-                                        <!-- tam anh goc -->
-                                        <img class="flex-item" src="/products/<%= product.image%>" onclick="display(this)">
-                                    </div>
-                                    <!-- 3 tam anh khac cung san pham -->
-                                    <div>2</div>
-                                    <div>3</div>  
-                                    <div>4</div>
+                                    <!-- for -->
+                                    <% for(var i=0;i<product.length; i++) {%>
+                                        <div>
+                                            <img class="flex-item" src="<%= product[i].image%>" onclick="display(this)">
+                                        </div>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <p class="mb-2 text-muted text-uppercase small">
-                            <%= product.name %>
+                            <%= product[0].name %>
                         </p>
-                        <% if(product.bonusPrice > 0) {%>
-                            <p><span class="mr-1"><strong>Giá: <%= product.bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
+                        <% if(product[0].bonusPrice > 0) {%>
+                            <p><span class="mr-1"><strong>Giá: <%= product[0].bonusPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
                             <% } else {%>
-                                <p><span class="mr-1"><strong>Giá: <%= product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
+                                <p><span class="mr-1"><strong>Giá: <%= product[0].price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong></span></p>
                             <% } %>
 
                         <p class="pt-1">
-                            <%= product.description %>
+                            <%= product[0].description %>
                         </p>
                         <hr>
                         <div class="table-responsive mb-2">
@@ -414,7 +412,7 @@
             $('#addtocart').click( function(e) {
                 e.preventDefault();
                 var href = $(this).attr("href");
-                href ='/carts/add-to-cart/<%= product._id %>/';
+                href ='/carts/add-to-cart/<%= product[0]._id %>/';
                 var size = document.querySelector('input[name="radSize"]:checked').value.toString();
                
                 size += '/';

@@ -45,10 +45,20 @@ class ProductController {
             cart = new Cart(req.session.cart);
             productData = cart.generateArray();
         }
-        // lay tat ca san pham co id = productId
-        Product.findOne({ _id: req.params.id }, req.body)
-            .then(data => res.render('productdetail', { product: data, user: userName , products: parseInt(productData.length)}))
+        
+        let query = "";
+        Product.findOne({_id: req.params.id }, req.body)
+        .then(data => {
+            console.log(data);
+            const pId = data.productId;
+            query = [pId];
+            Product.find({"productId":{$in: query}})
+            .then(
+                data => res.render('productdetail', { product: data, user: userName , products: parseInt(productData.length)})
+            )
             .catch(next);
+        })
+        .catch(next);     
     }
 }
 
