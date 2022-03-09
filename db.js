@@ -170,7 +170,6 @@ exports.QueryOneUser = async function queryOneUser(name) {
             return doc;
         });
 }
-
 exports.Upload = async function upload(files){
     const uri = 'mongodb://127.0.0.1:27017/product_test';
     try{
@@ -180,25 +179,29 @@ exports.Upload = async function upload(files){
         });
         logger.info('connect to db successfully');
         const upload_path = path.join(__dirname, './upload/');
-        const root_path = path.join(__dirname, './pubic/products');
+        const root_path = path.join(__dirname, './public/products/');
         // save model
-        for(var i=0;i<files.length;i++){
-            var _url = upload_path+files[i];
-            var Img = {
-                name: files[i],
-                url: _url
-            };
-            const img = new Image(Img);
-            await img.save().then(err => {
-                if(err){
-                    logger.error(err);
-                }
-                // copy file into products directory
-                var root_url = root_path + files[i];
-                fs.copyFile(_url, root_url, (err) => {
-                    if (err) throw err;
+        for(var i=0;i<files.length;i++){ 
+            if(path.extname(files[i]) === '.png' || path.extname(files[i]) === '.jpeg' || path.extname(files[i]) === '.jpg' ){  
+                console.log(files[i]);
+                var _url = upload_path+files[i];
+                var Img = {
+                    name: files[i],
+                    url: _url
+                };
+
+                const img = new Image(Img);
+                await img.save().then(err => {
+                    if(err){
+                        logger.error(err);
+                    }
+                    // copy file into products directory
+                    var root_url = root_path + files[i];
+                    fs.copyFile(_url, root_url, (err) => {
+                        if (err) throw err;
+                    });
                 });
-            });
+            }
         }
     }
     catch(err){

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
-
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -62,18 +59,18 @@
                     <form action="/signup" method="POST">
                         <div class="form-group">
                             <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">Mật khẩu</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="inputRePassword">Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" id="inputRePassword" placeholder="Re input Password">
+                            <input type="password" class="form-control" id="inputRePassword" placeholder="Re input Password" required>
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="agreeCheck" name="agreeCheck" value="false">
+                            <input type="checkbox" class="form-check-input" id="agreeCheck" name="agreeCheck" value="false" required>
                             <label class="form-check-label" for="exampleCheck">Tôi đồng ý với mọi điều khoản!</label>
                         </div>
                         <div class="row justify-content-center">
