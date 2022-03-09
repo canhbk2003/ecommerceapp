@@ -15,6 +15,7 @@ class UpdateDbController {
         // Duyet tat ca cac file co trong thu muc uploads
         var folder_name = path.join(__dirname, '/../upload/');
         var files = fs.readdirSync(folder_name);
+        
         for (var i = 0; i < files.length; i++) {
             logger.debug(files[i]);
         }
