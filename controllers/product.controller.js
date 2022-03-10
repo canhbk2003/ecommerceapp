@@ -21,11 +21,15 @@ class ProductController {
     }
 
     updateProduct(req, res, next) {
-
+        Product.updateOne({ _id: req.params.id }, req.body)
+        .then(() => res.redirect('/producttable'))
+        .catch(next)
     }
 
     deleteProductById(req, res, next) {
-
+        Product.deleteOne({ _id: req.params.id })
+        .then(() => res.redirect('back'))
+        .catch(next);
     }
 
     getProductDetailPage(req, res, next) {

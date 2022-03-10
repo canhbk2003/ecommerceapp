@@ -243,7 +243,7 @@ function route(app) {
         const formData = req.body;
         let docs = null;
         try {
-            await db.FindByProductId(req.body.productId).then(data => {
+            await db.FindByProductId(req.body._id).then(data => {
                 docs = data;
             });
         } catch (err) {
