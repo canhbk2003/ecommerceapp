@@ -51,7 +51,7 @@ class UploadController {
                 res.send(err);
             } else {
                 logger.info('Upload successfully!')
-                res.redirect('/');
+                res.redirect('/uploaddbnotify');
             }
         });
     }

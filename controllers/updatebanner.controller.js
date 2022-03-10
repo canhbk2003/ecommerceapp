@@ -71,7 +71,7 @@ class UpdateBannerController {
           } 
           else {
               logger.info('Upload successfully!')
-              res.redirect('/uploadnotify');
+              res.redirect('/uploaddbnotify');
           }
       });
     }
