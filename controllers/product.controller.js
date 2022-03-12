@@ -6,6 +6,7 @@ const User = require('../models/user');
 class ProductController {
     // product table
     getProductPage(req, res, next) {
+        console.log('get table product');
         db.QueryAllProduct()
             .then(data_ => {
                 res.render('producttable', { data: data_ });
@@ -55,14 +56,18 @@ class ProductController {
         .then(data => {
             console.log(data);
             const pId = data.productId;
+            console.log(pId);
             query = [pId];
-            Product.find({"productId":{$in: query}})
+            Product.find({"productId": {$in: query}})
             .then(
-                data => res.render('productdetail', { product: data, user: userName , products: parseInt(productData.length)})
+                _data => {
+                    console.log(data);
+                    res.render('productdetail', { product: _data, user: userName , products: parseInt(productData.length)});
+                }
             )
             .catch(next);
         })
-        .catch(next);     
+        .catch(next); 
     }
 }
 

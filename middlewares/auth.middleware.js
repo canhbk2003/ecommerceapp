@@ -8,15 +8,13 @@ exports.requireAuth = function(req, res, next) {
         return;
     }
 
-    const user = db.GetById(req.cookies.userId)
-        .then(data => {
-            if (data.userId !== req.cookies.userId) {
-                res.render('login', { loginstate: "" });
-                return;
-            }
-
-            next();
-        });
+    db.GetById(req.cookies.userId).then(data => {
+        if(!data){
+            res.render('login', { loginstate: "" });
+            return;
+        }
+        next();
+    });
 }
 
 exports.releaseAuth = function(req, res, next) {

@@ -50,6 +50,7 @@ exports.AddOneProduct = async function addOne(_product) {
     }
 
     const product = new Product(_product);
+    product.image = '/products/' + _product.image;
     logger.info(product);
     return await product.save().then(err => {
         if (!err) {
@@ -214,8 +215,8 @@ exports.updatebanner = async function updatebanner(){
 }
 
 exports.queryByPageNumber = async function query(page_number){
-    var max_value = 10*page_number-2; // 18
-    var min_value = max_value-9; // 9
+    var max_value = 12*page_number-2; // 18
+    var min_value = max_value-12; // 9
 
     const URI = 'mongodb://127.0.0.1:27017/product_test';
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Product = new Schema({
-    productId: { type: String, maxLength: 8 },
+    productId: { type: String, maxLength: 12 },
     name: { type: String, maxLength: 255 },
     description: { type: String, maxLength: 1000 },
     image: { type: String, maxLength: 255 },

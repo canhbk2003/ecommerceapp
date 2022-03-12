@@ -421,6 +421,10 @@
                 left: 0px;
             }
         }
+
+        .pagination{
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -495,11 +499,21 @@
             <%}%>
     </div>
 
-    <div class="button-showmore">
+    <!-- <div class="button-showmore">
         <a href="/newarrivals" class="moreproduct button">
             Xem thêm
         </a>
-    </div>
+    </div> -->
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <% for(var i = 0; i < numPage; i++) {%>
+            <li class="page-item"><a class="page-link" href="#"><%= i+1 %></a></li>
+            <%}%>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
 
     <br>
 

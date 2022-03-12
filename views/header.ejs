@@ -268,6 +268,7 @@
                             <li><a href="/uploadbanner">Upload banner</a></li>
                             <li><a href="/upload">Upload product</a></li>
                             <li><a href="/updatedb">Update database</a></li>
+                            <li><a href="/home">Logout</a></li>
                         </ul>
                     </li>   
                 <%}%>
@@ -276,18 +277,11 @@
         </div>
         <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
             <% if(user !== undefined && user !== "Login") { %>
-                <li class="dropdown">
-                    <a style="color: black;">
-                        <span class="glyphicon glyphicon-user"></span>
+                <li class="login-item">
+                    <a href="/about" style="color: rgb(223, 45, 13); font-weight: 350;">
+                        <span class="glyphicon glyphicon-user">
+                        </span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <a style="color: black;">
-                            <%= user %>
-                        </a>
-                        <li>
-                            <a href="/home"><span class="glyphicon glyphicon-log-in" style="color: black;"></span> Logout </a>
-                        </li>
-                    </ul>
                 </li>
             <% } else {%>
                 <li class="login-item">

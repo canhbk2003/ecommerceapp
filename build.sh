@@ -9,3 +9,4 @@ npm install util
 npm install winston --save
 npm install multer --save
 npm install fs --save
+npm install -S express-paginate
