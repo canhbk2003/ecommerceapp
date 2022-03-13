@@ -218,7 +218,7 @@
                 </li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >SẢN PHẨM<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" >TẤT CẢ SẢN PHẨM</a></li>
+                        <li><a href="/newarrivals" >TẤT CẢ SẢN PHẨM</a></li>
                         <li><a href="#" >QUẦN ÁO</a></li>
                         <li><a href="#" >QUẦN ÁO THỂ THAO</a></li>
                         <li><a href="#" >PHỤ KIỆN</a></li>
@@ -276,7 +276,7 @@
             
         </div>
         <ul class="nav navbar-nav navbar-right" style="position: absolute; top:  0; right: 20px;">
-            <% if(user !== undefined && user !== "Login") { %>
+            <% if(user !== "Login" && user !== "") { %>
                 <li class="login-item">
                     <a href="/about" style="color: rgb(223, 45, 13); font-weight: 350;">
                         <span class="glyphicon glyphicon-user">

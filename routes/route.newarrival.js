@@ -3,12 +3,12 @@ const db = require('../db.js');
 const User = require('../models/user');
 const Cart = require('../models/cart');
 const authMiddleware = require('../middlewares/auth.middleware');
-const { resolveInclude } = require('ejs');
 const router = express.Router();
 
 const pageController = require('../controllers/pagination.controller')
 
 router.get('/newarrivals', pageController.Render);
+router.get('/newarrivals/page=:page', pageController.RenderByPage);
 
 // router.get('/newarrivals', (req, res, next) => {
 //   let userName = "Login";

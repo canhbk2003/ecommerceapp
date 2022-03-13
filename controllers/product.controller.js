@@ -34,7 +34,7 @@ class ProductController {
     }
 
     getProductDetailPage(req, res, next) {
-        let userName = "Login";
+        let userName = "";
         const userId = req.cookies.userId;
         if(userId !== ''){
           db.GetById(req.cookies.userId).then(data => {
