@@ -257,7 +257,7 @@
     
                 <li><a class="news" href="/news">NEWS</a></li>
     
-                <% if(user !== undefined && user !== "Login") {%>
+                <% if(user !== "Login" && user !== "") {%>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">QUẢN LÝ<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/admin">Quản lý người dùng</a></li>
