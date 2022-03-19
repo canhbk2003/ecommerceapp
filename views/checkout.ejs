@@ -13,7 +13,7 @@
     <style>
         .bill-temp {
             font-size: 14px;
-            border: 1px solid rgb(224, 209, 209);
+            border: 2px solid rgb(185, 41, 41);
             padding: 20px 20px ;
             border-radius: 3px;
             text-align: center;
@@ -108,6 +108,18 @@
             -webkit-animation: ripple 1.0s linear infinite;
             animation: ripple 1.0s linear infinite;
         }
+        .form-check-input{
+            left: 35px;
+            position: absolute;
+        }
+        .form-check-label{
+            left: 55px;
+            position: absolute;
+        }
+
+        .form-control{
+            border: 1px solid rgb(202, 30, 30);
+        }
     </style>
   </head>
   <body>
@@ -117,73 +129,116 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12 topbar-content">
                   <p>
-                    <a href="/">Trang chủ</a> / Giỏ hàng của bạn
+                    <a href="/">Trang chủ</a> / Thanh toán đơn hàng
                   </p>
                 </div>
             </div>
         </div>
     </div>
-    <h2 style="text-align: center;">GIỎ HÀNG CỦA BẠN</h2>
+    <br>
     <form method="POST" action="/order">
         <% if(__products__) {%>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-5">
-                Hello
-            </div>
-            <div class="col-md-4">
-                <div class="bill-temp">
-                    <strong style="color: red; font-size: 20px;">CỘNG GIỎ HÀNG</strong>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    <h4 style="text-align: left;">THÔNG TIN THANH TOÁN</h4>
+                    <span>Bạn có mã ưu đãi?
+                        <input type="text"></input>
+                    </span>
                     <hr>
-                    <div class="row" style="font-size: 16px;">
-                        <div class="col-md-4" style="text-align: left;">
-                            Tạm tính
-                        </div>
-                        <div style="text-align: right;">
-                            <strong><%= totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %> </strong>
-                        </div>
+                    <div class="form-group">
+                        <label for="guestName"> Họ và tên *</label>
+                        <input type="text" name="guestName" class="form-control" id="guestName" placeholder="Họ và tên" required>
                     </div>
-                    <hr>
-                    <div class="row" style="font-size: 16px;">
-                        <div class="col-md-4" style="text-align: left;">
-                            Giao hàng
-                        </div>
-                        <div style="text-align: right;">
-                            Sẽ tính lúc giao hàng <strong>30.000 VND</strong>
-                        </div>
+
+                    <div class="form-group">
+                        <label for="guestEmail">Thư điện tử *</label>
+                        <input type="email" name="guestEmail" class="form-control" id="guestEmail" placeholder="Email" required>
                     </div>
-                    <hr>
-                    <div class="row" style="font-size: 16px;">
-                        <div class="col-md-4" style="text-align: left;">
-                            Tổng
-                        </div>
-                        <div style="text-align: right;">
-                            <strong><%= (totalPrice + 30000).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong>
-                        </div>
+
+                    <div class="form-group">
+                        <label for="guestPhone">Số điện thoại *</label>
+                        <input type="text" id="guestPhone" name="guestPhone" class="form-control" placeholder="Số điện thoại" required></input>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <input type="submit" class="btn btn-raised  btn-success" value="TIẾN HÀNH THANH TOÁN" style="background-color:rgb(138, 9, 9)">
+
+                    <div class="form-group">
+                        <label for="guestAddress">Địa chỉ *</label>
+                        <input type="text" name="guestAddress" class="form-control" id="guestAddress" placeholder="Địa chỉ" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestAddress">Ghi chú đơn hàng (tuỳ chọn)</label>
+                        <textarea type="textarea" id="orderOptions" name="description" class="form-control" cols="92" rows="5" tabindex="101" placeholder="Mô tả"></textarea>
                     </div>
                 </div>
-                
+                <div class="col-md-4">
+                    <div class="bill-temp">
+                        <strong style="color: red; font-size: 20px; text-align: left;">ĐƠN HÀNG CỦA BẠN</strong>
+                        <hr>
+                        <div class="row" style="font-size: 16px;">
+                            <div class="col-md-4" style="text-align: left;">
+                                Sản phẩm
+                            </div>
+                            <% var i = 0; %>
+                                <% __products__.forEach(function (product) { %>
+                                    <div style="text-align: right;">
+                                        <%= product.item.name%> x <strong><%= product.qty%></strong>
+                                    </div> 
+                            <% });%>
+                        </div>
+                        <hr>
+                        <div class="row" style="font-size: 16px;">
+                            <div class="col-md-4" style="text-align: left;">
+                                Tạm tính
+                            </div>
+                            <div style="text-align: right;">
+                                <strong><%= totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %> </strong>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row" style="font-size: 16px;">
+                            <div class="col-md-4" style="text-align: left;">
+                                Giao hàng
+                            </div>
+                            <div style="text-align: right;">
+                                Sẽ tính lúc giao hàng <strong>30.000 VND</strong>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row" style="font-size: 16px;">
+                            <div class="col-md-4" style="text-align: left;">
+                                Tổng
+                            </div>
+                            <div style="text-align: right;">
+                                <strong><%= (totalPrice + 30000).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-check" >
+                            <input type="radio" class="form-check-input" id="small" name="radSize" value="bank" checked>
+                            <label class="form-check-label" for="small">Chuyển khoản ngân hàng</label>
+                            <br>
+                            <p style="text-align: left;">
+                                Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi.
+                                Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. 
+                                Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.
+                            </p>
+                            <input type="radio" class="form-check-input" id="medium" name="radSize" value="directly">
+                            <label class="form-check-label" for="medium" style="text-align: left;">Thanh toán trực tiếp</label>
+                        </div>
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <input type="submit" class="btn btn-raised  btn-success" value="ĐẶT HÀNG" style="background-color:rgb(138, 9, 9)">
+                        </div><br>
+                        <p style="text-align: left;">
+                            Your personal data will be used to process your order, 
+                            support your experience throughout this website, 
+                            and for other purposes described in our <a href="/guide-backitem" ><strong>chính sách riêng tư</strong></a>.
+                        </p>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <strong>Tổng: <%= totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %> </strong>
-            </div>
-            <br> <br>
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <a href="/" class="btn btn-raised  btn-success" style="background-color:rgb(138, 9, 9)">Tiếp tục mua hàng</a>
-                <input type="submit" class="btn btn-raised  btn-success" value="Cập nhật giỏ hàng" style="background-color:rgb(138, 9, 9)">      
-            </div>
-            </div>
-        </div>
-        <hr>
         <% } else {%>
             <div class="empty">
                 <h2>Oops, Giỏ hàng của bạn chưa có sản phẩm nào</h2>

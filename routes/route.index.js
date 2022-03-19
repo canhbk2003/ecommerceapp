@@ -24,6 +24,7 @@ const routerBankPurchase = require('./route.bankpurchase');
 const routerGuideOrder =require('./route.guideorder');
 const routerAbout = require('./route.about');
 const routerContact = require('./route.contact');
+const routerCheckout = require('./route.checkout');
 
 const routerMoreProducts = require('./route.moreproducts');
 
@@ -386,6 +387,7 @@ function route(app) {
     app.use('/', routerAbout);
     app.use('/', routerMoreProducts);
     app.use('/', routerPagination);
+    app.use('/', routerCheckout);
 }
 
 module.exports = route;

@@ -124,7 +124,7 @@
         </div>
     </div>
     <h2 style="text-align: center;">GIỎ HÀNG CỦA BẠN</h2>
-    <form method="POST" action="/order">
+    <form method="POST" action="/checkout">
         <% if(__products__) {%>
         <div class="row">
             <div class="col-md-2"></div>
@@ -221,7 +221,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <a href="/" class="btn btn-raised  btn-success" style="background-color:rgb(138, 9, 9)">Tiếp tục mua hàng</a>
-                <input type="submit" class="btn btn-raised  btn-success" value="Cập nhật giỏ hàng" style="background-color:rgb(138, 9, 9)">      
+                <a href="/carts/refresh" class="btn btn-raised btn-success" style="background-color:rgb(138, 9, 9)">Cập nhật giỏ hàng</a>     
             </div>
             </div>
         </div>
@@ -270,9 +270,15 @@
 
     </form>
     <br>
-    <footer>
-        <%- include('footer'); %>
-    </footer>
+    <% if(__products__) {%>
+        <footer>
+            <%- include('footer'); %>
+        </footer>
+    <% } else {%>
+        <footer style="position: fixed;">
+            <%- include('footer'); %>
+        </footer>
+    <% } %>  
   </body>
   
 </html>
