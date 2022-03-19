@@ -129,49 +129,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-5">
-                <table class="table table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Tên sản phẩm</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Thành tiền</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% var i = 0; %>
-                        <% __products__.forEach(function (product) { %>
-                            <tr>
-                                <td width="150">
-                                    <strong><%= product.item.name %></strong>
-                                </td>
-                                <td width="20">
-                                    <strong><%= product.size %></strong>
-                                </td>
-                                <td width="50">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-raised btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Chỉnh sửa <strong style="color: black">(<%= product.qty %>)</strong>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="btn btn-primary" href="/carts/reduce/<%= product.item._id %>">Xóa một</a>
-                                            <a class="btn btn-danger" href="/carts/remove/<%= product.item._id %>">Xóa tất cả</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="120">
-                                    <div>
-                                        <img src="<%= product.item.image %>" width="100" height="100">
-                                    </div>
-                                </td>
-                                <td width="50">
-                                    <span class="badge price-cart"><%= product.price %></span>
-                                </td>
-                            </tr>
-                        <% }); %>
-                    </tbody>
-                </table>
+                Hello
             </div>
             <div class="col-md-4">
                 <div class="bill-temp">
@@ -226,41 +184,6 @@
             </div>
         </div>
         <hr>
-        
-        <!-- Thông tin người mua hàng -->
-        <!-- <div class="row">
-            <div class="col-md-2"></div>
-                <div class="col-md-6">
-                    <h3>THÔNG TIN THANH TOÁN</h3>
-                    <div class="form-group">
-                        <label for="guestName"> Họ và tên *</label>
-                        <input type="text" name="guestName" class="form-control" id="guestName" placeholder="Họ và tên">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="guestEmail">Thư điện tử *</label>
-                        <input type="email" name="guestEmail" class="form-control" id="guestEmail" placeholder="Email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="guestPhone">Số điện thoại *</label>
-                        <input type="text" id="guestPhone" name="guestPhone" class="form-control" placeholder="Số điện thoại"></input>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="guestAddress">Địa chỉ *</label>
-                        <input type="text" name="guestAddress" class="form-control" id="guestAddress" placeholder="Địa chỉ">
-                    </div>
-                </div>  
-        </div> -->
-        
-        <!-- <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <input type="submit" class="btn btn-raised  btn-success" value="Đặt hàng">
-                <a href="/" class="btn btn-raised  btn-success">Tiếp tục mua hàng</a>
-            </div>
-        </div> -->
         <% } else {%>
             <div class="empty">
                 <h2>Oops, Giỏ hàng của bạn chưa có sản phẩm nào</h2>

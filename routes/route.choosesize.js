@@ -7,8 +7,7 @@ const User = require('../models/user');
 const db = require('../db');
 
 router.get('/guide-choosesize', (req, res) => {
-  let userName = "Login";
-
+  let userName = "";
   const userId = req.cookies.userId;
   db.GetById(req.cookies.userId).then(data => {
     if (data) {

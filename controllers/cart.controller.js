@@ -5,11 +5,23 @@ const Cart = require('../models/cart');
 
 class CartController{
   index(req, res ){
-    if(!req.session.cart) {
-      return res.render('carts', {__products__: null});
-    }
-    const cart = new Cart(req.session.cart);
-    return res.render('carts', {__products__: cart.generateArray(), totalPrice: cart.totalPrice});
+    let userName = "";
+    const userId = req.cookies.userId;
+    db.GetById(req.cookies.userId).then(data => {
+      if (data) {
+          const user = new User(data);
+          userName = user.name;
+      }
+    }).then(function(){
+      if(!req.session.cart) {
+        return res.render('carts', {__products__: null, user: userName, products: 0});
+      }
+      const cart = new Cart(req.session.cart);
+      return res.render('carts', {__products__: cart.generateArray(), 
+        totalPrice: cart.totalPrice, 
+        user: userName,
+        products: cart.generateArray().length});
+    });
   }
   addToCart(req, res ){
     const productId = req.params.id;

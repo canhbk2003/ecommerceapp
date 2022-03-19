@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const Product = new Schema({
     productId: { type: String, maxLength: 12 },
     name: { type: String, maxLength: 255 },
-    description: { type: String, maxLength: 1000 },
+    description: { type: String, maxLength: 5000 },
+    slogan: {type: String, maxLength: 1000},
     image: { type: String, maxLength: 255 },
     price: { type: Number, min: 0 },
     bonusPrice: { type: Number, min: 0 },
