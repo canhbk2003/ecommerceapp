@@ -6,6 +6,8 @@ const Image = require('./models/upload');
 const logger = require('./log/logger');
 const fs = require('fs');
 
+const OffCode = require('./models/offcode');
+
 exports.GetById = async function QueryById(id) {
     const uri = 'mongodb://127.0.0.1:27017/product_test';
 
@@ -322,5 +324,21 @@ exports.find_new_product_by_id = async function find_by_id(id){
     catch(err){
 
     }
+}
+
+// get off code 
+exports.get_offcode = async function get_off_code(code){
+    const uri = 'mongodb://127.0.0.1:27017/product_test';
+    try{
+        await mongoose.connect(uri,{
+            connectTimeoutMS: 1000
+        });
+        return await OffCode.findOne(code).then(value => {
+            return value;
+        });
+        
+    }catch(err){
+        logger.error(err);
+    }   
 }
 

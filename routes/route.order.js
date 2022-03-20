@@ -10,6 +10,15 @@ router.get('/order', (req, res)=>{
  // post and save to db
 router.post('/order', (req, res) => {
     // cart
+  let userName = "";
+  const userId = req.cookies.userId;
+  db.GetById(req.cookies.userId).then(data => {
+    if (data) {
+        const user = new User(data);
+        userName = user.name;
+    }
+  }).then(function(){
+    // cart
     if(req.session.cart){
         var cart = new Cart(req.session.cart);
         console.log(cart);
@@ -18,24 +27,39 @@ router.post('/order', (req, res) => {
         var email = req.body.guestEmail;
         var phone = req.body.guestPhone;
         var addr = req.body.guestAddress;
-
+        var note = req.body.orderOptions;
+        var offCode = req.body.offCode;
+        var paymentState = "";
+        var purchaseMethod = req.body.purchase;
+        if(purchaseMethod === "bank"){
+            paymentState = "Thanh toán chuyển khoản ngân hàng"
+        }
+        else{
+            paymentState = "Trả tiền mặt khi giao hàng";
+        }
         var object = {
             name: name,
             email: email,
             phone: phone,
             address: addr,
             cart: cart,
-            paymentId: null
+            deliveryFee: 30000,
+            paymentState: paymentState,
+            paymentId: null,
+            options: note,
+            offCode: offCode
         }
+    
         var bill = new Bill(object);
         console.log(bill);
         db.save_guest_order(bill);
         // guest render
-        res.render('order', {bill: bill});
+        res.render('order', {bill: bill, user: userName, products: cart.generateArray()});
     }
     else{
-        res.render('order', {bill: {}});
+        res.render('order', {bill: {}, user: userName, products: 0});
     }
+  });
 });
 
 module.exports = router;
