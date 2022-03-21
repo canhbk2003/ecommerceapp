@@ -33,7 +33,7 @@ router.post('/checkout', (req, res) => {
         var checkout = new Checkout(object);
         console.log(checkout);
         // guest render
-        res.render('checkout', {checkout: checkout, user: userName, products: cart.length, __products__: cart.generateArray(),totalPrice: cart.totalPrice, });
+        res.render('checkout', {checkout: checkout, user: userName, products: cart.generateArray().length, __products__: cart.generateArray(),totalPrice: cart.totalPrice, });
       }
       else{
           res.render('checkout', {checkout: {}, user: userName, products: 0, __products__: null, totalPrice: 0,});

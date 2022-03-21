@@ -13,7 +13,7 @@
     <style>
         .bill-temp {
             font-size: 14px;
-            border: 2px solid rgb(185, 41, 41);
+            border: 2px solid rgb(74, 160, 86);
             padding: 20px 20px ;
             border-radius: 3px;
             text-align: center;
@@ -118,7 +118,10 @@
         }
 
         .form-control{
-            border: 1px solid rgb(202, 30, 30);
+            border: 1px solid rgb(49, 160, 55);
+        }
+        .bill-temp{
+          background-color: #e2ece1;
         }
     </style>
   </head>
@@ -139,76 +142,116 @@
     <div class="container">
       <% if(bill) {%>
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <span>
-                <%= bill.paymentState %>
-              </span>
-              <h4 style="text-align: left; font-size: 20">Chi tiết đơn hàng</h4>    
-              <div class="row" style="font-size: 16px;">
-                <div class="col-md-4" style="text-align: left;">
-                    <strong>SẢN PHẨM</strong>
-                </div>
-                <div style="text-align: right;">
-                    <strong>TỔNG</strong>
-                </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-6">
+            <span>
+              <%= bill.paymentState %>
+            </span>
+            <h4 style="text-align: left; font-size: 20">Chi tiết đơn hàng</h4>    
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-4" style="text-align: left;">
+                  <strong>SẢN PHẨM</strong>
               </div>
-              <hr>
-              <% var i = 0; %>
-                  <% var products = [];
-                    products = bill.cart.generateArray();
-                    products.forEach(function (product) {
-                  %>
-                  <div class="row" style="font-size: 16px;">
-                    <div class="col-md-4" style="text-align: left;">
-                    <%= product.item.name%> - <%=product.size%> x <%= product.qty%>
-                    </div>    
-                    <div style="text-align: right;">
-                      <%= product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});%>
-                    </div>
-                  </div>     
-              <% }); %>
-              <hr>
-              <div class="row" style="font-size: 16px;">
-                <div class="col-md-4" style="text-align: left;">
-                    <strong>Tổng số phụ:</strong>
-                </div>
-                <div style="text-align: right;">
-                    <%= bill.cart.totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                </div>
+              <div style="text-align: right;">
+                  <strong>TỔNG</strong>
               </div>
-              <hr>
-              <div class="row" style="font-size: 16px;">
-                <div class="col-md-4" style="text-align: left;">
-                    <strong>Giao nhận hàng:</strong>
-                </div>
-                <div style="text-align: right;">
-                    %= bill.deliveryFee.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
-                </div>
-              </div>
-              <hr>
-              
-              <div class="row" style="font-size: 16px;">
-                <div class="col-md-4" style="text-align: left;">
-                    <strong>Phương thức thanh toán:</strong>
-                </div>
-                <div style="text-align: right;">
-                  <%= bill.paymentState %>
-                </div>
-              </div>
-              <hr>
-              
-              <div class="row" style="font-size: 16px;">
-                <div class="col-md-4" style="text-align: left;">
-                    <strong>Tổng cộng:</strong>
-                </div>
-                <div style="text-align: right;">
-                  <strong><%= (bill.cart.totalPrice + bill.deliveryFee).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong>
-                </div>
-              </div>
-              <hr>
-
             </div>
+            <hr>
+            <% var i = 0; %>
+              <% var products = [];
+                products = bill.cart.generateArray();
+                products.forEach(function (product) {
+              %>
+              <div class="row" style="font-size: 16px;">
+                <div class="col-md-4" style="text-align: left;">
+                <%= product.item.name%> - <%=product.size%> x <%= product.qty%>
+                </div>    
+                <div style="text-align: right;">
+                  <%= product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});%>
+                </div>
+              </div>     
+            <% }); %>
+            <hr>
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-4" style="text-align: left;">
+                  <strong>Tổng số phụ:</strong>
+              </div>
+              <div style="text-align: right;">
+                  <%= bill.cart.totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+              </div>
+            </div>
+            <hr>
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-4" style="text-align: left;">
+                  <strong>Giao nhận hàng:</strong>
+              </div>
+              <div style="text-align: right;">
+                  <%= bill.deliveryFee.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-4" style="text-align: left;">
+                  <strong>Phương thức thanh toán:</strong>
+              </div>
+              <div style="text-align: right;">
+                <%= bill.paymentState %>
+              </div>
+            </div>
+            <hr>
+            
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-4" style="text-align: left;">
+                  <strong>Tổng cộng:</strong>
+              </div>
+              <div style="text-align: right;">
+                <strong><%= (bill.cart.totalPrice + bill.deliveryFee).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %></strong>
+              </div>
+            </div>
+            <hr>
+
+            <div class="row" style="font-size: 16px;">
+              <div class="col-md-6" style="text-align: left;">
+                  <h4>Địa chỉ thanh toán</h4>
+                  <p>League store, Số 3 ngách 369 ngõ Quỳnh , HBT , HN</p>
+                  <p>Điện thoại: 0862263986</p>
+                  <p>Hoặc thanh toán qua <a href="/guide-bankaccount">Ngân hàng</a></p>
+              </div>
+
+              <div class="col-md-6" style="text-align: left;">
+                  <h4>Địa chỉ giao hàng</h4>
+                  <p><strong><%= bill.name%></strong></p>
+                  <p>Địa chỉ: <%= bill.address%></p>
+                  <p>Điện thoại: <%= bill.phone%></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+              <div class="bill-temp">
+                <strong><p style="color: green">Cảm ơn bạn. Đơn hàng của bạn đã được nhận!</p></strong>
+                <div class="row" style="font-size: 16px; text-align: left;">
+                  <p>* Mã đơn hàng: <%= bill.paymentId%></p>
+                </div>
+                <hr>
+                <div class="row" style="font-size: 16px; text-align: left;">
+                  <p>* Ngày: <%= bill.date%></p>
+                </div>
+                <hr>
+                <div class="row" style="font-size: 16px; text-align: left;">
+                  <p>* Email: <%= bill.email%></p>
+                </div>
+                <hr>
+                <div class="row" style="font-size: 16px; text-align: left;">
+                  <p>* Tổng cộng: <%= (bill.cart.totalPrice + bill.deliveryFee).toLocaleString('it-IT', {style : 'currency', currency : 'VND'});%></p>
+                </div>
+                <hr>
+                <div class="row" style="font-size: 16px; text-align: left;">
+                  <p>* Phương thức thanh toán: <%= bill.paymentState%></p>
+                </div>
+                <br>
+                <hr>
+              </div>
             </div>
         </div>
       <% } else {%>

@@ -4,9 +4,6 @@ const router = express.Router();
 const Cart = require('../models/cart');
 const Bill = require('../models/bill');
 const db = require('../db');
-router.get('/order', (req, res)=>{
-   res.render('order');
-});
  // post and save to db
 router.post('/order', (req, res) => {
     // cart
@@ -31,6 +28,7 @@ router.post('/order', (req, res) => {
         var offCode = req.body.offCode;
         var paymentState = "";
         var purchaseMethod = req.body.purchase;
+        var billId = Math.floor(Math.random() * 10000) + 1;
         if(purchaseMethod === "bank"){
             paymentState = "Thanh toán chuyển khoản ngân hàng"
         }
@@ -45,7 +43,7 @@ router.post('/order', (req, res) => {
             cart: cart,
             deliveryFee: 30000,
             paymentState: paymentState,
-            paymentId: null,
+            paymentId: billId,
             options: note,
             offCode: offCode
         }
@@ -54,7 +52,7 @@ router.post('/order', (req, res) => {
         console.log(bill);
         db.save_guest_order(bill);
         // guest render
-        res.render('order', {bill: bill, user: userName, products: cart.generateArray()});
+        res.render('order', {bill: bill, user: userName, products: cart.generateArray().length});
     }
     else{
         res.render('order', {bill: {}, user: userName, products: 0});

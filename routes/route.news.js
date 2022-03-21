@@ -3,6 +3,7 @@ const db = require('../db.js');
 const User = require('../models/user');
 const authMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
+const Cart = require('../models/cart');
 
 // @TODO: news controller
 router.get('/news', (req, res, next) => {
@@ -57,15 +58,15 @@ router.get('/news', (req, res, next) => {
                 productData = cart.generateArray(); 
                 res.render('news', { 
                     numItems: parseInt(_numitems), 
-                    product: {},  
-                    products: parseInt(productData.length), 
+                    product: cart.generateArray(),  
+                    products: cart.generateArray().length, 
                     user: userName});
             }
             else{
                 res.render('news', { 
                     numItems: parseInt(_numitems), 
                     product: {},  
-                    products: parseInt(productData.length), 
+                    products: 0, 
                     user: userName});
             }
         }
