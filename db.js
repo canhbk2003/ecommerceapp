@@ -7,6 +7,9 @@ const logger = require('./log/logger');
 const fs = require('fs');
 
 const OffCode = require('./models/offcode');
+const Bill = require('./models/bill');
+
+const URI = 'mongodb://127.0.0.1:27017/product_test';
 
 exports.GetById = async function QueryById(id) {
     const uri = 'mongodb://127.0.0.1:27017/product_test';
@@ -342,3 +345,31 @@ exports.get_offcode = async function get_off_code(code){
     }   
 }
 
+// get all bill
+exports.get_all_bill = async function get_all_bill(){
+    try{
+        await mongoose.connect(URI, {
+            connectTimeoutMS: 1000
+        });
+        return await Bill.find({})
+            .then(value => {
+                return value;
+            });
+    }catch(err){
+        logger.error(err);
+    }
+}
+ // get bill by id
+exports.get_bill_by_id = async function get_bill_by_id(id){
+    try{
+        await mongoose.connect(URI, {
+            connectTimeoutMS: 1000
+        });
+        return await Bill.findById(id).then(value => {
+            return value;
+        });
+
+    }catch(err){
+        logger.error(err);
+    }
+}

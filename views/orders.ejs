@@ -15,10 +15,116 @@
 
     </head>
     <body>
-        <h3><a href="/">TRANG CHỦ/</a>QUẢN LÝ ĐƠN HÀNG</h3>
+        <h4 style="text-align: center;"><a href="/">TRANG CHỦ/</a>QUẢN LÝ ĐƠN HÀNG</h4>
         <div class="container">
             <!-- orders table -->
-            
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Tên khách hàng</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Điện thoại</th>
+                        <th scope="col">Địa chỉ</th>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Delivery fee</th>
+                        <th scope="col">Phương thức thanh toán</th>
+                        <th scope="col">Mã đơn hàng</th>
+                        <th scope="col">Mã giảm giá</th>
+                        <th scope="col">Ngày tạo đơn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (bill) {%>
+                        <% for(var i=0; i < bill.length; i++) { %>
+                        <tr>
+                            <th scope="row">
+                                <%= i+1 %>
+                            </th>
+                            <td>
+                                <%= bill[i].name %>
+                            </td>
+                            <td>
+                                <%= bill[i].email %>
+                            </td>
+                            <td>
+                                <%= bill[i].phone %>
+                            </td>
+                            <td>
+                                <%= bill[i].address %>
+                            </td>
+                            <td>
+                                <%= bill[i].cart %>
+                            </td>
+                            <td>
+                                <%= bill[i].deliveryFee %>
+                            </td>
+                            <td>
+                                <%=  bill[i].paymentState %>
+                            </td>
+                            <td>
+                                <%= bill[i].paymentId %>
+                            </td>
+                            <td>
+                                <%= bill[i].offCode %>
+                            </td>
+                            <td>
+                                <%= bill[i].date %>
+                            </td>
+                            <td>
+                                <a style="margin-top: 5px;" href="" class="btn btn-danger" data-toggle="modal" data-id="<%=bill[i]._id %>" data-target="#modal-delete-model">Xoá</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    <%}%>
+                </tbody>
+            </table>
+            <a style="margin-top: 5px; align-items: center;" href="" class="btn btn-danger" data-toggle="modal" data-id="" data-target="#modal-delete-model">Xoá tất cả</a>
+            <br>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal-delete-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Xác nhận xoá dữ liệu</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn chắc chắn muốn xoá đơn hàng này?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-delete-model" class="btn btn-danger" data-dismiss="modal">Xoá</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <form method="POST" name="hidden-form-delete" id="delete-form">
+            </form>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var productId;
+                var deleteForm = document.getElementById('delete-form');
+                console.log(deleteForm);
+    
+                $('#modal-delete-model').on('show.bs.modal', function(event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    productId = button.data('id'); // Extract info from data-* attributes
+    
+                    var buttonDelete = document.getElementById('btn-delete-model');
+                    buttonDelete.onclick = function() {
+                        deleteForm.action = '/orders/' + productId + '?_method=DELETE';
+                        deleteForm.submit();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

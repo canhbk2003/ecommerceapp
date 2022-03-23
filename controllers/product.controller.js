@@ -6,7 +6,6 @@ const User = require('../models/user');
 class ProductController {
     // product table
     getProductPage(req, res, next) {
-        console.log('get table product');
         db.QueryAllProduct()
             .then(data_ => {
                 res.render('producttable', { data: data_ });

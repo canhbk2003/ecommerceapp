@@ -64,7 +64,7 @@ router.get('/news', (req, res, next) => {
             }
             else{
                 res.render('news', { 
-                    numItems: parseInt(_numitems), 
+                    numItems: parseInt(_numitems),
                     product: {},  
                     products: 0, 
                     user: userName});
