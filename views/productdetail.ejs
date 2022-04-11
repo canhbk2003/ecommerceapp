@@ -293,6 +293,15 @@
             text-align: center;
         }
 
+        @media screen and (max-width: 600px) {
+            .hotline-ho-tro {
+                margin-top: 10px;
+            }
+            .hotline-ho-tro2 {
+                margin-top: 10px;
+            }
+        }
+
         .hotline-ho-tro .info-hotline {
             text-transform: uppercase;
             display: block;
@@ -312,10 +321,25 @@
             border: none;
             outline: none;
             cursor: pointer;
-            font-size: 17px;
+            font-size: 14px;
             width: 20%;
-            height: 40px;
+            height: 35px;
             text-align: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            .tablink {
+                background-color: rgb(190, 185, 185);
+                color: white;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                font-size: 12px;
+                width: 30%;
+                height: 25px;
+                text-align: center;
+            }
         }
 
         .tablink:hover {
@@ -374,7 +398,7 @@
         <h2 style="text-decoration: underline;">CHI TIẾT SẢN PHẨM</h2>
     </div>
     <div class="container">
-        <form method="POST" action="/checkout<%= product[0]._id %>">
+        <form method="POST" action="/checkout/<%= product[0]._id %>">
             <section class="mb-4">
                 <div class="row">
                     <div class="col-md-5 mb-4 mb-md-0">

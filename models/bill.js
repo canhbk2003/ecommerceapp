@@ -15,6 +15,10 @@ const Bill = new Schema({
   date: {type: Date, default: Date.now}
 });
 
+Bill.methods.getCart = function(){
+  return Bill.cart;
+}
+
 module.exports = mongoose.model(
   'bills',
   Bill

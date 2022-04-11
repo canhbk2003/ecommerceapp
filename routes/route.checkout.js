@@ -10,6 +10,40 @@ router.get('/checkout', (req, res)=>{
    res.render('checkout');
 });
 
+router.post('/checkout/:id', (req, res) => {
+  const productId = req.params.id;
+  const cart = new Cart(req.session.cart ? req.session.cart : {});
+  const sizeName  = req.params.size;
+  const msg = req.params.msg;
+  const numItems = req.params.qty;
+
+
+  let userName = "";
+  const userId = req.cookies.userId;
+  db.GetById(req.cookies.userId).then(data => {
+    if (data) {
+        const user = new User(data);
+        userName = user.name;
+    }
+  }).then(function(){
+    var deliveryFree = req.body.deliveryFee;
+      var object = {
+          cart: cart,
+          deliveryFee: deliveryFree,
+          checkoutId: null
+      }
+      var checkout = new Checkout(object);
+      console.log(checkout);
+      // guest render
+      res.render('checkout', {
+        checkout: checkout, 
+        user: userName,
+          products: cart.generateArray().length, 
+          __products__: cart.generateArray(),
+          totalPrice: cart.totalPrice, });
+  });
+});
+
 router.post('/checkout', (req, res) => {
   // cart
   let userName = "";

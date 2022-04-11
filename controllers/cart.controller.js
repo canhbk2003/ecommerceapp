@@ -2,6 +2,7 @@ const db = require('../db');
 const Product = require('../models/product');
 const logger = require('../log/logger');
 const Cart = require('../models/cart');
+const User = require('../models/user');
 
 class CartController{
   index(req, res ){

@@ -27,7 +27,8 @@
                         <th scope="col">Điện thoại</th>
                         <th scope="col">Địa chỉ</th>
                         <th scope="col">Sản phẩm</th>
-                        <th scope="col">Delivery fee</th>
+                        <th scope="col">Tổng tiền</th>
+                        <th scope="col">Phí giao hàng</th>
                         <th scope="col">Phương thức thanh toán</th>
                         <th scope="col">Mã đơn hàng</th>
                         <th scope="col">Mã giảm giá</th>
@@ -36,6 +37,7 @@
                 </thead>
                 <tbody>
                     <% if (bill) {%>
+                       
                         <% for(var i=0; i < bill.length; i++) { %>
                         <tr>
                             <th scope="row">
@@ -54,10 +56,15 @@
                                 <%= bill[i].address %>
                             </td>
                             <td>
-                                <%= bill[i].cart %>
+                                <%= bill[i].cart.name%>
                             </td>
                             <td>
-                                <%= bill[i].deliveryFee %>
+                                <%= bill[i].cart.totalPrice.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                            </td>
+                            <td>
+                                <% if (bill[i].deliveryFee > 0 ) {%>
+                                    <%= bill[i].deliveryFee.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}); %>
+                                <% } %>
                             </td>
                             <td>
                                 <%=  bill[i].paymentState %>

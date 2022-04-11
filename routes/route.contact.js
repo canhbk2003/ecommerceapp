@@ -5,7 +5,7 @@ const User = require('../models/user');
 const Cart = require('../models/cart');
 
 router.get('/contact', (req, res) => {
-  let userName = "Login";
+  let userName = "";
   const userId = req.cookies.userId;
   if(userId !== ''){
     db.GetById(req.cookies.userId).then(data => {

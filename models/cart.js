@@ -5,26 +5,28 @@ module.exports = function Cart(oldCart) {
   // size
   this.size = "L";
   this.message = "";
-  this.numItem = 0;
+  this.numItem = oldCart.numItem || 0;
 
   this.add = function (item, id, size, msg, numItems) {
       let storedItem = this.items[id];
       if (!storedItem) {
           storedItem = this.items[id] = {item: item, qty: 0, price: 0, size: size, msg: msg, numItem: numItems};
       }
-      storedItem.qty += numItems;
+      storedItem.qty = storedItem.qty + numItems;
       storedItem.size = size;
       storedItem.msg = msg;
       storedItem.numItem = numItems;
-      if(storedItem.item.bonusPrice> 0){
+      if(storedItem.item.bonusPrice > 0){
         storedItem.price = storedItem.item.bonusPrice * storedItem.qty;
       }
       else{
         storedItem.price = storedItem.item.price * storedItem.qty;
       }
       
-      this.totalQty = storedItem.qty;
+      this.totalQty += storedItem.numItem;
       this.totalPrice += storedItem.price;
+
+      console.log(numItems, this.totalQty, storedItem.qty, storedItem.numItem);
   };
 
   this.reduceByOne = function (id) {
@@ -69,4 +71,3 @@ module.exports = function Cart(oldCart) {
       return arr;
   };
 };
-
